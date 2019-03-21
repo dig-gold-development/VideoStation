@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.widget.CompoundButton
+import android.widget.RadioGroup
 import butterknife.OnCheckedChanged
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseActivity
@@ -23,29 +24,29 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        radioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
+            var i = 0
+            when (checkedId) {
+                R.id.radio_home -> {
+                    i = 0
+                    if (fragments[i] == null) {
+                        fragments[i] = MainHomeFragment()
+                    }
+                }
+            }
+
+            if (fragments[i] == null) {
+                fragments[i] = MainHomeFragment()
+            }
+            showFragment(fragments[i]!!)
+        })
+
         radioGroup.check(R.id.radio_home)
     }
 
-    @OnCheckedChanged(R.id.radio_home, R.id.radio_channel, R.id.radio_rank, R.id.radio_me)
-    fun onCheckedChanged(v: CompoundButton, isChecked: Boolean) {
-        if (!isChecked) {
-            return
-        }
-        var i = 0
-        when (v.id) {
-            R.id.radio_home -> {
-                i = 0
-                if (fragments[i] == null) {
-                    fragments[i] = MainHomeFragment()
-                }
-            }
-        }
 
-        if (fragments[i] == null) {
-            fragments[i] = MainHomeFragment()
-        }
-        showFragment(fragments[i]!!)
-    }
 
     fun showFragment(fragment: Fragment) {
         if (currentFragment != null) {

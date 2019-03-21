@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#000000">
+
+        <ImageView
+            android:id="@+id/nav_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/nav_search"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:id="@+id/iv_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/nav_record"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <FrameLayout
+                android:id="@+id/flayout_top"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+                <com.zhusx.core.widget.Lib_Widget_LooperViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:lib_autoScroll="true" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/lib_translucent"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    >
+                    <TextView
+                        android:id="@+id/tv_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="14dp" />
+
+                    <com.zhusx.core.widget.indicator.Lib_ViewPager_LinePageIndicator
+                        android:id="@+id/indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_movie"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_press_selector"
+                    android:drawableTop="@drawable/home_type_dy"
+                    android:drawablePadding="3dp"
+                    android:text="电影"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/c_a5" />
+
+                <TextView
+                    android:id="@+id/tv_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_press_selector"
+                    android:drawableTop="@drawable/home_type_dsj"
+                    android:drawablePadding="3dp"
+                    android:text="电视剧"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/c_a5" />
+
+
+                <TextView
+                    android:id="@+id/tv_comic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_press_selector"
+                    android:drawableTop="@drawable/home_type_dm"
+                    android:drawablePadding="3dp"
+                    android:text="动漫"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/c_a5" />
+
+                <TextView
+                    android:id="@+id/tv_arts"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_press_selector"
+                    android:drawableTop="@drawable/home_type_zy"
+                    android:drawablePadding="3dp"
+                    android:text="综艺"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/c_a5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="热播电影"
+                        android:textColor="@color/c_38"
+                        android:textSize="16dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="more"
+                        android:textSize="10dp"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="3dp"
+                        android:drawableRight="@drawable/icon_get_small"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        />
+            </RelativeLayout>
+
+                <com.zhusx.core.widget.Lib_Widget_ExpandGridView
+                    android:id="@+id/gridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:horizontalSpacing="5dp"
+                    android:verticalSpacing="5dp"
+                    android:numColumns="3"
+                    android:padding="10dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="热播电视剧"
+                        android:textColor="@color/c_38"
+                        android:textSize="16dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="more"
+                        android:textSize="10dp"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="3dp"
+                        android:drawableRight="@drawable/icon_get_small"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        />
+                </RelativeLayout>
+
+                <com.zhusx.core.widget.Lib_Widget_ExpandGridView
+                    android:id="@+id/gridView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:horizontalSpacing="5dp"
+                    android:verticalSpacing="5dp"
+                    android:numColumns="3"
+                    android:padding="10dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="综艺"
+                        android:textColor="@color/c_38"
+                        android:textSize="16dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="more"
+                        android:textSize="10dp"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="3dp"
+                        android:drawableRight="@drawable/icon_get_small"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        />
+                </RelativeLayout>
+
+                <com.zhusx.core.widget.Lib_Widget_ExpandGridView
+                    android:id="@+id/gridView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:horizontalSpacing="5dp"
+                    android:verticalSpacing="5dp"
+                    android:numColumns="3"
+                    android:padding="10dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="动漫"
+                        android:textColor="@color/c_38"
+                        android:textSize="16dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="more"
+                        android:textSize="10dp"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="3dp"
+                        android:drawableRight="@drawable/icon_get_small"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        />
+                </RelativeLayout>
+
+                <com.zhusx.core.widget.Lib_Widget_ExpandGridView
+                    android:id="@+id/gridView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:horizontalSpacing="5dp"
+                    android:verticalSpacing="5dp"
+                    android:numColumns="3"
+                    android:padding="10dp"/>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+</LinearLayout>

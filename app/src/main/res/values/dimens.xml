@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titlebar_height">45dp</dimen>
+    <dimen name="driverHeight">1px</dimen>
+    <dimen name="font_size20">20dp</dimen>
+    <dimen name="font_size18">18dp</dimen>
+    <dimen name="font_size17">17dp</dimen>
+    <dimen name="font_size16">16dp</dimen>
+    <dimen name="font_size15">15dp</dimen>
+    <dimen name="font_size14">14dp</dimen>
+    <dimen name="font_size13">13dp</dimen>
+    <dimen name="font_size12">12dp</dimen>
+    <dimen name="font_size11">11dp</dimen>
+    <dimen name="font_size10">10dp</dimen>
+    <dimen name="font_size24">24dp</dimen>
+    <dimen name="font_size4">4dp</dimen>
+</resources>

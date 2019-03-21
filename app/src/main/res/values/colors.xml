@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="driver">#e5e5e5</color>
+    <color name="c_99">#999999</color>
+    <color name="c_f1">#f1f1f1</color>
+    <color name="c_f9">#f9f9f9</color>
+    <color name="c_38">#383838</color>
+    <color name="c_a5">#a5a5a5</color>
+    <color name="c_a1">#a1a1a1</color>
+    <color name="c_00ae54">#00ae54</color>
+    <color name="c_26">#262626</color>
+    <color name="c_ff8f00">#ff8f00</color>
+    <color name="c_44">#444444</color>
+    <color name="c_cc">#cccccc</color>
+    <color name="c_e5">#E5E5E5</color>
+    <color name="c_00ae04">#00ae04</color>
+    <color name="c_d4">#d43b33</color>
+    <color name="pressBg">#40000000</color>
+    <color name="c_e1">#E11A1A</color>
+    <color name="c_fa">#FA8B1D</color>
+    <color name="c_fb">#FFB70B</color>
+</resources>

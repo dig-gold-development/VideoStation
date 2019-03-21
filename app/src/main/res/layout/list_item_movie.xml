@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.mobile.cms.ysappandroid.widget.FrescoImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            style="@style/fresco_loading"
+            android:layout_height="wrap_content"
+            app:viewAspectRatio="0.714" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/lib_translucent"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size12" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textSize="@dimen/font_size13" />
+</LinearLayout>

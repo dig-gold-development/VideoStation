@@ -25,7 +25,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         radioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
             var i = 0
             when (checkedId) {
@@ -42,6 +41,8 @@ class MainActivity : BaseActivity() {
             }
             showFragment(fragments[i]!!)
         })
+
+
 
         radioGroup.check(R.id.radio_home)
     }

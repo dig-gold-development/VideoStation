@@ -1,20 +1,16 @@
 package com.site.vs.videostation.ui.homepage
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridView
-import android.widget.ScrollView
-import android.widget.TextView
 
 
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseFragment
-import com.site.vs.videostation.entity.home.HomePageEntity
+import com.site.vs.videostation.entity.HomePageEntity
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.LoadingHelper
 import com.site.vs.videostation.widget.FrescoImageView
@@ -23,10 +19,6 @@ import com.zhusx.core.adapter.Lib_BasePagerAdapter
 import com.zhusx.core.network.HttpRequest
 import com.zhusx.core.network.HttpResult
 import com.zhusx.core.utils._Lists
-import com.zhusx.core.widget.Lib_Widget_LooperViewPager
-import com.zhusx.core.widget.indicator.Lib_ViewPager_LinePageIndicator
-import butterknife.BindView
-import butterknife.ButterKnife
 import kotlinx.android.synthetic.main.fragment_homepage.*
 
 /**

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.mobile.cms.ysappandroid.widget.FrescoImageView
+        <com.site.vs.videostation.widget.FrescoImageView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
             style="@style/fresco_loading"

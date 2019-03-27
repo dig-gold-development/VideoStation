@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 
+import com.site.vs.videostation.ui.detail.view.DetailActivity;
+
 import java.io.Serializable;
 
 /**
@@ -21,5 +23,10 @@ public class Move implements Serializable {
     public String area;
     public String actor;
 
+    public void startActivity(Context context) {
+        Intent intent = new Intent(context, DetailActivity.class);
+        intent.putExtra(DetailActivity.ID, id);
+        context.startActivity(intent);
+    }
 
 }

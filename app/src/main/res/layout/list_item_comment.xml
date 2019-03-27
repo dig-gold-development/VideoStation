@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size14"
+        android:textColor="@color/c_a1"
+        android:text="gxgllsxz"
+        />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size14"
+        android:textColor="@color/c_a1"
+        android:layout_alignParentRight="true"
+        android:text="2016-10-20"
+        />
+
+    <com.hongju.gulu.widget.JustifyTextView
+        android:id="@+id/tv_content"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size14"
+        android:textColor="@color/c_26"
+        android:layout_below="@id/tv_name"
+        android:text="剧透的老婆被人插 被人插啊为什么一部好电影结局总是那么悲伤！唯一的两点小英！死了 张家辉最后也死了！"/>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/c_e5"
+        android:layout_below="@id/tv_content"
+        android:layout_marginTop="14dp"/>
+
+</RelativeLayout>

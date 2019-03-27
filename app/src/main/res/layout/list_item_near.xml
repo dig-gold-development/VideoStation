@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp"
+    android:paddingRight="14dp"
+    android:paddingLeft="14dp">
+
+    <ccom.site.vs.videostation.widget.FrescoImageView
+        android:id="@+id/iv_img"
+        android:layout_width="80dp"
+        android:layout_height="106.7dp"
+        android:layout_marginBottom="14dp" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@id/iv_img"
+        android:textColor="@color/c_26"
+        android:textSize="@dimen/font_size16" />
+
+    <TextView
+        android:id="@+id/tv_mainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_name"
+        android:layout_below="@id/tv_name"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/c_a1"
+        android:textSize="@dimen/font_size14"
+        />
+
+    <TextView
+        android:id="@+id/tv_subTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_name"
+        android:layout_below="@id/tv_mainTitle"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/c_a1"
+        android:textSize="@dimen/font_size14" />
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="2dp"
+        android:drawableTop="@drawable/icon_score"
+        android:text="5.0"
+        android:textColor="@color/c_ff8f00"
+        android:textSize="@dimen/font_size12"
+        android:layout_alignParentRight="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/c_e5" />
+</RelativeLayout>

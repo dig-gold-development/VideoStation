@@ -14,6 +14,18 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="bottom_dialog_anim">
+        <item name="android:windowEnterAnimation">@anim/bottom_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/bottom_dialog_out</item>
+    </style>
+
+
+    <style name="horizontal_line_e5">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/c_e5</item>
+    </style>
+
     <style name="fresco_loading">
         <item name="progressBarImage">@drawable/common_loading</item>
         <item name="progressBarImageScaleType">centerInside</item>

@@ -11,12 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 
 
-import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseFragment
 
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.site.vs.videostation.R
 import com.zhusx.core.app.Lib_BaseFragment
 import kotlinx.android.synthetic.main.fragment_ranking.*
 

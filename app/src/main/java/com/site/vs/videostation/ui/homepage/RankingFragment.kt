@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 
 
-import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseFragment
 import com.site.vs.videostation.entity.Move
 import com.site.vs.videostation.entity.RankingEntity
@@ -21,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_ranking_list.*
 
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.site.vs.videostation.R
 import com.zhusx.core.app.Lib_BaseFragment
 
 /**
@@ -79,7 +79,9 @@ class RankingFragment : BaseFragment() {
                         (viewHolder.getView<View>(R.id.iv_ranking) as ImageView).setImageResource(R.drawable.top_list4)
                     }
                 }
-                viewHolder.rootView.setOnClickListener { }
+                viewHolder.rootView.setOnClickListener {
+                    View.OnClickListener { v -> move.startActivity(v.context) }
+                }
             }
 
             override fun __getLayoutResource(i: Int): Int {

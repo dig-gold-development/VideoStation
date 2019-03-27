@@ -6,9 +6,9 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-
 import com.site.vs.videostation.R
+
+
 import com.site.vs.videostation.base.BaseFragment
 import com.site.vs.videostation.entity.HomePageEntity
 import com.site.vs.videostation.http.LoadData

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="110dp"
+        android:layout_height="wrap_content">
+
+        <com.hongju.gulu.widget.FrescoImageView
+            android:id="@+id/img_content"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            app:placeholderImage="@color/c_e5"
+            app:placeholderImageScaleType="fitCenter"
+            app:viewAspectRatio="0.75" />
+
+        <TextView
+            android:id="@+id/tv_subTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/img_content"
+            android:background="#AA000000"
+            android:gravity="right"
+            android:maxLines="1"
+            android:paddingRight="6dp"
+            android:text="2.8"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="奇异博士"
+        android:textColor="@color/c_26"
+        android:textSize="14dp" />
+
+</LinearLayout>

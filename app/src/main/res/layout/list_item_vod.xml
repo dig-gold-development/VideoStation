@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hongju.gulu.widget.ShapeTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tv_name"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:gravity="center"
+    android:textColor="@color/c_26"
+    android:textSize="@dimen/font_size14"
+    app:lib_radius="3dp"
+    app:lib_solidColor="@color/c_f9"
+    app:lib_strokeColor="@color/c_e5"
+    app:lib_strokeWidth="1dp"/>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="30dp"
+            android:src="@drawable/nav_goback" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/nav_share"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/iv_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/nav_collection" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.site.vs.videostation.widget.StickyNavLayout
+            android:id="@+id/layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@id/id_stickynavlayout_topview"
+                android:layout_width="match_parent"
+                android:layout_height="201dp">
+
+                <com.hongju.gulu.widget.FrescoImageView
+                    android:id="@+id/iv_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:backgroundImage="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <com.hongju.gulu.widget.FrescoImageView
+                        android:id="@+id/iv_img"
+                        android:layout_width="130dp"
+                        android:layout_height="173dp"
+                        android:layout_gravity="center_vertical" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="类型：动作片,动作,科幻,奇幻"
+                            android:textColor="@color/white"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="地区：美国"
+                            android:textColor="@color/white"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="年份：2016"
+                            android:textColor="@color/white"
+                            android:textSize="12dp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_language"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="语言：英语"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"
+                            android:visibility="gone" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="来源："
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+
+                            <com.hongju.gulu.widget.FrescoImageView
+                                android:id="@+id/iv_origin"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp" />
+
+                            <TextView
+                                android:id="@+id/tv_origin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
+                                android:drawableRight="@drawable/icon_dropdown"
+                                android:text="腾讯视频"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+
+                        <com.hongju.gulu.widget.ShapeTextView
+                            android:id="@+id/tv_record"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="上次已经看到："
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size10"
+                            android:visibility="gone"
+                            app:lib_radius="2dp"
+                            app:lib_solidColor="@color/c_ff8f00"/>
+                        <ImageView
+                            android:id="@+id/iv_tips"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/play_progress_tips"
+                            android:scaleType="center"
+                            android:visibility="gone"
+                            />
+                        <com.hongju.gulu.widget.ShapeTextView
+                            android:id="@+id/tv_play"
+                            android:layout_width="100dp"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="2dp"
+                            android:drawableLeft="@drawable/icon_play"
+                            android:drawablePadding="5.8dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="24dp"
+                            android:text="播放"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            app:lib_radius="4dp"
+                            app:lib_solidColor="@color/c_00ae54" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </FrameLayout>
+
+
+            <android.support.design.widget.TabLayout
+                android:id="@id/id_stickynavlayout_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                app:tabIndicatorColor="@color/c_00ae54"
+                app:tabSelectedTextColor="@color/c_00ae54"
+                app:tabTextColor="@color/c_26" />
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@id/id_stickynavlayout_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.site.vs.videostation.widget.StickyNavLayout>
+
+        <include
+            android:id="@+id/layout_loading"
+            layout="@layout/layout_loading_default"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+</LinearLayout>

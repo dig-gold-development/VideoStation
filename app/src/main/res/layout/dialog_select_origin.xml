@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginLeft="14dp"
+        android:gravity="center_vertical"
+        android:text="选择视频来源"
+        android:textColor="@color/c_a1"
+        android:textSize="@dimen/font_size14" />
+
+    <View style="@style/horizontal_line_e5" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/c_26"
+        android:textSize="@dimen/font_size16" />
+</LinearLayout>

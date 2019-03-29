@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 26
     defaultConfig {
         applicationId "com.site.vs.videostation"
         minSdkVersion 15
@@ -22,40 +21,34 @@ android {
     }
 }
 
-
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:${COMM_VERSION}"
     implementation "com.android.support:support-v4:${COMM_VERSION}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-
-    implementation 'io.reactivex:rxjava:1.2.1'
+    implementation 'io.reactivex:rxjava:1.1.6'
     implementation 'io.reactivex:rxandroid:1.2.1'
-
     implementation 'com.zhusx:core:0.1.0'
-    implementation 'com.android.support:multidex:1.0.3'
-    implementation 'org.jetbrains.anko:anko:0.10.1'
-    implementation "com.android.support:design:${COMM_VERSION}"
-    implementation 'com.alibaba:fastjson:1.1.54.android'
-    implementation project(':giraffeplayer')
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'org.jetbrains.anko:anko:0.10.1'
+    compile "com.android.support:design:${COMM_VERSION}"
+    compile 'com.alibaba:fastjson:1.1.54.android'
+    compile project(':giraffeplayer')
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
     implementation "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
     implementation "com.facebook.fresco:fresco:${FRESCO_VERSION}"
-
-    implementation 'com.jakewharton:butterknife:8.6.0'
-    kapt 'com.jakewharton:butterknife-compiler:8.6.0'
-
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-    androidTestImplementation('com.android.support:support-annotations:24.2.1') {
+    androidTestCompile('com.android.support:support-annotations:24.2.1') {
         force = true
     }
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation files('libs/tbs_sdk_thirdapp_v2.4.0.1073_36840_sharewithdownload_withoutGame_obfs_20161011_194834.jar')
 }
 repositories {

@@ -34,22 +34,22 @@ class RankingFragment : BaseFragment() {
 
     internal var type: Int = 0
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_ranking_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_ranking_list, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ButterKnife.bind(this, view!!)
-        type = arguments.getInt(Lib_BaseFragment._EXTRA_String_ID, 1)
+        ButterKnife.bind(this, view)
+        type = arguments!!.getInt(Lib_BaseFragment._EXTRA_String_ID, 1)
         initViews()
         initPresent()
     }
 
     private fun initViews() {
-        recyclerView.setLayoutManager(LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false))
+        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         recyclerView.addItemDecoration(DefaultItemDecoration(activity, 1))
-        recyclerView.setAdapter(object : Lib_BaseRecyclerAdapter<Move>() {
+        recyclerView.adapter = object : Lib_BaseRecyclerAdapter<Move>() {
             override fun __bindViewHolder(viewHolder: Lib_BaseRecyclerAdapter._ViewHolder, i: Int, move: Move) {
                 setImageURI(viewHolder.getView(R.id.iv_image), move.litpic)
                 viewHolder.setText(R.id.tv_name, move.title)
@@ -87,7 +87,7 @@ class RankingFragment : BaseFragment() {
             override fun __getLayoutResource(i: Int): Int {
                 return R.layout.list_item_ranking_item
             }
-        })
+        }
     }
 
     private fun initPresent() {

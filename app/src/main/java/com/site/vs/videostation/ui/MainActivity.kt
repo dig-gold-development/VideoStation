@@ -16,17 +16,17 @@ import com.zhusx.core.utils._Activitys._addFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
-    private var fragments = arrayOfNulls<Fragment>(4)
+    internal var fragments = arrayOfNulls<Fragment>(4)
     private var currentFragment: Fragment? = null
 
-    private var exitDialog: AlertDialog? = null
+    internal var exitDialog: AlertDialog? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
             var i = 0
             when (checkedId) {
                 R.id.radio_home -> {

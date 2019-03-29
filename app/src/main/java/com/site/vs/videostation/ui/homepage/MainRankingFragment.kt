@@ -31,20 +31,20 @@ class MainRankingFragment : BaseFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_ranking, container, false)
+        return inflater!!.inflate(R.layout.fragment_ranking, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ButterKnife.bind(this, view)
+        ButterKnife.bind(this, view!!)
         initView()
     }
 
     private fun initView() {
         viewPager.adapter = object : FragmentPagerAdapter(childFragmentManager) {
-             var fragments = arrayOfNulls<Fragment>(4)
+            internal var fragments = arrayOfNulls<Fragment>(4)
 
-             var sts = arrayOf("电影", "电视剧", "综艺", "动漫")
+            internal var sts = arrayOf("电影", "电视剧", "综艺", "动漫")
 
             override fun getItem(position: Int): Fragment {
                 if (fragments[position] == null) {

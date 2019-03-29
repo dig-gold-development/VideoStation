@@ -137,6 +137,7 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
         originTv!!.text = entity.vod_url_list[0].origin.name
         originIv!!.setImageURI(entity.vod_url_list[0].origin.img_url)
         val lst = getItems(entity)
+        viewPager =findViewById(R.id.id_stickynavlayout_viewpager) as ViewPager
         viewPager!!.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getCount(): Int {
                 return lst.size

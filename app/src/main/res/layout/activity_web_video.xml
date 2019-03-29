@@ -49,7 +49,7 @@
         android:progress="1"
         android:progressDrawable="@drawable/progressbar_bg" />
 
-    <com.vs.videostation.webview.X5WebView
+    <com.hongju.gulu.webview.X5WebView
         android:id="@+id/web"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

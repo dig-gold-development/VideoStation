@@ -78,7 +78,7 @@ public class NearFragment extends BaseFragment implements RecyclerViewHelper.Loa
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(), DetailActivity.class);
-                        intent.putExtra(DetailActivity.Companion.getID(), item.id);
+                        intent.putExtra(DetailActivity.ID, item.id);
                         startActivity(intent);
                     }
                 });

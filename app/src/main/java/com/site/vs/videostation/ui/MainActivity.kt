@@ -16,17 +16,17 @@ import com.zhusx.core.utils._Activitys._addFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
-    internal var fragments = arrayOfNulls<Fragment>(4)
+    private var fragments = arrayOfNulls<Fragment>(4)
     private var currentFragment: Fragment? = null
 
-    internal var exitDialog: AlertDialog? = null
+    private var exitDialog: AlertDialog? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        radioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
             var i = 0
             when (checkedId) {
                 R.id.radio_home -> {
@@ -47,13 +47,12 @@ class MainActivity : BaseActivity() {
                 fragments[i] = MainHomeFragment()
             }
             showFragment(fragments[i]!!)
-        })
+        }
 
 
 
         radioGroup.check(R.id.radio_home)
     }
-
 
 
     fun showFragment(fragment: Fragment) {
@@ -71,7 +70,9 @@ class MainActivity : BaseActivity() {
 
     override fun onBackPressed() {
         if (exitDialog == null) {
-            exitDialog = AlertDialog.Builder(this).setTitle(title).setIcon(R.mipmap.ic_launcher).setMessage("确认退出" + title + "吗？").setNegativeButton("再看看", null).setPositiveButton("退出", DialogInterface.OnClickListener { dialogInterface, i -> finish() }).create()
+            exitDialog = AlertDialog.Builder(this).setTitle(title).setIcon(R.mipmap.ic_launcher)
+                    .setMessage("确认退出" + title + "吗？").setNegativeButton("再看看", null)
+                    .setPositiveButton("退出") { _, _ -> finish() }.create()
 
         }
         exitDialog!!.show()

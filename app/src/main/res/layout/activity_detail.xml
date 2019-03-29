@@ -10,7 +10,7 @@
         android:background="@color/black">
 
         <ImageView
-            android:id="@+id/iv_back"
+            android:id="@+id/backIv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
@@ -21,7 +21,7 @@
             android:src="@drawable/nav_goback" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/titleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -42,7 +42,7 @@
             android:visibility="gone"/>
 
         <ImageView
-            android:id="@+id/iv_collect"
+            android:id="@+id/collectImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -58,7 +58,7 @@
         >
 
         <com.site.vs.videostation.widget.StickyNavLayout
-            android:id="@+id/layout_content"
+            android:id="@+id/contentLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -68,8 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="201dp">
 
-                <com.hongju.gulu.widget.FrescoImageView
-                    android:id="@+id/iv_background"
+                <com.site.vs.videostation.widget.FrescoImageView
+                    android:id="@+id/backgroundIv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:backgroundImage="@color/black" />
@@ -81,8 +81,8 @@
                     android:paddingLeft="14dp"
                     android:paddingRight="14dp">
 
-                    <com.hongju.gulu.widget.FrescoImageView
-                        android:id="@+id/iv_img"
+                    <com.site.vs.videostation.widget.FrescoImageView
+                        android:id="@+id/coverIv"
                         android:layout_width="130dp"
                         android:layout_height="173dp"
                         android:layout_gravity="center_vertical" />
@@ -95,7 +95,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tv_type"
+                            android:id="@+id/typeTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="类型：动作片,动作,科幻,奇幻"
@@ -103,7 +103,7 @@
                             android:textSize="12dp" />
 
                         <TextView
-                            android:id="@+id/tv_area"
+                            android:id="@+id/areaTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="地区：美国"
@@ -111,7 +111,7 @@
                             android:textSize="12dp" />
 
                         <TextView
-                            android:id="@+id/tv_year"
+                            android:id="@+id/yearTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="年份：2016"
@@ -120,7 +120,7 @@
 
 
                         <TextView
-                            android:id="@+id/tv_language"
+                            android:id="@+id/languageTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="语言：英语"
@@ -141,13 +141,13 @@
                                 android:textColor="@color/white"
                                 android:textSize="12dp" />
 
-                            <com.hongju.gulu.widget.FrescoImageView
-                                android:id="@+id/iv_origin"
+                            <com.site.vs.videostation.widget.FrescoImageView
+                                android:id="@+id/originIv"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp" />
 
                             <TextView
-                                android:id="@+id/tv_origin"
+                                android:id="@+id/originTv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="4dp"
@@ -157,8 +157,8 @@
                                 android:textSize="12dp" />
                         </LinearLayout>
 
-                        <com.hongju.gulu.widget.ShapeTextView
-                            android:id="@+id/tv_record"
+                        <com.site.vs.videostation.widget.ShapeTextView
+                            android:id="@+id/recordTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="3dp"
@@ -172,15 +172,15 @@
                             app:lib_radius="2dp"
                             app:lib_solidColor="@color/c_ff8f00"/>
                         <ImageView
-                            android:id="@+id/iv_tips"
+                            android:id="@+id/tipsIv"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:src="@drawable/play_progress_tips"
                             android:scaleType="center"
                             android:visibility="gone"
                             />
-                        <com.hongju.gulu.widget.ShapeTextView
-                            android:id="@+id/tv_play"
+                        <com.site.vs.videostation.widget.ShapeTextView
+                            android:id="@+id/playTv"
                             android:layout_width="100dp"
                             android:layout_height="44dp"
                             android:layout_marginTop="2dp"
@@ -200,7 +200,7 @@
 
 
             <android.support.design.widget.TabLayout
-                android:id="@id/id_stickynavlayout_indicator"
+                android:id="@id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 app:tabIndicatorColor="@color/c_00ae54"
@@ -209,13 +209,13 @@
 
 
             <android.support.v4.view.ViewPager
-                android:id="@id/id_stickynavlayout_viewpager"
+                android:id="@id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.site.vs.videostation.widget.StickyNavLayout>
 
         <include
-            android:id="@+id/layout_loading"
+            android:id="@+id/loadingLayout"
             layout="@layout/layout_loading_default"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -79,9 +79,16 @@ class RankingFragment : BaseFragment() {
                         (viewHolder.getView<View>(R.id.iv_ranking) as ImageView).setImageResource(R.drawable.top_list4)
                     }
                 }
-                viewHolder.rootView.setOnClickListener {
-                    View.OnClickListener { v -> move.startActivity(v.context) }
-                }
+//                viewHolder.rootView.setOnClickListener {
+//                    View.OnClickListener { v ->
+//                        move.startActivity(v.context)
+//                    }
+//                }
+                viewHolder.rootView.setOnClickListener(object :View.OnClickListener{
+                    override fun onClick(v: View?) {
+                        move.startActivity(v!!.context)
+                    }
+                })
             }
 
             override fun __getLayoutResource(i: Int): Int {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="44dp">
 
-    <com.hongju.gulu.widget.FrescoImageView
+    <com.site.vs.videostation.widget.FrescoImageView
         android:id="@+id/tv_origin_img"
         android:layout_width="16dp"
         android:layout_height="16dp"

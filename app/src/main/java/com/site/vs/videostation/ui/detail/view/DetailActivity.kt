@@ -45,26 +45,10 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
     private var id: String? = null
     private var en: DetailEntity? = null
 
-    internal var titleTv: TextView? = null
-    internal var coverIv: FrescoImageView? = null
-
-    internal var backgroundIv: FrescoImageView? = null
-    internal var typeTv: TextView? = null
-    internal var areaTv: TextView? = null
-    internal var yearTv: TextView? = null
-    internal var languageTv: TextView? = null
-    internal var originTv: TextView? = null
-    internal var originIv: FrescoImageView? = null
 
 
-    internal var tabLayout: TabLayout? = null
-    internal var viewPager: ViewPager? = null
-    internal var collectImg: ImageView? = null
-    internal var recordTv: TextView? = null
-    internal var tipsIv: ImageView? = null
-    internal var playTv: ShapeTextView? = null
-    internal var loadingLayout: LinearLayout? = null
-    internal var contentLayout: StickyNavLayout? = null
+
+    private var viewPager: ViewPager? = null
 
     internal var vodListFragment: VodListFragment? = null
     internal var selectOriginDialog: SelectOriginDialog? = null
@@ -74,7 +58,8 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        ButterKnife.bind(this)
+        viewPager =findViewById(R.id.id_stickynavlayout_viewpager) as ViewPager
+
         if (intent != null && intent.getStringExtra(ID) != null)
             id = intent.getStringExtra(ID)
         mPresenter.getDetail(id)
@@ -137,7 +122,7 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
         originTv!!.text = entity.vod_url_list[0].origin.name
         originIv!!.setImageURI(entity.vod_url_list[0].origin.img_url)
         val lst = getItems(entity)
-        viewPager =findViewById(R.id.id_stickynavlayout_viewpager) as ViewPager
+
         viewPager!!.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getCount(): Int {
                 return lst.size

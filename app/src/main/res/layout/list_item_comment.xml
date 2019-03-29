@@ -22,7 +22,7 @@
         android:text="2016-10-20"
         />
 
-    <com.vs.videostation.widget.JustifyTextView
+    <com.hongju.gulu.widget.JustifyTextView
         android:id="@+id/tv_content"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"

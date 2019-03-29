@@ -25,7 +25,7 @@ public class Move implements Serializable {
 
     public void startActivity(Context context) {
         Intent intent = new Intent(context, DetailActivity.class);
-        intent.putExtra(DetailActivity.Companion.getID(), id);
+        intent.putExtra(DetailActivity.ID, id);
         context.startActivity(intent);
     }
 

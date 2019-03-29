@@ -39,8 +39,8 @@ public interface ApiService {
     /**
      * 详情
      */
-    @GET("/detail/{id}")
-    Observable<HttpResult<DetailEntity>> detail(@Path("id") String id);
+    @GET("ysapi/v1.Play/getPlayData")
+    Observable<HttpResult<DetailEntity>> detail(@Field("id") String id);
 
     /**
      * 解析视频地址

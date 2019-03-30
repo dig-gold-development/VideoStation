@@ -34,14 +34,15 @@ class RankingFragment : BaseFragment() {
 
     internal var type: Int = 0
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater,container,savedInstanceState)
         return inflater!!.inflate(R.layout.fragment_ranking_list, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ButterKnife.bind(this, view!!)
-        type = arguments.getInt(Lib_BaseFragment._EXTRA_String_ID, 1)
+        type = arguments!!.getInt(Lib_BaseFragment._EXTRA_String_ID, 1)
         initViews()
         initPresent()
     }

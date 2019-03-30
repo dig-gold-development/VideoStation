@@ -34,7 +34,6 @@ import java.util.ArrayList
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-import com.site.vs.videostation.widget.ShapeTextView
 import kotlinx.android.synthetic.main.activity_detail.*
 
 /**

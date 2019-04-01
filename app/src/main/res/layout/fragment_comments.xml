@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="com.site.vs.videostation.ui.detail.view.CommentsFragment">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="18dp"
-            android:paddingLeft="14dp"
-            android:paddingRight="14dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/commentsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="14dp"
+        android:paddingTop="18dp"
+        android:paddingRight="14dp" />
 </FrameLayout>

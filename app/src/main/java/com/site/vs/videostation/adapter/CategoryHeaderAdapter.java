@@ -46,7 +46,7 @@ public class CategoryHeaderAdapter extends CommRecyclerAdapter<CategoryFilterEnt
         if (position == 0) {
             textView.setText(type);
         } else if (item != null) {
-            textView.setText(item.getName());
+            textView.setText(item.name);
         }
 
         setOnItemClickListener(new OnItemClickListener() {

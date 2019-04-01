@@ -35,15 +35,15 @@ public class DBManager {
         Cursor cursor = db.rawQuery("select * from history order by time desc limit 20", null);
         while (cursor.moveToNext()) {
             HistoryEntity move = new HistoryEntity();
-            move.setId(cursor.getString(cursor.getColumnIndex("_id")));
-            move.setTitle(cursor.getString(cursor.getColumnIndex("title")));
-            move.setName(cursor.getString(cursor.getColumnIndex("name")));
-            move.setPic(cursor.getString(cursor.getColumnIndex("pic")));
-            move.setPlayTime(cursor.getInt(cursor.getColumnIndex("pic")));
-            move.setOriginIndex(cursor.getInt(cursor.getColumnIndex("origin_index")));
-            move.setPlayIndex(cursor.getInt(cursor.getColumnIndex("play_index")));
-            move.setPlayName(cursor.getString(cursor.getColumnIndex("play_name")));
-            move.setPlayTime(cursor.getInt(cursor.getColumnIndex("play_time")));
+            move.id = cursor.getString(cursor.getColumnIndex("_id"));
+            move.title = cursor.getString(cursor.getColumnIndex("title"));
+            move.name = cursor.getString(cursor.getColumnIndex("name"));
+            move.pic = cursor.getString(cursor.getColumnIndex("pic"));
+            move.playTime = cursor.getInt(cursor.getColumnIndex("pic"));
+            move.originIndex = cursor.getInt(cursor.getColumnIndex("origin_index"));
+            move.playIndex = cursor.getInt(cursor.getColumnIndex("play_index"));
+            move.playName = cursor.getString(cursor.getColumnIndex("play_name"));
+            move.playTime = cursor.getInt(cursor.getColumnIndex("play_time"));
             list.add(move);
         }
         cursor.close();
@@ -55,15 +55,15 @@ public class DBManager {
         Cursor cursor = db.rawQuery("select * from history where _id = ?", new String[]{id});
         while (cursor.moveToNext()) {
             HistoryEntity move = new HistoryEntity();
-            move.setId(cursor.getString(cursor.getColumnIndex("_id")));
-            move.setTitle(cursor.getString(cursor.getColumnIndex("title")));
-            move.setName(cursor.getString(cursor.getColumnIndex("name")));
-            move.setPic(cursor.getString(cursor.getColumnIndex("pic")));
-            move.setPlayTime(cursor.getInt(cursor.getColumnIndex("pic")));
-            move.setOriginIndex(cursor.getInt(cursor.getColumnIndex("origin_index")));
-            move.setPlayIndex(cursor.getInt(cursor.getColumnIndex("play_index")));
-            move.setPlayName(cursor.getString(cursor.getColumnIndex("play_name")));
-            move.setPlayTime(cursor.getInt(cursor.getColumnIndex("play_time")));
+            move.id = cursor.getString(cursor.getColumnIndex("_id"));
+            move.title = cursor.getString(cursor.getColumnIndex("title"));
+            move.name = cursor.getString(cursor.getColumnIndex("name"));
+            move.pic = cursor.getString(cursor.getColumnIndex("pic"));
+            move.playTime = cursor.getInt(cursor.getColumnIndex("pic"));
+            move.originIndex = cursor.getInt(cursor.getColumnIndex("origin_index"));
+            move.playIndex = cursor.getInt(cursor.getColumnIndex("play_index"));
+            move.playName = cursor.getString(cursor.getColumnIndex("play_name"));
+            move.playTime = cursor.getInt(cursor.getColumnIndex("play_time"));
             cursor.close();
             return move;
         }
@@ -74,14 +74,14 @@ public class DBManager {
     public static boolean putHistory(HistoryEntity en) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("_id", en.getId());
-        cv.put("name", en.getName());
-        cv.put("pic", en.getPic());
-        cv.put("title", en.getTitle());
-        cv.put("play_time", en.getPlayTime());
-        cv.put("origin_index", en.getOriginIndex());
-        cv.put("play_index", en.getPlayIndex());
-        cv.put("play_name", en.getPlayName());
+        cv.put("_id", en.id);
+        cv.put("name", en.name);
+        cv.put("pic", en.pic);
+        cv.put("title", en.title);
+        cv.put("play_time", en.playTime);
+        cv.put("origin_index", en.originIndex);
+        cv.put("play_index", en.playIndex);
+        cv.put("play_name", en.playName);
         cv.put("time", System.currentTimeMillis());
         long result = db.replace("history", null, cv);
         db.close();
@@ -98,8 +98,8 @@ public class DBManager {
     public static boolean deleteHistory(HistoryEntity move) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("_id", move.getId());
-        long result = db.delete("history", "_id = ?", new String[]{move.getId()});
+        cv.put("_id", move.id);
+        long result = db.delete("history", "_id = ?", new String[]{move.id});
         db.close();
         return result != -1;
     }
@@ -142,20 +142,20 @@ public class DBManager {
      */
     public static boolean swithFavorite(DetailEntity move) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from favorite where _id = ?", new String[]{move.getId()});
+        Cursor cursor = db.rawQuery("select * from favorite where _id = ?", new String[]{move.id});
         int count = cursor.getCount();
         cursor.close();
         ContentValues cv = new ContentValues();
-        cv.put("_id", move.getId());
-        cv.put("actor", move.getActor());
-        cv.put("area", move.getArea());
-        cv.put("name", move.getName());
-        cv.put("pic", move.getPic());
-        cv.put("title", move.getGold());
-        cv.put("year", move.getYear());
+        cv.put("_id", move.id);
+        cv.put("actor", move.actor);
+        cv.put("area", move.area);
+        cv.put("name", move.name);
+        cv.put("pic", move.pic);
+        cv.put("title", move.gold);
+        cv.put("year", move.year);
         cv.put("time", System.currentTimeMillis());
         if (count != 0) {
-            db.delete("favorite", "_id = ?", new String[]{move.getId()});
+            db.delete("favorite", "_id = ?", new String[]{move.id});
             db.close();
             return false;
         } else {

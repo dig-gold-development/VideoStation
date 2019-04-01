@@ -87,7 +87,7 @@ public class NearFragment extends BaseFragment implements RecyclerViewHelper.Loa
     }
 
     @Override
-    public RecyclerView getRecyclerView() {
+    public RecyclerView gainRecyclerView() {
         return recyclerView;
     }
 

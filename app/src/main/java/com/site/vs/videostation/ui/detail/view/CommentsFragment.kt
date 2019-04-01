@@ -16,11 +16,9 @@ import com.site.vs.videostation.base.BaseFragment
 import com.site.vs.videostation.base.RecyclerViewHelper
 import com.site.vs.videostation.entity.Comment
 import com.site.vs.videostation.entity.DetailEntity
+import kotlinx.android.synthetic.main.fragment_comments.*
 
 import java.util.ArrayList
-
-import butterknife.BindView
-import butterknife.ButterKnife
 
 
 /**
@@ -28,20 +26,15 @@ import butterknife.ButterKnife
  * @date 2016/12/19
  */
 class CommentsFragment : BaseFragment(), RecyclerViewHelper.LoadingAndRetryAdapter {
-    @BindView(R.id.recyclerView)
-    internal var recyclerView: RecyclerView? = null
-
     internal var helper = RecyclerViewHelper<Comment>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_comments, container, false)
-        ButterKnife.bind(this, view)
-        return view
+        return inflater.inflate(R.layout.fragment_comments, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         helper.initViews(activity, this)
-        recyclerView!!.layoutManager = LinearLayoutManager(context)
+        gainRecyclerView()!!.layoutManager = LinearLayoutManager(context)
 
 
         val entity = arguments!!.getSerializable("data") as DetailEntity
@@ -62,8 +55,8 @@ class CommentsFragment : BaseFragment(), RecyclerViewHelper.LoadingAndRetryAdapt
         }
     }
 
-    override fun getRecyclerView(): RecyclerView? {
-        return recyclerView
+    override fun gainRecyclerView(): RecyclerView? {
+        return commentsRecyclerView
     }
 
     override fun onRefresh() {

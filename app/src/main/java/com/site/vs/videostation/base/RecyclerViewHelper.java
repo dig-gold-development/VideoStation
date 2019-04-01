@@ -32,16 +32,16 @@ public class RecyclerViewHelper<T> {
         if (isHelperAdapter(helperAdapter) && castToHelperAdapter(helperAdapter).getPtrFrameLayout() != null)
             tipsLayout = SmartLoadingLayout.createDefaultLayout(activity, getPtrFrameLayout(helperAdapter));
         else
-            tipsLayout = SmartLoadingLayout.createDefaultLayout(activity, helperAdapter.getRecyclerView());
+            tipsLayout = SmartLoadingLayout.createDefaultLayout(activity, helperAdapter.gainRecyclerView());
         tipsLayout.onLoading();
         adapter = helperAdapter.createAdapter();
         if (isHelperAdapter(helperAdapter))
             adapterWithHF = castToHelperAdapter(helperAdapter).createAdapterHF(adapter);
 
         if (adapterWithHF == null)
-            helperAdapter.getRecyclerView().setAdapter(adapter);
+            helperAdapter.gainRecyclerView().setAdapter(adapter);
         else
-            helperAdapter.getRecyclerView().setAdapter(adapterWithHF);
+            helperAdapter.gainRecyclerView().setAdapter(adapterWithHF);
 
         if (getPtrFrameLayout(helperAdapter) != null) {
             getPtrFrameLayout(helperAdapter).setPtrHandler(new PtrDefaultHandler() {
@@ -153,7 +153,7 @@ public class RecyclerViewHelper<T> {
     public interface LoadingAndRetryAdapter {
         CommRecyclerAdapter createAdapter();
 
-        RecyclerView getRecyclerView();
+        RecyclerView gainRecyclerView();
 
         void onRefresh();
     }

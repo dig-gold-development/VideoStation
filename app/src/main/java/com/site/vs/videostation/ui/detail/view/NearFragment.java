@@ -17,6 +17,7 @@ import com.site.vs.videostation.adapter.base.CommRecyclerAdapter;
 import com.site.vs.videostation.base.BaseFragment;
 import com.site.vs.videostation.base.RecyclerViewHelper;
 import com.site.vs.videostation.entity.DetailEntity;
+import com.site.vs.videostation.entity.Near;
 import com.site.vs.videostation.widget.FrescoImageView;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class NearFragment extends BaseFragment implements RecyclerViewHelper.Loa
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     DetailEntity detailEntity;
-    RecyclerViewHelper<DetailEntity.Near> helper = new RecyclerViewHelper<>();
+    RecyclerViewHelper<Near> helper = new RecyclerViewHelper<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,36 +50,36 @@ public class NearFragment extends BaseFragment implements RecyclerViewHelper.Loa
         helper.initViews(getActivity(), this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         detailEntity = (DetailEntity) getArguments().getSerializable("data");
-        helper.initDataSuccess(detailEntity.near_list);
+        helper.initDataSuccess(detailEntity.getNear_list());
     }
 
 
     @Override
     public CommRecyclerAdapter createAdapter() {
-        return new CommRecyclerAdapter<DetailEntity.Near>(getContext(), R.layout.list_item_near, new ArrayList<DetailEntity.Near>()) {
+        return new CommRecyclerAdapter<Near>(getContext(), R.layout.list_item_near, new ArrayList<Near>()) {
             @Override
-            public void onUpdate(BaseAdapterHelper helper, final DetailEntity.Near item, int position) {
-                helper.setText(R.id.tv_name, item.name);
+            public void onUpdate(BaseAdapterHelper helper, final Near item, int position) {
+                helper.setText(R.id.tv_name, item.getName());
                 FrescoImageView iv = helper.getView(R.id.iv_img);
-                iv.setImageURI(item.pic);
-                if (detailEntity.type == 1){
+                iv.setImageURI(item.getPic());
+                if (detailEntity.getType() == 1){
                     helper.setVisible(R.id.tv_score, true);
-                    if (item.year == 0)
-                        helper.setText(R.id.tv_mainTitle, item.area);
+                    if (item.getYear() == 0)
+                        helper.setText(R.id.tv_mainTitle, item.getArea());
                     else
-                        helper.setText(R.id.tv_mainTitle, item.area+"/"+item.year);
-                    helper.setText(R.id.tv_score, item.title);
+                        helper.setText(R.id.tv_mainTitle, item.getArea()+"/"+item.getYear());
+                    helper.setText(R.id.tv_score, item.getTitle());
                 }else {
                     helper.setVisible(R.id.tv_score, false);
-                    helper.setText(R.id.tv_mainTitle, item.title);
+                    helper.setText(R.id.tv_mainTitle, item.getTitle());
                 }
 
-                helper.setText(R.id.tv_subTitle, item.actor);
+                helper.setText(R.id.tv_subTitle, item.getActor());
                 helper.getView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(), DetailActivity.class);
-                        intent.putExtra(DetailActivity.Companion.getID(), item.id);
+                        intent.putExtra(DetailActivity.Companion.getID(), item.getId());
                         startActivity(intent);
                     }
                 });

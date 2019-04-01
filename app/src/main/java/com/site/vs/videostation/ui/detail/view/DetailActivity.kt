@@ -83,13 +83,11 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
             }
         })
 
-        collectImg?.setOnClickListener(object:View.OnClickListener{
-            override fun onClick(v: View?) {
-                if (en != null) {
-                    collectImg!!.setImageResource(if (DBManager.swithFavorite(en)) R.drawable.nav_collection_current else R.drawable.nav_collection)
-                }
+        collectImg?.setOnClickListener {
+            if (en != null) {
+                collectImg!!.setImageResource(if (DBManager.swithFavorite(en)) R.drawable.nav_collection_current else R.drawable.nav_collection)
             }
-        })
+        }
 
         originTv?.setOnClickListener(object:View.OnClickListener{
             override fun onClick(v: View?) {

@@ -32,6 +32,7 @@ public class DetailEntity implements Serializable {
         public static class Play implements Serializable {
             public String play_name;
             public String play_url;
+            public  int is_real_url;
         }
 
         public static class OriginName implements Serializable {

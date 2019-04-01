@@ -47,6 +47,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     public static final String PLAY_INDEX = "play_index";
     public static final String DATA = "data";
     public static final String TIME = "time";
+    private int realUrl;
 
 
     public static void playVideo(Activity activity, String title, String url, DetailEntity entity, int originIndex, int playIndex, int time) {
@@ -204,14 +205,21 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
                 }
             });
         }
-        if (entity.type == 1) {
-            player.setTitle(title);
-            mPresenter.playMove(url, definition, title);
-        } else {
-            player.setTitle(title + " " + entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
-            mPresenter.playMove(url, definition, entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
-        }
 
+        realUrl = entity.vod_url_list.get(originIndex).list.get(playIndex).is_real_url;
+        if (realUrl == 0){
+
+            player.setTitle(title + " " + entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
+            mPresenter.playMove(url, "2", entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
+
+        }else if(realUrl == 1)
+        {
+            url = url.replace("\r\n","").replace("\t","").replace(" ","");
+            player.play(url);
+            if (currentPos != 0)
+                player.seekTo(currentPos, false);
+            isInPlay = true;
+        }
 
 //        player.play(url);
 //        if (currentPos != 0)

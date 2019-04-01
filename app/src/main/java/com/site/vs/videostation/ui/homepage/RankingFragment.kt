@@ -48,9 +48,9 @@ class RankingFragment : BaseFragment() {
     }
 
     private fun initViews() {
-        recyclerView.setLayoutManager(LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false))
+        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         recyclerView.addItemDecoration(DefaultItemDecoration(activity, 1))
-        recyclerView.setAdapter(object : Lib_BaseRecyclerAdapter<Move>() {
+        recyclerView.adapter = object : Lib_BaseRecyclerAdapter<Move>() {
             override fun __bindViewHolder(viewHolder: Lib_BaseRecyclerAdapter._ViewHolder, i: Int, move: Move) {
                 setImageURI(viewHolder.getView(R.id.iv_image), move.litpic)
                 viewHolder.setText(R.id.tv_name, move.title)
@@ -80,11 +80,11 @@ class RankingFragment : BaseFragment() {
                         (viewHolder.getView<View>(R.id.iv_ranking) as ImageView).setImageResource(R.drawable.top_list4)
                     }
                 }
-//                viewHolder.rootView.setOnClickListener {
-//                    View.OnClickListener { v ->
-//                        move.startActivity(v.context)
-//                    }
-//                }
+        //                viewHolder.rootView.setOnClickListener {
+        //                    View.OnClickListener { v ->
+        //                        move.startActivity(v.context)
+        //                    }
+        //                }
                 viewHolder.rootView.setOnClickListener(object :View.OnClickListener{
                     override fun onClick(v: View?) {
                         move.startActivity(v!!.context)
@@ -95,7 +95,7 @@ class RankingFragment : BaseFragment() {
             override fun __getLayoutResource(i: Int): Int {
                 return R.layout.list_item_ranking_item
             }
-        })
+        }
     }
 
     private fun initPresent() {

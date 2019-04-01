@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -145,13 +147,13 @@ public abstract class CommRecyclerAdapter<T> extends RecyclerView.Adapter implem
     }
 
     @Override
-    public void addAll(List<T> elem) {
+    public void addAll(@NotNull List<? extends T> elem) {
         mData.addAll(elem);
         notifyItemRangeInserted(mData.size() - elem.size(), elem.size());
     }
 
     @Override
-    public void addAll(Set<T> elem) {
+    public void addAll(@NotNull Set<? extends T> elem) {
         mData.addAll(elem);
         notifyItemRangeInserted(mData.size() - elem.size(), elem.size());
     }
@@ -169,8 +171,9 @@ public abstract class CommRecyclerAdapter<T> extends RecyclerView.Adapter implem
         notifyDataSetChanged();
     }
 
+
     @Override
-    public void replaceAll(List<T> elem) {
+    public void replaceAll(@NotNull List<? extends T> elem) {
         mData.clear();
         mData.addAll(elem);
         notifyDataSetChanged();

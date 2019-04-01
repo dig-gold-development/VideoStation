@@ -10,27 +10,24 @@ data class HomePageEntity(
         val move_list: DataListBean,
         val slide_list: List<SlideListBean>,
         val tv_list: DataListBean
-) {
-    data class DataListBean(
-            val `data`: List<DataBean>,
-            val title: String
-    ){
-        data class DataBean(
-                val id: String,
-                val litpic: String,
-                val title: String
-        )
-    }
-    data class SlideListBean(
-            val id: String,
-            val litpic: String,
-            val title: String
-    )
-}
+)
+
+data class DataBean(
+        val id: String,
+        val litpic: String,
+        val title: String
+)
+
+data class SlideListBean(
+        val id: String,
+        val litpic: String,
+        val title: String
+)
 
 
+data class DataListBean(
 
-
-
-
+        val `data`: List<DataBean>,
+        val title: String
+)
 

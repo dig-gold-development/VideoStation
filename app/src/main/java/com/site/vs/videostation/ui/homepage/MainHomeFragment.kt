@@ -10,7 +10,9 @@ import com.site.vs.videostation.R
 
 
 import com.site.vs.videostation.base.BaseFragment
+import com.site.vs.videostation.entity.DataBean
 import com.site.vs.videostation.entity.HomePageEntity
+import com.site.vs.videostation.entity.SlideListBean
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.LoadingHelper
 import com.site.vs.videostation.widget.FrescoImageView
@@ -59,8 +61,8 @@ class MainHomeFragment : BaseFragment() {
         lp.width = _getFullScreenWidth()
         topLayout!!.layoutParams = lp
 
-        viewPager!!.adapter = object : Lib_BasePagerAdapter<HomePageEntity.SlideListBean>(activity, data.slide_list) {
-            override fun getView(layoutInflater: LayoutInflater, i: Int, slide: HomePageEntity.SlideListBean, view: View?, viewGroup: ViewGroup): View {
+        viewPager!!.adapter = object : Lib_BasePagerAdapter<SlideListBean>(activity, data.slide_list) {
+            override fun getView(layoutInflater: LayoutInflater, i: Int, slide: SlideListBean, view: View?, viewGroup: ViewGroup): View {
                 var view = view
                 if (view == null) {
                     view = FrescoImageView(layoutInflater.context)
@@ -87,8 +89,8 @@ class MainHomeFragment : BaseFragment() {
 
         indicatorView!!._setViewPager(viewPager)
 
-        gridView!!.adapter = object : Lib_BaseAdapter<HomePageEntity.DataListBean.DataBean>(data.move_list.data) {
-            override fun getView(layoutInflater: LayoutInflater, tv: HomePageEntity.DataListBean.DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
+        gridView!!.adapter = object : Lib_BaseAdapter<DataBean>(data.move_list.data) {
+            override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
                 holder.setText(R.id.tv_name, tv.title)
@@ -98,8 +100,8 @@ class MainHomeFragment : BaseFragment() {
             }
         }
 
-        gridView1!!.adapter = object : Lib_BaseAdapter<HomePageEntity.DataListBean.DataBean>(data.tv_list.data) {
-            override fun getView(layoutInflater: LayoutInflater, tv: HomePageEntity.DataListBean.DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
+        gridView1!!.adapter = object : Lib_BaseAdapter<DataBean>(data.tv_list.data) {
+            override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
                 holder.setText(R.id.tv_name, tv.title)
@@ -109,8 +111,8 @@ class MainHomeFragment : BaseFragment() {
             }
         }
 
-        gridView2!!.adapter = object : Lib_BaseAdapter<HomePageEntity.DataListBean.DataBean>(data.arts_list.data) {
-            override fun getView(layoutInflater: LayoutInflater, tv: HomePageEntity.DataListBean.DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
+        gridView2!!.adapter = object : Lib_BaseAdapter<DataBean>(data.arts_list.data) {
+            override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
                 holder.setText(R.id.tv_name, tv.title)
@@ -120,8 +122,8 @@ class MainHomeFragment : BaseFragment() {
             }
         }
 //
-        gridView3!!.adapter = object : Lib_BaseAdapter<HomePageEntity.DataListBean.DataBean>(data.comic_list.data) {
-            override fun getView(layoutInflater: LayoutInflater, tv: HomePageEntity.DataListBean.DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
+        gridView3!!.adapter = object : Lib_BaseAdapter<DataBean>(data.comic_list.data) {
+            override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
                 holder.setText(R.id.tv_name, tv.title)

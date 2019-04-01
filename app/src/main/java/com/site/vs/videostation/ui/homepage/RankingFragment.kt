@@ -2,7 +2,6 @@ package com.site.vs.videostation.ui.homepage
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.widget.ImageView
 
 
 import com.site.vs.videostation.base.BaseFragment
-import com.site.vs.videostation.entity.Move
 import com.site.vs.videostation.entity.RankingEntity
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.PtrLoadingListener
@@ -18,9 +16,9 @@ import com.site.vs.videostation.widget.refreshRecycler.DefaultItemDecoration
 import com.zhusx.core.adapter.Lib_BaseRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_ranking_list.*
 
-import butterknife.BindView
 import butterknife.ButterKnife
 import com.site.vs.videostation.R
+import com.site.vs.videostation.entity.Move
 import com.zhusx.core.app.Lib_BaseFragment
 
 /**
@@ -48,9 +46,9 @@ class RankingFragment : BaseFragment() {
     }
 
     private fun initViews() {
-        recyclerView.setLayoutManager(LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false))
+        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         recyclerView.addItemDecoration(DefaultItemDecoration(activity, 1))
-        recyclerView.setAdapter(object : Lib_BaseRecyclerAdapter<Move>() {
+        recyclerView.adapter = object : Lib_BaseRecyclerAdapter<Move>() {
             override fun __bindViewHolder(viewHolder: Lib_BaseRecyclerAdapter._ViewHolder, i: Int, move: Move) {
                 setImageURI(viewHolder.getView(R.id.iv_image), move.litpic)
                 viewHolder.setText(R.id.tv_name, move.title)
@@ -80,22 +78,18 @@ class RankingFragment : BaseFragment() {
                         (viewHolder.getView<View>(R.id.iv_ranking) as ImageView).setImageResource(R.drawable.top_list4)
                     }
                 }
-//                viewHolder.rootView.setOnClickListener {
-//                    View.OnClickListener { v ->
-//                        move.startActivity(v.context)
-//                    }
-//                }
-                viewHolder.rootView.setOnClickListener(object :View.OnClickListener{
-                    override fun onClick(v: View?) {
-                        move.startActivity(v!!.context)
-                    }
-                })
+        //                viewHolder.rootView.setOnClickListener {
+        //                    View.OnClickListener { v ->
+        //                        move.startActivity(v.context)
+        //                    }
+        //                }
+                viewHolder.rootView.setOnClickListener { v -> move.startActivity(v!!.context) }
             }
 
             override fun __getLayoutResource(i: Int): Int {
                 return R.layout.list_item_ranking_item
             }
-        })
+        }
     }
 
     private fun initPresent() {

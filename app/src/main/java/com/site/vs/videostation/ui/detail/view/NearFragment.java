@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
  * @author dxplay120
  * @date 2016/12/19
  */
-public class NearFragment extends BaseFragment implements RecyclerViewHelper.LoadingAndRetryAdapter{
+public class NearFragment extends BaseFragment implements RecyclerViewHelper.LoadingAndRetryAdapter {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -61,14 +61,14 @@ public class NearFragment extends BaseFragment implements RecyclerViewHelper.Loa
                 helper.setText(R.id.tv_name, item.name);
                 FrescoImageView iv = helper.getView(R.id.iv_img);
                 iv.setImageURI(item.pic);
-                if (detailEntity.type == 1){
+                if (detailEntity.type == 1) {
                     helper.setVisible(R.id.tv_score, true);
                     if (item.year == 0)
                         helper.setText(R.id.tv_mainTitle, item.area);
                     else
-                        helper.setText(R.id.tv_mainTitle, item.area+"/"+item.year);
+                        helper.setText(R.id.tv_mainTitle, item.area + "/" + item.year);
                     helper.setText(R.id.tv_score, item.title);
-                }else {
+                } else {
                     helper.setVisible(R.id.tv_score, false);
                     helper.setText(R.id.tv_mainTitle, item.title);
                 }

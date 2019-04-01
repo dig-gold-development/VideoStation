@@ -154,7 +154,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
                                 player.pause();
                                 definition = type_list.get(temp).hd+"";
                                 mPresenter.playMove(url, definition,
-                                        entity.type == 1 ? "":entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
+                                        entity.type == 1 ? "": entity.vod_url_list.get(originIndex).list.get(playIndex).getPlay_name());
                                 currentPos = player.getCurrentPosition();
                             }
                         });
@@ -208,8 +208,8 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
             player.setTitle(title);
             mPresenter.playMove(url, definition, title);
         } else {
-            player.setTitle(title + " " + entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
-            mPresenter.playMove(url, definition, entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
+            player.setTitle(title + " " + entity.vod_url_list.get(originIndex).list.get(playIndex).getPlay_name());
+            mPresenter.playMove(url, definition, entity.vod_url_list.get(originIndex).list.get(playIndex).getPlay_name());
         }
 
 
@@ -221,9 +221,9 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     private void playNext() {
         if (canPlayNext()) {
             player.pause();
-            mPresenter.playMove(entity.vod_url_list.get(originIndex).list.get(playIndex + 1).play_url,
-                    definition, entity.vod_url_list.get(originIndex).list.get(playIndex + 1).play_name);
-            player.setTitle(entity.vod_url_list.get(originIndex).list.get(playIndex + 1).play_name);
+            mPresenter.playMove(entity.vod_url_list.get(originIndex).list.get(playIndex + 1).getPlay_url(),
+                    definition, entity.vod_url_list.get(originIndex).list.get(playIndex + 1).getPlay_name());
+            player.setTitle(entity.vod_url_list.get(originIndex).list.get(playIndex + 1).getPlay_name());
             playIndex++;
         }
     }
@@ -290,13 +290,13 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
             return;
         currentPos = player.getCurrentPosition();
         HistoryEntity historyEntity = new HistoryEntity();
-        historyEntity.playName = entity.type == 1 ? "" : entity.vod_url_list.get(originIndex).list.get(playIndex).play_name;
-        historyEntity.playTime = currentPos;
-        historyEntity.originIndex = originIndex;
-        historyEntity.playIndex = playIndex;
-        historyEntity.name = entity.name;
-        historyEntity.id = entity.id;
-        historyEntity.pic = entity.pic;
+        historyEntity.setPlayName(entity.type == 1 ? "" : entity.vod_url_list.get(originIndex).list.get(playIndex).getPlay_name());
+        historyEntity.setPlayTime(currentPos);
+        historyEntity.setOriginIndex(originIndex);
+        historyEntity.setPlayIndex(playIndex);
+        historyEntity.setName(entity.name);
+        historyEntity.setId(entity.id);
+        historyEntity.setPic(entity.pic);
         DBManager.putHistory(historyEntity);
     }
 

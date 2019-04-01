@@ -2,6 +2,7 @@ package com.site.vs.videostation.ui.homepage
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.ImageView
 
 
 import com.site.vs.videostation.base.BaseFragment
+import com.site.vs.videostation.entity.Move
 import com.site.vs.videostation.entity.RankingEntity
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.PtrLoadingListener
@@ -16,9 +18,9 @@ import com.site.vs.videostation.widget.refreshRecycler.DefaultItemDecoration
 import com.zhusx.core.adapter.Lib_BaseRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_ranking_list.*
 
+import butterknife.BindView
 import butterknife.ButterKnife
 import com.site.vs.videostation.R
-import com.site.vs.videostation.entity.Move
 import com.zhusx.core.app.Lib_BaseFragment
 
 /**
@@ -83,7 +85,11 @@ class RankingFragment : BaseFragment() {
         //                        move.startActivity(v.context)
         //                    }
         //                }
-                viewHolder.rootView.setOnClickListener { v -> move.startActivity(v!!.context) }
+                viewHolder.rootView.setOnClickListener(object :View.OnClickListener{
+                    override fun onClick(v: View?) {
+                        move.startActivity(v!!.context)
+                    }
+                })
             }
 
             override fun __getLayoutResource(i: Int): Int {

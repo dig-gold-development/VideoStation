@@ -108,7 +108,7 @@ public class VodListFragment extends BaseFragment {
                             end = entity.vod_url_list.get(index).list.size();
                         ((TextView) (holder.itemView)).setText("" + start + "-" + end);
                         if (mode != 0)
-                            ((TextView) (holder.itemView)).setTextColor(getResources().getColorStateList(R.drawable.vod_cat_dark_selector));
+                            ((TextView) (holder.itemView)).setTextColor(getResources().getColorStateList(R.color.vod_cat_dark_selector));
 
                         if (sel == position)
                             holder.itemView.setSelected(true);

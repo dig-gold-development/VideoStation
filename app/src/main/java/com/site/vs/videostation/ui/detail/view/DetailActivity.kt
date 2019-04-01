@@ -40,7 +40,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
  * @author dxplay120
  * @date 2016/12/17
  */
-class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, SelectOriginDialog.OriginSelectedListener {
+class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View{
     private var id: String? = null
     private var en: DetailEntity? = null
 
@@ -48,6 +48,7 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
 
 
     private var viewPager: ViewPager? = null
+    private  var tabLayout:TabLayout? = null
 
     internal var vodListFragment: VodListFragment? = null
     internal var selectOriginDialog: SelectOriginDialog? = null
@@ -58,6 +59,7 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         viewPager =findViewById(R.id.id_stickynavlayout_viewpager) as ViewPager
+        tabLayout = findViewById(R.id.id_stickynavlayout_indicator) as TabLayout
 
         if (intent != null && intent.getStringExtra(ID) != null)
             id = intent.getStringExtra(ID)
@@ -91,15 +93,7 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
             }
         })
 
-        originTv?.setOnClickListener(object:View.OnClickListener{
-            override fun onClick(v: View?) {
-                if (selectOriginDialog == null)
-                    selectOriginDialog = SelectOriginDialog(this@DetailActivity, en, this@DetailActivity)
 
-                selectOriginDialog!!.setSel(originSel)
-                selectOriginDialog!!.show()
-            }
-        })
     }
 
 
@@ -118,8 +112,7 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
         backgroundIv!!.alpha = 0.5f
         typeTv!!.text = "类型：" + entity.keywords
         areaTv!!.text = "区域：" + entity.area
-        originTv!!.text = entity.vod_url_list[0].origin.name
-        originIv!!.setImageURI(entity.vod_url_list[0].origin.img_url)
+
         val lst = getItems(entity)
 
         viewPager!!.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
@@ -222,15 +215,7 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
     fun shareMovieInfo() {
     }
 
-    override fun onOriginSelected(sel: Int) {
-        if (originSel != sel) {
-            originSel = sel
-            if (vodListFragment != null)
-                vodListFragment!!.setIndex(originSel)
-            originTv!!.text = en!!.vod_url_list[originSel].origin.name
-            originIv!!.setImageURI(en!!.vod_url_list[originSel].origin.img_url)
-        }
-    }
+
 
     override fun showLoading() {
         super.showLoading()

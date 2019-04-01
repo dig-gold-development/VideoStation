@@ -8,4 +8,4 @@
     android:textSize="14dp"
     android:paddingRight="20dp"
     android:text="1-20"
-    android:textColor="@drawable/vod_cat_selector"/>
+    android:textColor="@color/vod_cat_selector"/>

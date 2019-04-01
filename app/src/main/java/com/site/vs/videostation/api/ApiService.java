@@ -15,6 +15,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -39,8 +40,9 @@ public interface ApiService {
     /**
      * 详情
      */
+
     @GET("ysapi/v1.Play/getPlayData")
-    Observable<HttpResult<DetailEntity>> detail(@Field("id") String id);
+    Observable<HttpResult<DetailEntity>> detail(@Query("id") String id);
 
     /**
      * 解析视频地址

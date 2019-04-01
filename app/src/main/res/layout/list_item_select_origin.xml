@@ -19,7 +19,7 @@
         android:layout_marginLeft="12dp"
         android:layout_toRightOf="@id/tv_origin_img"
         android:text="腾讯视频"
-        android:textColor="@drawable/vod_cat_selector"
+        android:textColor="@color/vod_cat_selector"
         android:textSize="@dimen/font_size16" />
 
     <ImageView

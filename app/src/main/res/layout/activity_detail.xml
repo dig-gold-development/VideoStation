@@ -141,20 +141,8 @@
                                 android:textColor="@color/white"
                                 android:textSize="12dp" />
 
-                            <com.site.vs.videostation.widget.FrescoImageView
-                                android:id="@+id/originIv"
-                                android:layout_width="16dp"
-                                android:layout_height="16dp" />
 
-                            <TextView
-                                android:id="@+id/originTv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="4dp"
-                                android:drawableRight="@drawable/icon_dropdown"
-                                android:text="腾讯视频"
-                                android:textColor="@color/white"
-                                android:textSize="12dp" />
+
                         </LinearLayout>
 
                         <com.site.vs.videostation.widget.ShapeTextView
@@ -200,7 +188,7 @@
 
 
             <android.support.design.widget.TabLayout
-                android:id="@id/tabLayout"
+                android:id="@id/id_stickynavlayout_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 app:tabIndicatorColor="@color/c_00ae54"

@@ -88,7 +88,7 @@
                 android:textColor="@color/c_26"/>
         </LinearLayout>
 
-        <com.vs.videostation.widget.JustifyTextView
+        <com.site.vs.videostation.widget.JustifyTextView
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

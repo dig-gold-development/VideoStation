@@ -23,6 +23,12 @@
         <activity
             android:name=".ui.detail.view.DetailActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.video.VideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="sensor" />
     </application>
 
 </manifest>

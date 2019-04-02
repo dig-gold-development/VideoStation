@@ -1,3 +1,4 @@
+
 package com.site.vs.videostation.ui.detail.view;
 
 import android.app.AlertDialog;
@@ -191,3 +192,4 @@ public class VodListFragment extends BaseFragment {
         }
     }
 }
+

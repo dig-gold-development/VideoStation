@@ -1,6 +1,7 @@
 package com.site.vs.videostation.http;
 
-import com.zhusx.core.debug.LogUtil;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.site.vs.videostation.BuildConfig;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -21,11 +22,17 @@ public class Retrofits {
     static {
         synchronized (Retrofits.class) {
             OkHttpClient.Builder client = new OkHttpClient().newBuilder();
-            if (true) {
-                HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+
+
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            if (BuildConfig.BUILD_TYPE.equals("debug")) {
                 logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-                client.addInterceptor(logging);
+            } else {
+                logging.setLevel(HttpLoggingInterceptor.Level.NONE);
             }
+
+            client.addInterceptor(logging);
+            client.addNetworkInterceptor(new StethoInterceptor());
             retrofit = new Retrofit.Builder()
                     .client(client.build())
                     .addConverterFactory(GsonConverterFactory.create())

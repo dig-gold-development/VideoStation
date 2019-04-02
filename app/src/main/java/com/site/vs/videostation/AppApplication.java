@@ -7,6 +7,7 @@ import android.support.multidex.MultiDex;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.facebook.stetho.Stetho;
 
 /**
  * Created by yangang on 2018/1/19.
@@ -20,6 +21,9 @@ public class AppApplication extends Application {
                 .setDownsampleEnabled(true)
                 .setBitmapsConfig(Bitmap.Config.ARGB_8888)
                 .build());
+
+        Stetho.initializeWithDefaults(this);
+
 
     }
     @Override

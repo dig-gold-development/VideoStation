@@ -25,7 +25,7 @@ public class LoadData<T> extends BaseRetrofitLoadData<LoadData.Api, T, Object> {
 
     //用于区分api接口
     public enum Api {
-       Home, Rank,
+       Home, Rank,Channel
     }
 
     public LoadData(Api api, BaseActivity activity) {
@@ -56,6 +56,8 @@ public class LoadData<T> extends BaseRetrofitLoadData<LoadData.Api, T, Object> {
         switch (api) {
             case Home:
                 return cast(Retrofits.createApi(ApiService.class).getHomePage());
+            case Channel:
+                return cast(Retrofits.createApi(ApiService.class).channel());
             case Rank:
                 return cast(Retrofits.createApi(ApiService.class).top(String.valueOf(params[0]), String.valueOf(getNextPage())));
         }

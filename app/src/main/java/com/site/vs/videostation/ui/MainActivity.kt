@@ -10,6 +10,7 @@ import android.widget.RadioGroup
 import butterknife.OnCheckedChanged
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseActivity
+import com.site.vs.videostation.ui.homepage.MainChannelFragment
 import com.site.vs.videostation.ui.homepage.MainHomeFragment
 import com.site.vs.videostation.ui.homepage.MainRankingFragment
 import com.zhusx.core.utils._Activitys._addFragment
@@ -35,12 +36,22 @@ class MainActivity : BaseActivity() {
                         fragments[i] = MainHomeFragment()
                     }
                 }
+
+                R.id.radio_channel -> {
+                    i = 1
+                    if (fragments[i] == null) {
+                        fragments[i] = MainChannelFragment()
+                    }
+                }
+
                 R.id.radio_rank -> {
                     i = 2
                     if (fragments[i] == null) {
                         fragments[i] = MainRankingFragment()
                     }
                 }
+
+
             }
 
             if (fragments[i] == null) {

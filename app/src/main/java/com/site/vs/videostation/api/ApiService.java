@@ -3,6 +3,7 @@ package com.site.vs.videostation.api;
 
 
 
+import com.site.vs.videostation.entity.ChannelEntity;
 import com.site.vs.videostation.entity.DetailEntity;
 import com.site.vs.videostation.entity.HomePageEntity;
 import com.site.vs.videostation.entity.MoveAddressEntity;
@@ -31,6 +32,12 @@ public interface ApiService {
     Observable<JSONResult<HomePageEntity>> getHomePage();
 
     /**
+     * 频道
+     */
+    @GET("/channel")
+    Observable<HttpResult<ChannelEntity>> channel();
+
+    /**
      * 排行榜
      */
     @POST("ysapi/v1.Rank/getRankByid")
@@ -40,7 +47,6 @@ public interface ApiService {
     /**
      * 详情
      */
-
     @GET("ysapi/v1.Play/getPlayData")
     Observable<HttpResult<DetailEntity>> detail(@Query("id") String id);
 

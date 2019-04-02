@@ -31,13 +31,13 @@ public class AppApplication extends Application {
     }
 
 
-
     private void initDatabase(Context context) {
         DBManager.instance(context);
     }
 
     @Override
     protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base); MultiDex.install(this);
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

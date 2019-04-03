@@ -7,7 +7,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.site.vs.videostation"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -38,7 +38,7 @@ dependencies {
     implementation 'org.jetbrains.anko:anko:0.10.1'
     implementation "com.android.support:design:${COMM_VERSION}"
     implementation 'com.alibaba:fastjson:1.1.54.android'
-    implementation project(':giraffeplayer')
+    implementation project(':giraffeplayer2')
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
     implementation "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
@@ -59,6 +59,8 @@ dependencies {
 
     implementation 'com.facebook.stetho:stetho:1.4.1'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.4.1'
+
+    implementation 'com.orhanobut:logger:2.2.0'
 
 
 }

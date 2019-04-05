@@ -92,7 +92,7 @@ public class CategoryActivity extends MVPBaseActivity<CategoryPresenter>
 
     @Override
     public void initCategoryContentSuccess(CategoryDetailEntity entity) {
-        if (entity != null && entity.category_list != null) {
+        if (entity != null && entity.list != null) {
             categoryFragment.updateList(entity);
         }
     }

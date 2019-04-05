@@ -6,6 +6,7 @@ import com.site.vs.videostation.base.BaseModel;
 import com.site.vs.videostation.base.BasePresenter;
 import com.site.vs.videostation.base.BaseView;
 import com.site.vs.videostation.entity.CategoryDetailEntity;
+import com.site.vs.videostation.http.JSONResult;
 import com.zhusx.core.network.HttpResult;
 
 import java.util.Map;
@@ -19,7 +20,7 @@ import rx.Observable;
 public interface CategoryDetailContract {
 
     interface Model extends BaseModel {
-        Observable<HttpResult<CategoryDetailEntity>> getCategoryBy(String id, Map<String, String> map, int page);
+        Observable<JSONResult<CategoryDetailEntity>> getCategoryBy(String id, Map<String, String> map, int page);
     }
 
 

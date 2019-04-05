@@ -8,17 +8,14 @@ import java.util.List;
  */
 public class CategoryDetailEntity {
 
-    public List<CategoryFilterEntity> category_list;
-    public List<String> area_list;
-    public List<String> year_list;
-    public List<VideoEntity> vod_list;
-    public int vod_count;
+    public int count;
+    public List<VideoEntity> list;
 
     public static class VideoEntity {
         public String id;
-        public String name;
-        public String pic;
         public String title;
+        public String litpic;
+
     }
 
 }

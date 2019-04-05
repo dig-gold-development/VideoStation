@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Grey_100">#F5F5F5</color>
+    <color name="Grey_200">#EEEEEE</color>
+    <color name="Grey_300">#E0E0E0</color>
+    <color name="Grey_400">#BDBDBD</color>
+    <color name="Grey_50">#FAFAFA</color>
+    <color name="Grey_500">#9E9E9E</color>
+    <color name="Grey_600">#757575</color>
+    <color name="Grey_700">#616161</color>
+    <color name="Grey_800">#424242</color>
+    <color name="Grey_900">#212121</color>
+    <string name="app_name">GiraffePlayer</string>
+    <string name="can_not_play">can not play this video</string>
+    <string name="giraffe_player_url_empty">Please specify the address of the video playback</string>
+    <string name="not_support">player not support this device</string>
+    <string name="small_problem">Player encountered a small problem</string>
+</resources>

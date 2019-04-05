@@ -21,7 +21,7 @@ public class CategoryContentAdapter extends CommRecyclerAdapter<CategoryDetailEn
 
     @Override
     public void onUpdate(BaseAdapterHelper helper, CategoryDetailEntity.VideoEntity item, int position) {
-        helper.setImageUrl(R.id.img_content, item.pic);
-        helper.setText(R.id.tv_name, item.name);
+        helper.setImageUrl(R.id.img_content, item.litpic);
+        helper.setText(R.id.tv_name, item.title);
     }
 }

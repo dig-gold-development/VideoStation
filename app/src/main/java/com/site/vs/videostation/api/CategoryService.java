@@ -2,6 +2,7 @@ package com.site.vs.videostation.api;
 
 
 import com.site.vs.videostation.entity.CategoryDetailEntity;
+import com.site.vs.videostation.http.JSONResult;
 import com.zhusx.core.network.HttpResult;
 
 import java.util.Map;
@@ -22,8 +23,8 @@ public interface CategoryService {
      * search
      */
     @FormUrlEncoded
-    @POST("/category/list")
-    Observable<HttpResult<CategoryDetailEntity>> getCategoryBy(@Field("id") String id,
+    @POST("ysapi/v1/rank/getrank")
+    Observable<JSONResult<CategoryDetailEntity>> getCategoryBy(@Field("typeid") String id,
                                                                @FieldMap Map<String, String> options,
-                                                               @Field("pages") int pages);
+                                                               @Field("page") int pages);
 }

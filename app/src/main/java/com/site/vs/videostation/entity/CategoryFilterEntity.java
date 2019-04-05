@@ -9,6 +9,6 @@ public class CategoryFilterEntity {
     public String id;
     public String name;
     public String pid;
-    public String pic;
+    public String litpic;
 
 }

@@ -1,0 +1,61 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+	package
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:2:5-46
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:1:1-21:12
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:3:5-63
+uses-permission#android.permission.INTERNET
+ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:5:5-66
+	android:name
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:6:5-78
+	android:name
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:6:22-76
+application
+ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:8:5-19:19
+	android:supportsRtl
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:11:9-41
+	android:allowBackup
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:9:9-35
+activity#tcking.github.com.giraffeplayer.GiraffePlayerActivity
+ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:13:9-17:15
+	android:screenOrientation
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:16:13-47
+	android:configChanges
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:15:13-74
+	android:name
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml:14:13-50
+uses-sdk
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+		ADDED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml
+		INJECTED from /Users/mac/Documents/VS/VideoStation/giraffeplayer/src/main/AndroidManifest.xml

@@ -2,7 +2,8 @@ package com.site.vs.videostation.ui.category;
 
 
 import com.site.vs.videostation.entity.CategoryDetailEntity;
-import com.zhusx.core.network.HttpResult;
+import com.site.vs.videostation.http.JSONResult;
+
 
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class CategoryPresenter extends CategoryDetailContract.Presenter {
     @Override
     public void initCategoryBy(String id, Map<String, String> map, int page, final boolean b) {
         toSubscribe(mModel.getCategoryBy(id, map, page),
-                new Subscriber<HttpResult<CategoryDetailEntity>>() {
+                new Subscriber<JSONResult<CategoryDetailEntity>>() {
                     @Override
                     public void onCompleted() {
 
@@ -34,11 +35,11 @@ public class CategoryPresenter extends CategoryDetailContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(HttpResult<CategoryDetailEntity> result) {
+                    public void onNext(JSONResult<CategoryDetailEntity> result) {
                         if (b) {
-                            getView().initCategorySuccess(result.getData());
+                            getView().initCategorySuccess(result.data);
                         } else {
-                            getView().initCategoryContentSuccess(result.getData());
+                            getView().initCategoryContentSuccess(result.data);
                         }
                     }
                 });
@@ -47,7 +48,7 @@ public class CategoryPresenter extends CategoryDetailContract.Presenter {
     @Override
     public void loadMoreVideo(String id, Map<String, String> map, int page) {
         toSubscribe(mModel.getCategoryBy(id, map, page),
-                new Subscriber<HttpResult<CategoryDetailEntity>>() {
+                new Subscriber<JSONResult<CategoryDetailEntity>>() {
                     @Override
                     public void onCompleted() {
 
@@ -59,8 +60,8 @@ public class CategoryPresenter extends CategoryDetailContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(HttpResult<CategoryDetailEntity> result) {
-                        getView().loadMoreVideoSuccess(result.getData());
+                    public void onNext(JSONResult<CategoryDetailEntity> result) {
+                        getView().loadMoreVideoSuccess(result.data);
                     }
                 });
     }

@@ -1,5 +1,6 @@
 package com.site.vs.videostation.entity;
 
+
 import java.util.List;
 
 /**
@@ -9,30 +10,14 @@ import java.util.List;
  */
 
 public class ChannelEntity {
-    public Category lulu_category;
-    public Channel channel_total;
-    public List<Hot> hot_channel;
-    public Bg category_bg;
+
+    public List<Channel> list;
 
     public static class Channel {
-        public int move_total;
-        public int tv_total;
-        public int comic_total;
-        public int arts_total;
-    }
+        public String typeid;
+        public String typename;
+        public String total;
 
-    public static class Hot {
-        public String id;
-        public String name;
-        public String pid;
-        public String pic;
-    }
-
-    public static class Bg {
-        public String move_bg;
-        public String tv_bg;
-        public String arts_bg;
-        public String comic_bg;
     }
 
 }

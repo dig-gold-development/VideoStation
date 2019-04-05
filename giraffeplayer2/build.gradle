@@ -4,7 +4,7 @@ def version = "0.1.25"
 def ijkVersion = "0.8.8"
 
 android {
-    compileSdkVersion COMPILESDKVERSION
+    compileSdkVersion 28
 
     defaultConfig {
         buildConfigField 'boolean', 'lazyLoad', "" + ("lazyLoad" == bType)
@@ -27,7 +27,6 @@ dependencies {
     api 'com.github.tcking:viewquery:1.6'
     implementation 'com.android.support:appcompat-v7:27.0.2'
     api "com.github.tcking:ijkplayer-java:${ijkVersion}"
-
     if ("" == bType) {
         api "com.github.tcking:ijkplayer-armv7a:${ijkVersion}"
     } else if ("full" == bType) {

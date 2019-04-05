@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
@@ -37,6 +38,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:src="@drawable/nav_record" />
+
+
     </RelativeLayout>
 
 
@@ -53,4 +56,6 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 </LinearLayout>

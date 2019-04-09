@@ -1,11 +1,9 @@
 package com.site.vs.videostation.ui.category;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 
 import com.site.vs.videostation.R;
 import com.site.vs.videostation.base.MVPBaseActivity;

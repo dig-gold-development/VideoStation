@@ -8,10 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 
-
 import com.site.vs.videostation.R;
 import com.site.vs.videostation.adapter.CategoryContentAdapter;
-import com.site.vs.videostation.adapter.CategoryHeaderAdapter;
 import com.site.vs.videostation.adapter.base.CommRecyclerAdapter;
 import com.site.vs.videostation.base.RecyclerFragment;
 import com.site.vs.videostation.entity.CategoryDetailEntity;
@@ -20,9 +18,6 @@ import com.site.vs.videostation.ui.detail.view.DetailActivity;
 import com.site.vs.videostation.widget.refreshRecycler.GridMarginDecoration;
 import com.site.vs.videostation.widget.refreshRecycler.RecyclerAdapterWithHF;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.ButterKnife;
@@ -31,37 +26,28 @@ import butterknife.ButterKnife;
  * @author zhangbb
  * @date 2016/12/19
  */
-public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.VideoEntity>
-        implements RecyclerAdapterWithHF.OnItemClickListener {
+public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.VideoEntity> implements RecyclerAdapterWithHF.OnItemClickListener {
 
 
-
-    private CategoryHeaderAdapter headerTopAdapter;
-    private CategoryHeaderAdapter headerMidAdapter;
-    private CategoryHeaderAdapter headerBtmAdapter;
-    private final int SIZE = 10;
+    private static final int SIZE = 20;
     protected int pageIndex = 1;
     protected int totalPage;
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         setPullRefreshEnable(false);
-        recyclerView.addItemDecoration(new GridMarginDecoration((int)
-                getResources().getDimension(R.dimen.font_size4)));
+        recyclerView.addItemDecoration(new GridMarginDecoration((int) getResources().getDimension(R.dimen.font_size4)));
         adapterWithHF.setOnItemClickListener(this);
     }
 
-    @Override
-    protected View createHeader() {
+    @Override protected View createHeader() {
         View headerView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_category_header, null);
 
         return headerView;
     }
 
-    @Override
-    protected CommRecyclerAdapter createAdapter() {
+    @Override protected CommRecyclerAdapter createAdapter() {
         return new CategoryContentAdapter(getContext(), R.layout.search_result_item);
     }
 
@@ -88,7 +74,6 @@ public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.Vide
     }
 
 
-
     public void updateList(CategoryDetailEntity entity) {
         initPages(entity);
         initDataSuccess(entity.list, pageIndex < totalPage);
@@ -112,19 +97,15 @@ public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.Vide
         }
     }
 
-    @Override
-    protected void onRefresh() {
+    @Override protected void onRefresh() {
 
     }
 
-    @Override
-    protected void onLoadMore() {
-        if (changeListener != null)
-            changeListener.loadMore(pageIndex);
+    @Override protected void onLoadMore() {
+        if (changeListener != null) changeListener.loadMore(pageIndex);
     }
 
-    @Override
-    public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
+    @Override public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
         CategoryFilterEntity item = (CategoryFilterEntity) commRecyclerAdapter.getItem(position);
         Bundle bundle = new Bundle();
         bundle.putString("id", item.id);

@@ -7,7 +7,6 @@ import com.site.vs.videostation.base.BasePresenter;
 import com.site.vs.videostation.base.BaseView;
 import com.site.vs.videostation.entity.CategoryDetailEntity;
 import com.site.vs.videostation.http.JSONResult;
-import com.zhusx.core.network.HttpResult;
 
 import java.util.Map;
 

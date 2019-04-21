@@ -25,7 +25,7 @@ public class DetailEntity implements Serializable {
     public List<Comment> comment_list;
 
     public static class Origin implements Serializable {
-        public OriginName origin;
+        public String sourceName;
         public List<Play> list;
 
 

@@ -94,7 +94,7 @@ class MainHomeFragment : BaseFragment() {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
                 holder.setText(R.id.tv_name, tv.title)
-                setImageURI(holder.getView(R.id.iv_image), tv.litpic)
+                setImageURI(holder.getView(R.id.iv_image), tv.pic)
 
                 return holder.rootView
             }
@@ -105,7 +105,7 @@ class MainHomeFragment : BaseFragment() {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
                 holder.setText(R.id.tv_name, tv.title)
-                setImageURI(holder.getView(R.id.iv_image), tv.litpic)
+                setImageURI(holder.getView(R.id.iv_image), tv.pic)
 
                 return holder.rootView
             }
@@ -116,7 +116,7 @@ class MainHomeFragment : BaseFragment() {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
                 holder.setText(R.id.tv_name, tv.title)
-                setImageURI(holder.getView(R.id.iv_image), tv.litpic)
+                setImageURI(holder.getView(R.id.iv_image), tv.pic)
 
                 return holder.rootView
             }
@@ -127,7 +127,7 @@ class MainHomeFragment : BaseFragment() {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
                 holder.setText(R.id.tv_name, tv.title)
-                setImageURI(holder.getView(R.id.iv_image), tv.litpic)
+                setImageURI(holder.getView(R.id.iv_image), tv.pic)
 
                 return holder.rootView
             }

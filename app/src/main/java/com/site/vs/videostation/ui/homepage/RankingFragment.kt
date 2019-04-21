@@ -52,8 +52,8 @@ class RankingFragment : BaseFragment() {
         recyclerView.addItemDecoration(DefaultItemDecoration(activity, 1))
         recyclerView.setAdapter(object : Lib_BaseRecyclerAdapter<Move>() {
             override fun __bindViewHolder(viewHolder: Lib_BaseRecyclerAdapter._ViewHolder, i: Int, move: Move) {
-                setImageURI(viewHolder.getView(R.id.iv_image), move.litpic)
-                viewHolder.setText(R.id.tv_name, move.title)
+                setImageURI(viewHolder.getView(R.id.iv_image), move.pic)
+                viewHolder.setText(R.id.tv_name, move.name)
                 viewHolder.setText(R.id.tv_area, move.area + "/" + move.year)
                 viewHolder.setText(R.id.tv_actor, move.actor)
                 if (type == 1) {

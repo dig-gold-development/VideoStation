@@ -119,7 +119,7 @@ public class DBManager {
             move.year = cursor.getString(cursor.getColumnIndex("year"));
             move.title = cursor.getString(cursor.getColumnIndex("title"));
             move.name = cursor.getString(cursor.getColumnIndex("name"));
-            move.litpic = cursor.getString(cursor.getColumnIndex("pic"));
+            move.pic = cursor.getString(cursor.getColumnIndex("pic"));
             list.add(move);
         }
         cursor.close();

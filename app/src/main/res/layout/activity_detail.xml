@@ -141,6 +141,16 @@
                                 android:textColor="@color/white"
                                 android:textSize="12dp" />
 
+                            <TextView
+                                android:id="@+id/originTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
+                                android:drawableRight="@drawable/icon_dropdown"
+                                android:text="腾讯视频"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+
 
 
                         </LinearLayout>

@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class Move implements Serializable {
     public String id;
     public String name;
-    public String litpic;
+    public String pic;
     public String title;
     public String year;
     public String area;

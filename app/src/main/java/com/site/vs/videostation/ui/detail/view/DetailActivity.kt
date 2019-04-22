@@ -103,7 +103,7 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
         coverIv!!.setImageURI(entity.pic)
         backgroundIv!!.setImageUrlWithBlur(entity.pic)
         backgroundIv!!.alpha = 0.5f
-        typeTv!!.text = "类型：" + entity.keywords
+        typeTv!!.text = "类型：" + entity.tname
         areaTv!!.text = "区域：" + entity.area
         originTv.setText(entity.vod_url_list[0].sourceName)
 

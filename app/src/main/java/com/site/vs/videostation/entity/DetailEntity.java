@@ -14,7 +14,7 @@ public class DetailEntity implements Serializable {
     public String gold;
     public int year;
     public String pic;
-    public String keywords;
+    public String tname;
     public String content;
     public String actor;
     public String director;

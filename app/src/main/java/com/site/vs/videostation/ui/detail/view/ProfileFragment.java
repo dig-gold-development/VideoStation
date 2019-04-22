@@ -46,7 +46,7 @@ public class ProfileFragment extends BaseFragment {
         DetailEntity entity = (DetailEntity) getArguments().getSerializable("data");
         directorTv.setText(entity.director);
         actorTv.setText(entity.actor);
-        typeTv.setText(entity.keywords);
+        typeTv.setText(entity.tname);
         contentTv.setText(entity.content);
         if(entity.year == 0)
             yearTv.setVisibility(View.GONE);

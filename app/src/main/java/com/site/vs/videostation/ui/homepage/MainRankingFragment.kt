@@ -51,10 +51,10 @@ class MainRankingFragment : BaseFragment() {
                     fragments[position] = RankingFragment()
                     val b = Bundle()
                     when (position) {
-                        0 -> b.putInt(Lib_BaseFragment._EXTRA_String_ID, 24)
-                        1 -> b.putInt(Lib_BaseFragment._EXTRA_String_ID, 21)
-                        2 -> b.putInt(Lib_BaseFragment._EXTRA_String_ID, 23)
-                        3 -> b.putInt(Lib_BaseFragment._EXTRA_String_ID, 25)
+                        0 -> b.putInt(Lib_BaseFragment._EXTRA_String_ID, 28)
+                        1 -> b.putInt(Lib_BaseFragment._EXTRA_String_ID, 29)
+                        2 -> b.putInt(Lib_BaseFragment._EXTRA_String_ID, 30)
+                        3 -> b.putInt(Lib_BaseFragment._EXTRA_String_ID, 31)
                     }
                     fragments[position]?.setArguments(b)
                 }

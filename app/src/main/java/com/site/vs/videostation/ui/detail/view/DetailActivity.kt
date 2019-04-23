@@ -18,6 +18,7 @@ import com.site.vs.videostation.ui.detail.presentation.DetailContract
 import com.site.vs.videostation.ui.detail.presentation.DetailPresenter
 import com.site.vs.videostation.ui.video.VideoActivity2
 import com.site.vs.videostation.utils.UnitUtils
+import com.site.vs.videostation.widget.dialog.SelectOriginDialog
 import com.zhusx.core.network.Lib_NetworkStateReceiver
 import com.zhusx.core.utils._Networks
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -27,13 +28,15 @@ import java.util.*
  * @author dxplay120
  * @date 2016/12/17
  */
-class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View {
+class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, SelectOriginDialog.OriginSelectedListener {
     private var id: String? = null
     private var en: DetailEntity? = null
 
 
 //    private var id_stickynavlayout_viewpager: ViewPager? = null
 //    private  var id_stickynavlayout_indicator:TabLayout? = null
+
+    internal var selectOriginDialog: SelectOriginDialog? = null
 
     internal var vodListFragment: VodListFragment? = null
     internal var originSel = 0
@@ -66,7 +69,24 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View {
             }
         }
 
+        originTv.setOnClickListener {
+            if (selectOriginDialog == null)
+                selectOriginDialog = SelectOriginDialog(this, en, this)
+            selectOriginDialog?.setSel(originSel)
+            selectOriginDialog?.show()
+        }
 
+
+    }
+
+    override fun onOriginSelected(sel: Int) {
+        if (originSel != sel) {
+            originSel = sel
+            if (vodListFragment != null)
+                vodListFragment?.setIndex(originSel)
+            originTv.text = en!!.vod_url_list[originSel].sourceName
+
+        }
     }
 
 
@@ -83,8 +103,9 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View {
         coverIv!!.setImageURI(entity.pic)
         backgroundIv!!.setImageUrlWithBlur(entity.pic)
         backgroundIv!!.alpha = 0.5f
-        typeTv!!.text = "类型：" + entity.keywords
+        typeTv!!.text = "类型：" + entity.tname
         areaTv!!.text = "区域：" + entity.area
+        originTv.setText(entity.vod_url_list[0].sourceName)
 
         val lst = getItems(entity)
 

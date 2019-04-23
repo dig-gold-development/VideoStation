@@ -28,7 +28,7 @@ public interface ApiService {
     /**
      * 首页
      */
-    @GET("ysapi/v1.HomePage/getHomeData")
+    @GET("home")
     Observable<JSONResult<HomePageEntity>> getHomePage();
 
     /**
@@ -40,14 +40,14 @@ public interface ApiService {
     /**
      * 排行榜
      */
-    @POST("ysapi/v1.Rank/getRankByid")
+    @POST("rank/getRankById")
     @FormUrlEncoded
-    Observable<JSONResult<RankingEntity>> top(@Field("typeid")String type, @Field("page")String pages);
+    Observable<JSONResult<RankingEntity>> top(@Field("type")String type, @Field("page")String pages);
 
     /**
      * 详情
      */
-    @GET("ysapi/v1.Play/getPlayData")
+    @GET("detail/getDetailById")
     Observable<HttpResult<DetailEntity>> detail(@Query("id") String id);
 
     /**

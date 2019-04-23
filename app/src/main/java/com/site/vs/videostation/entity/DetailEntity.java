@@ -14,7 +14,7 @@ public class DetailEntity implements Serializable {
     public String gold;
     public int year;
     public String pic;
-    public String keywords;
+    public String tname;
     public String content;
     public String actor;
     public String director;
@@ -25,7 +25,7 @@ public class DetailEntity implements Serializable {
     public List<Comment> comment_list;
 
     public static class Origin implements Serializable {
-        public OriginName origin;
+        public String sourceName;
         public List<Play> list;
 
 

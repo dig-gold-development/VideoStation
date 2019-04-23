@@ -47,8 +47,8 @@ public class SelectOriginDialog extends Lib_BaseDialog {
             @Override
             public void onUpdate(BaseAdapterHelper helper, DetailEntity.Origin item, int position) {
                 helper.getView(R.id.tv_origin_name).setSelected(sel == position);
-                helper.setText(R.id.tv_origin_name, item.origin.name);
-                ((FrescoImageView)helper.getView(R.id.tv_origin_img)).setImageURI(item.origin.img_url);
+                helper.setText(R.id.tv_origin_name, item.sourceName);
+//                ((FrescoImageView)helper.getView(R.id.tv_origin_img)).setImageURI(item.origin.img_url);
                 helper.setVisible(R.id.iv_sel, sel == position);
                 final int temp = position;
                 helper.getView().setOnClickListener(new View.OnClickListener() {

@@ -6,7 +6,7 @@ package com.site.vs.videostation.entity
 data class HomePageEntity(
         val arts_list: DataListBean,
         val comic_list: DataListBean,
-        val korean_iist: DataListBean,
+        val korean_list: DataListBean,
         val move_list: DataListBean,
         val slide_list: List<SlideListBean>,
         val tv_list: DataListBean
@@ -14,7 +14,7 @@ data class HomePageEntity(
 
 data class DataBean(
         val id: String,
-        val litpic: String,
+        val pic: String,
         val title: String
 )
 

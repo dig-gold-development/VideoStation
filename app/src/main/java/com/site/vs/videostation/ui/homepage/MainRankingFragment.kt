@@ -1,22 +1,16 @@
 package com.site.vs.videostation.ui.homepage
 
-import android.content.Intent
+
 import android.os.Bundle
-import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-
-import com.site.vs.videostation.base.BaseFragment
-
-import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.site.vs.videostation.R
+import com.site.vs.videostation.base.BaseFragment
 import com.zhusx.core.app.Lib_BaseFragment
 import kotlinx.android.synthetic.main.fragment_ranking.*
 
@@ -31,7 +25,7 @@ class MainRankingFragment : BaseFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_ranking, container, false)
+        return inflater.inflate(R.layout.fragment_ranking, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

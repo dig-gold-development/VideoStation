@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/mac/Documents/VS/VideoStation/giraffeplayer2/build/intermediates/res/merged/release/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/49f261da33cb9c2bb6088113bfa71794/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/mac/Documents/VS/VideoStation/giraffeplayer2/build/intermediates/res/merged/release/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/mac/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/49f261da33cb9c2bb6088113bfa71794/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    }
+]

@@ -4,14 +4,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    signingConfigs {
-        release {
-            keyAlias 'diggold'
-            keyPassword 'diggold'
-            storeFile file('diggold.jks')
-            storePassword 'diggold'
-        }
-    }
+  
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.site.vs.videostation"
@@ -22,11 +16,7 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
-    }
+
 }
 
 

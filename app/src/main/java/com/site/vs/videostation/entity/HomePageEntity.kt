@@ -15,13 +15,13 @@ data class HomePageEntity(
 data class DataBean(
         val id: String,
         val pic: String,
-        val title: String
+        val name: String
 )
 
 data class SlideListBean(
         val id: String,
-        val litpic: String,
-        val title: String
+        val pic: String,
+        val name: String
 )
 
 

@@ -1,5 +1,6 @@
 package com.site.vs.videostation.ui.homepage
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.text.TextUtils
@@ -15,6 +16,7 @@ import com.site.vs.videostation.entity.HomePageEntity
 import com.site.vs.videostation.entity.SlideListBean
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.LoadingHelper
+import com.site.vs.videostation.ui.detail.view.DetailActivity
 import com.site.vs.videostation.widget.FrescoImageView
 import com.zhusx.core.adapter.Lib_BaseAdapter
 import com.zhusx.core.adapter.Lib_BasePagerAdapter
@@ -67,21 +69,25 @@ class MainHomeFragment : BaseFragment() {
                 if (view == null) {
                     view = FrescoImageView(layoutInflater.context)
                 }
-                (view as FrescoImageView).setImageURI(slide.litpic)
-                view.setOnClickListener { }
+                (view as FrescoImageView).setImageURI(slide.pic)
+                view.setOnClickListener(View.OnClickListener { v ->
+                    val intent = Intent(v.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.ID, slide.id)
+                    startActivity(intent)
+                })
                 return view
             }
         }
 
         if (!_Lists.isEmpty(data.slide_list)) {
-            topMessageTv!!.text = data.slide_list[0].title
+            topMessageTv!!.text = data.slide_list[0].name
         }
 
         viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
             override fun onPageSelected(position: Int) {
-                topMessageTv!!.text = data.slide_list[viewPager!!.currentItem].title
+                topMessageTv!!.text = data.slide_list[viewPager!!.currentItem].name
             }
 
             override fun onPageScrollStateChanged(state: Int) {}
@@ -92,9 +98,16 @@ class MainHomeFragment : BaseFragment() {
         gridView!!.adapter = object : Lib_BaseAdapter<DataBean>(data.move_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
-                holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
-                holder.setText(R.id.tv_name, tv.title)
+                holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.name)) "" else tv.name)
+                holder.setText(R.id.tv_name, tv.name)
                 setImageURI(holder.getView(R.id.iv_image), tv.pic)
+
+                holder.rootView.setOnClickListener(View.OnClickListener { v ->
+                    val intent = Intent(v.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.ID, tv.id)
+                    startActivity(intent)
+                })
+
 
                 return holder.rootView
             }
@@ -103,9 +116,15 @@ class MainHomeFragment : BaseFragment() {
         gridView1!!.adapter = object : Lib_BaseAdapter<DataBean>(data.tv_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
-                holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
-                holder.setText(R.id.tv_name, tv.title)
+                holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.name)) "" else tv.name)
+                holder.setText(R.id.tv_name, tv.name)
                 setImageURI(holder.getView(R.id.iv_image), tv.pic)
+
+                holder.rootView.setOnClickListener(View.OnClickListener { v ->
+                    val intent = Intent(v.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.ID, tv.id)
+                    startActivity(intent)
+                })
 
                 return holder.rootView
             }
@@ -114,10 +133,15 @@ class MainHomeFragment : BaseFragment() {
         gridView2!!.adapter = object : Lib_BaseAdapter<DataBean>(data.arts_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
-                holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
-                holder.setText(R.id.tv_name, tv.title)
+                holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.name)) "" else tv.name)
+                holder.setText(R.id.tv_name, tv.name)
                 setImageURI(holder.getView(R.id.iv_image), tv.pic)
 
+                holder.rootView.setOnClickListener(View.OnClickListener { v ->
+                    val intent = Intent(v.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.ID, tv.id)
+                    startActivity(intent)
+                })
                 return holder.rootView
             }
         }
@@ -125,10 +149,15 @@ class MainHomeFragment : BaseFragment() {
         gridView3!!.adapter = object : Lib_BaseAdapter<DataBean>(data.comic_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
-                holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.title)) "" else tv.title)
-                holder.setText(R.id.tv_name, tv.title)
+                holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.name)) "" else tv.name)
+                holder.setText(R.id.tv_name, tv.name)
                 setImageURI(holder.getView(R.id.iv_image), tv.pic)
 
+                holder.rootView.setOnClickListener(View.OnClickListener { v ->
+                    val intent = Intent(v.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.ID, tv.id)
+                    startActivity(intent)
+                })
                 return holder.rootView
             }
         }

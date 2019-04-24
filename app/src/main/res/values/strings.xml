@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">YSAppAndroid</string>
+    <string name="app_name">共享资源站</string>
     <string name="lable_loading">正在加载...</string>
     <string name="lable_load_err">加载失败,点击重试</string>
 

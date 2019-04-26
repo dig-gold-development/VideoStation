@@ -33,11 +33,19 @@ class MainHomeFragment : BaseFragment() {
     private var loadData: LoadData<HomePageEntity>? = null
     private var data: HomePageEntity? = null
 
+    private var pagerListener = object : ViewPager.OnPageChangeListener {
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+
+        override fun onPageSelected(position: Int) {
+            if (data != null)
+                topMessageTv.text = data!!.slide_list[bannerViewPager.currentItem].name
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {}
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_homepage, container, false)
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,10 +58,10 @@ class MainHomeFragment : BaseFragment() {
                 initData(data.data)
             }
 
-
         })
         loadData!!._loadData()
     }
+
 
     private fun initData(data: HomePageEntity) {
         content!!.visibility = View.VISIBLE
@@ -63,7 +71,7 @@ class MainHomeFragment : BaseFragment() {
         lp.width = _getFullScreenWidth()
         topLayout!!.layoutParams = lp
 
-        viewPager!!.adapter = object : Lib_BasePagerAdapter<SlideListBean>(activity, data.slide_list) {
+        bannerViewPager.adapter = object : Lib_BasePagerAdapter<SlideListBean>(activity, data.slide_list) {
             override fun getView(layoutInflater: LayoutInflater, i: Int, slide: SlideListBean, view: View?, viewGroup: ViewGroup): View {
                 var view = view
                 if (view == null) {
@@ -83,17 +91,9 @@ class MainHomeFragment : BaseFragment() {
             topMessageTv!!.text = data.slide_list[0].name
         }
 
-        viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+        bannerViewPager.addOnPageChangeListener(pagerListener)
 
-            override fun onPageSelected(position: Int) {
-                topMessageTv!!.text = data.slide_list[viewPager!!.currentItem].name
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {}
-        })
-
-        indicatorView!!._setViewPager(viewPager)
+        indicatorView!!._setViewPager(bannerViewPager)
 
         gridView!!.adapter = object : Lib_BaseAdapter<DataBean>(data.move_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
@@ -164,5 +164,11 @@ class MainHomeFragment : BaseFragment() {
 
 
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        bannerViewPager.removeOnPageChangeListener(pagerListener)
+    }
+
 }
 

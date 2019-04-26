@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -15,48 +15,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@drawable/nav_search"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:src="@drawable/nav_search" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
             android:layout_centerInParent="true"
-            android:textColor="@color/white"/>
+            android:text="@string/app_name"
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/iv_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@drawable/nav_record"
             android:layout_centerVertical="true"
-            android:paddingRight="10dp"
             android:paddingLeft="10dp"
-            />
+            android:paddingRight="10dp"
+            android:src="@drawable/nav_record" />
 
     </RelativeLayout>
 
     <ScrollView
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <FrameLayout
                 android:id="@+id/topLayout"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="150dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
                 <com.zhusx.core.widget.Lib_Widget_LooperViewPager
-                    android:id="@+id/viewPager"
+                    android:id="@+id/bannerViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:lib_autoScroll="true" />
@@ -66,11 +67,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:background="@color/lib_translucent"
-                    android:paddingTop="3dp"
-                    android:paddingBottom="3dp"
                     android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
                     android:paddingRight="10dp"
-                    >
+                    android:paddingBottom="3dp">
+
                     <TextView
                         android:id="@+id/topMessageTv"
                         android:layout_width="wrap_content"
@@ -83,7 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"/>
+                        android:layout_centerVertical="true" />
                 </RelativeLayout>
             </FrameLayout>
 
@@ -101,11 +102,11 @@
                     android:background="@drawable/button_press_selector"
                     android:drawableTop="@drawable/home_type_dy"
                     android:drawablePadding="3dp"
-                    android:text="电影"
-                    android:padding="10dp"
                     android:gravity="center"
-                    android:textSize="14dp"
-                    android:textColor="@color/c_a5" />
+                    android:padding="10dp"
+                    android:text="电影"
+                    android:textColor="@color/c_a5"
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/tv_tv"
@@ -115,11 +116,11 @@
                     android:background="@drawable/button_press_selector"
                     android:drawableTop="@drawable/home_type_dsj"
                     android:drawablePadding="3dp"
-                    android:text="电视剧"
-                    android:padding="10dp"
                     android:gravity="center"
-                    android:textSize="14dp"
-                    android:textColor="@color/c_a5" />
+                    android:padding="10dp"
+                    android:text="电视剧"
+                    android:textColor="@color/c_a5"
+                    android:textSize="14dp" />
 
 
                 <TextView
@@ -130,11 +131,11 @@
                     android:background="@drawable/button_press_selector"
                     android:drawableTop="@drawable/home_type_dm"
                     android:drawablePadding="3dp"
-                    android:text="动漫"
-                    android:padding="10dp"
                     android:gravity="center"
-                    android:textSize="14dp"
-                    android:textColor="@color/c_a5" />
+                    android:padding="10dp"
+                    android:text="动漫"
+                    android:textColor="@color/c_a5"
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/tv_arts"
@@ -144,11 +145,11 @@
                     android:background="@drawable/button_press_selector"
                     android:drawableTop="@drawable/home_type_zy"
                     android:drawablePadding="3dp"
-                    android:text="综艺"
-                    android:padding="10dp"
                     android:gravity="center"
-                    android:textSize="14dp"
-                    android:textColor="@color/c_a5" />
+                    android:padding="10dp"
+                    android:text="综艺"
+                    android:textColor="@color/c_a5"
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -159,29 +160,28 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:layout_marginTop="10dp"
+                    android:background="@color/white"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="热播电影"
                         android:textColor="@color/c_38"
-                        android:textSize="16dp"
-                        />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="more"
-                        android:textSize="10dp"
                         android:layout_alignParentRight="true"
-                        android:drawablePadding="3dp"
-                        android:drawableRight="@drawable/icon_get_small"
                         android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/icon_get_small"
+                        android:drawablePadding="3dp"
                         android:gravity="center"
-                        />
-            </RelativeLayout>
+                        android:text="more"
+                        android:textSize="10dp" />
+                </RelativeLayout>
 
                 <com.zhusx.core.widget.Lib_Widget_ExpandGridView
                     android:id="@+id/gridView"
@@ -190,35 +190,34 @@
                     android:background="@color/white"
                     android:focusable="false"
                     android:horizontalSpacing="5dp"
-                    android:verticalSpacing="5dp"
                     android:numColumns="3"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:layout_marginTop="10dp"
+                    android:background="@color/white"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="热播电视剧"
                         android:textColor="@color/c_38"
-                        android:textSize="16dp"
-                        />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="more"
-                        android:textSize="10dp"
                         android:layout_alignParentRight="true"
-                        android:drawablePadding="3dp"
-                        android:drawableRight="@drawable/icon_get_small"
                         android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/icon_get_small"
+                        android:drawablePadding="3dp"
                         android:gravity="center"
-                        />
+                        android:text="more"
+                        android:textSize="10dp" />
                 </RelativeLayout>
 
                 <com.zhusx.core.widget.Lib_Widget_ExpandGridView
@@ -228,35 +227,34 @@
                     android:background="@color/white"
                     android:focusable="false"
                     android:horizontalSpacing="5dp"
-                    android:verticalSpacing="5dp"
                     android:numColumns="3"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:layout_marginTop="10dp"
+                    android:background="@color/white"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="综艺"
                         android:textColor="@color/c_38"
-                        android:textSize="16dp"
-                        />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="more"
-                        android:textSize="10dp"
                         android:layout_alignParentRight="true"
-                        android:drawablePadding="3dp"
-                        android:drawableRight="@drawable/icon_get_small"
                         android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/icon_get_small"
+                        android:drawablePadding="3dp"
                         android:gravity="center"
-                        />
+                        android:text="more"
+                        android:textSize="10dp" />
                 </RelativeLayout>
 
                 <com.zhusx.core.widget.Lib_Widget_ExpandGridView
@@ -266,35 +264,34 @@
                     android:background="@color/white"
                     android:focusable="false"
                     android:horizontalSpacing="5dp"
-                    android:verticalSpacing="5dp"
                     android:numColumns="3"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:layout_marginTop="10dp"
+                    android:background="@color/white"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="动漫"
                         android:textColor="@color/c_38"
-                        android:textSize="16dp"
-                        />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="more"
-                        android:textSize="10dp"
                         android:layout_alignParentRight="true"
-                        android:drawablePadding="3dp"
-                        android:drawableRight="@drawable/icon_get_small"
                         android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/icon_get_small"
+                        android:drawablePadding="3dp"
                         android:gravity="center"
-                        />
+                        android:text="more"
+                        android:textSize="10dp" />
                 </RelativeLayout>
 
                 <com.zhusx.core.widget.Lib_Widget_ExpandGridView
@@ -304,23 +301,17 @@
                     android:background="@color/white"
                     android:focusable="false"
                     android:horizontalSpacing="5dp"
-                    android:verticalSpacing="5dp"
                     android:numColumns="3"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:verticalSpacing="5dp" />
 
 
             </LinearLayout>
 
 
-
         </LinearLayout>
 
     </ScrollView>
-
-
-
-
-
 
 
 </LinearLayout>

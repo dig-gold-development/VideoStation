@@ -45,23 +45,21 @@ public class FrescoImageView extends SimpleDraweeView {
         if (url == null || url.length() < 1) {
             return;
         }
-        DraweeController controller = Fresco.newDraweeControllerBuilder()
-                .setImageRequest(ImageRequestBuilder.newBuilderWithSource(Uri.parse(url)).setPostprocessor(blurPostprocessor).build())
-                .build();
+        DraweeController controller = Fresco.newDraweeControllerBuilder().setImageRequest(
+                ImageRequestBuilder.newBuilderWithSource(Uri.parse(url))/*.setPostprocessor(
+                        blurPostprocessor)*/.build()).build();
         this.setController(controller);
     }
 
     /**
      * 使用Postprocessor实现毛玻璃图片效果
      */
-    Postprocessor blurPostprocessor = new BasePostprocessor() {
-        @Override
-        public String getName() {
+    static Postprocessor blurPostprocessor = new BasePostprocessor() {
+        @Override public String getName() {
             return "blurPostprocessor";
         }
 
-        @Override
-        public void process(Bitmap bitmap) {
+        @Override public void process(Bitmap bitmap) {
 
             int radius = 60;
             int w = bitmap.getWidth();
@@ -208,8 +206,7 @@ public class FrescoImageView extends SimpleDraweeView {
                 yi = x;
                 stackpointer = radius;
                 for (y = 0; y < h; y++) {
-                    pix[yi] = (0xff000000 & pix[yi]) | (dv[rsum] << 16)
-                            | (dv[gsum] << 8) | dv[bsum];
+                    pix[yi] = (0xff000000 & pix[yi]) | (dv[rsum] << 16) | (dv[gsum] << 8) | dv[bsum];
 
                     rsum -= routsum;
                     gsum -= goutsum;

@@ -8,10 +8,12 @@ import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.stetho.Stetho;
+import com.github.moduth.blockcanary.BlockCanary;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.site.vs.videostation.db.DBManager;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by yangang on 2018/1/19.
@@ -33,6 +35,10 @@ public class AppApplication extends Application {
                 .tag("video_Logger")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
                 .build();
         com.orhanobut.logger.Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
+
+
+        LeakCanary.install(this);
+        BlockCanary.install(this, new AppBlockCanaryContext()).start();
 
     }
 

@@ -12,16 +12,12 @@ import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseFragment
 import com.site.vs.videostation.entity.DataBean
 import com.site.vs.videostation.entity.HomePageEntity
-import com.site.vs.videostation.entity.SlideListBean
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.LoadingHelper
 import com.site.vs.videostation.ui.detail.view.DetailActivity
-import com.site.vs.videostation.widget.FrescoImageView
 import com.zhusx.core.adapter.Lib_BaseAdapter
-import com.zhusx.core.adapter.Lib_BasePagerAdapter
 import com.zhusx.core.network.HttpRequest
 import com.zhusx.core.network.HttpResult
-import com.zhusx.core.utils._Lists
 import kotlinx.android.synthetic.main.fragment_homepage.*
 
 /**
@@ -73,36 +69,36 @@ class MainHomeFragment : BaseFragment() {
         lp.width = _getFullScreenWidth()
         topLayout!!.layoutParams = lp
 
-        bannerViewPager.adapter = object : Lib_BasePagerAdapter<SlideListBean>(activity, data.slide_list) {
-
-            var contentListener: View.OnClickListener = View.OnClickListener {
-                val intent = Intent(activity, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.ID, data.slide_list[bannerViewPager.currentItem].id)
-                startActivity(intent)
-            }
-
-
-            override fun getView(layoutInflater: LayoutInflater, i: Int, slide: SlideListBean, view: View?, viewGroup: ViewGroup): View {
-                var content = view
+//        bannerViewPager.adapter = object : Lib_BasePagerAdapter<SlideListBean>(activity, data.slide_list) {
 //
-                if (content == null) {
-                    content = layoutInflater.inflate(R.layout.list_item_banner, viewGroup, false)
-                }
-                (content as FrescoImageView).setImageURI(slide.pic)
-                content.setOnClickListener(contentListener)
-                return content
-            }
-        }
-
-
-
-        if (!_Lists.isEmpty(data.slide_list)) {
-            topMessageTv.text = data.slide_list[0].name
-        }
-
-        bannerViewPager.addOnPageChangeListener(pagerListener)
-
-        indicatorView!!._setViewPager(bannerViewPager)
+//            var contentListener: View.OnClickListener = View.OnClickListener {
+//                val intent = Intent(activity, DetailActivity::class.java)
+//                intent.putExtra(DetailActivity.ID, data.slide_list[bannerViewPager.currentItem].id)
+//                startActivity(intent)
+//            }
+//
+//
+//            override fun getView(layoutInflater: LayoutInflater, i: Int, slide: SlideListBean, view: View?, viewGroup: ViewGroup): View {
+//                var content = view
+////                Logger.e("content " +  content)
+//                if (content == null) {
+//                    content = layoutInflater.inflate(R.layout.list_item_banner, viewGroup, false)
+//                }
+//                (content as FrescoImageView).setImageURI(slide.pic)
+//                content.setOnClickListener(contentListener)
+//                return content
+//            }
+//        }
+//
+//
+//
+//        if (!_Lists.isEmpty(data.slide_list)) {
+//            topMessageTv.text = data.slide_list[0].name
+//        }
+//
+//        bannerViewPager.addOnPageChangeListener(pagerListener)
+//
+//        indicatorView!!._setViewPager(bannerViewPager)
 
         movieGridView.adapter = object : Lib_BaseAdapter<DataBean>(data.move_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {

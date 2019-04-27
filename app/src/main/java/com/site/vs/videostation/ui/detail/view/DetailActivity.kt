@@ -9,6 +9,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import butterknife.OnClick
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.MVPBaseActivity
 import com.site.vs.videostation.db.DBManager
@@ -21,6 +24,7 @@ import com.site.vs.videostation.utils.UnitUtils
 import com.site.vs.videostation.widget.dialog.SelectOriginDialog
 import com.zhusx.core.network.Lib_NetworkStateReceiver
 import com.zhusx.core.utils._Networks
+import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_detail.*
 import java.util.*
 
@@ -100,9 +104,19 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
         collectImg!!.setImageResource(
                 if (DBManager.isFavorite(en!!.id)) R.drawable.nav_collection_current else R.drawable.nav_collection)
         updateRecord()
-        coverIv!!.setImageURI(entity.pic)
-        backgroundIv!!.setImageUrlWithBlur(entity.pic)
-        backgroundIv!!.alpha = 0.5f
+
+        Glide.with(this)
+                .load(entity.pic)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(coverIv)
+
+        Glide.with(this)
+                .load(entity.pic)
+                .apply(RequestOptions.bitmapTransform(BlurTransformation(25)))
+                .into(backgroundIv)
+
+//        backgroundIv!!.alpha = 0.5f
+
         typeTv!!.text = "类型：" + entity.tname
         areaTv!!.text = "区域：" + entity.area
         originTv.setText(entity.vod_url_list[0].sourceName)

@@ -52,7 +52,7 @@
 
 
             <com.zhusx.core.widget.Lib_Widget_ExpandGridView
-                android:id="@+id/gridView"
+                android:id="@+id/movieGridView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"

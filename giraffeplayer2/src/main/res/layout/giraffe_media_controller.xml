@@ -27,7 +27,6 @@
                 android:id="@+id/app_video_replay_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_play_circle_outline_white_36dp" />
         </LinearLayout>
 

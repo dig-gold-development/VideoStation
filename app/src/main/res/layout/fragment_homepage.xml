@@ -179,7 +179,7 @@
                 </RelativeLayout>
 
                 <com.zhusx.core.widget.Lib_Widget_ExpandGridView
-                    android:id="@+id/gridView"
+                    android:id="@+id/movieGridView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -216,7 +216,7 @@
                 </RelativeLayout>
 
                 <com.zhusx.core.widget.Lib_Widget_ExpandGridView
-                    android:id="@+id/gridView1"
+                    android:id="@+id/teleplayGridView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -253,7 +253,7 @@
                 </RelativeLayout>
 
                 <com.zhusx.core.widget.Lib_Widget_ExpandGridView
-                    android:id="@+id/gridView2"
+                    android:id="@+id/varietyGridView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -290,7 +290,7 @@
                 </RelativeLayout>
 
                 <com.zhusx.core.widget.Lib_Widget_ExpandGridView
-                    android:id="@+id/gridView3"
+                    android:id="@+id/cartoonGridView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"

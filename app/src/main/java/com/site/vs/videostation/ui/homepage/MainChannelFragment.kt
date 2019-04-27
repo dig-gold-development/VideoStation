@@ -50,7 +50,7 @@ class MainChannelFragment : BaseFragment() {
     private fun initData(data: ChannelEntity) {
         this.en = data
 
-        gridView!!.adapter = object : Lib_BaseAdapter<ChannelEntity.Channel>(data.list) {
+        movieGridView!!.adapter = object : Lib_BaseAdapter<ChannelEntity.Channel>(data.list) {
             override fun getView(layoutInflater: LayoutInflater, hot: ChannelEntity.Channel, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_channel)
                 holder.setText(R.id.tv_name, hot.typename)

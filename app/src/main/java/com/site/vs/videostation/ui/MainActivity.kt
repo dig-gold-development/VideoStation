@@ -1,13 +1,8 @@
 package com.site.vs.videostation.ui
 
 import android.app.AlertDialog
-import android.content.DialogInterface
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.widget.CompoundButton
-import android.widget.RadioGroup
-import butterknife.OnCheckedChanged
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseActivity
 import com.site.vs.videostation.ui.homepage.MainChannelFragment
@@ -17,10 +12,11 @@ import com.zhusx.core.utils._Activitys._addFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
-    internal var fragments = arrayOfNulls<Fragment>(4)
+
+    var fragments = arrayOfNulls<Fragment>(4)
     private var currentFragment: Fragment? = null
 
-    internal var exitDialog: AlertDialog? = null
+    var exitDialog: AlertDialog? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -196,21 +196,21 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
 
     private fun startPlayVideo() {
         en?.let {
-            Log.e(" 视频的URL ","" + it.vod_url_list[originSel].list[0].play_url)
+            Log.e(" 视频的URL ", "" + it.vod_url_list[originSel].list[0].play_url)
             if (history == null) VideoActivity2.playVideo(this@DetailActivity,
-                                                         it.name,
-                                                         it.vod_url_list[originSel].list[0].play_url,
-                                                         it,
-                                                         originSel,
-                                                         0,
-                                                         0)
+                                                          it.name,
+                                                          it.vod_url_list[originSel].list[0].play_url,
+                                                          it,
+                                                          originSel,
+                                                          0,
+                                                          0)
             else VideoActivity2.playVideo(this@DetailActivity,
-                                         it.name,
-                                         it.vod_url_list[history!!.originIndex].list[history!!.playIndex].play_url,
-                                         it,
-                                         history!!.originIndex,
-                                         history!!.playIndex,
-                                         history!!.playTime)
+                                          it.name,
+                                          it.vod_url_list[history!!.originIndex].list[history!!.playIndex].play_url,
+                                          it,
+                                          history!!.originIndex,
+                                          history!!.playIndex,
+                                          history!!.playTime)
 
         }
 
@@ -241,7 +241,6 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
     }
 
     companion object {
-
         val ID = "id"
     }
 }

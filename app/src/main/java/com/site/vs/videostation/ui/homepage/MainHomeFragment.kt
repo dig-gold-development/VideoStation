@@ -1,5 +1,6 @@
 package com.site.vs.videostation.ui.homepage
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
@@ -8,8 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.site.vs.videostation.R
-
-
 import com.site.vs.videostation.base.BaseFragment
 import com.site.vs.videostation.entity.DataBean
 import com.site.vs.videostation.entity.HomePageEntity
@@ -39,10 +38,13 @@ class MainHomeFragment : BaseFragment() {
         override fun onPageSelected(position: Int) {
             if (data != null)
                 topMessageTv.text = data!!.slide_list[bannerViewPager.currentItem].name
+
+
         }
 
         override fun onPageScrollStateChanged(state: Int) {}
     }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_homepage, container, false)
@@ -72,30 +74,37 @@ class MainHomeFragment : BaseFragment() {
         topLayout!!.layoutParams = lp
 
         bannerViewPager.adapter = object : Lib_BasePagerAdapter<SlideListBean>(activity, data.slide_list) {
+
+            var contentListener: View.OnClickListener = View.OnClickListener {
+                val intent = Intent(activity, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.ID, data.slide_list[bannerViewPager.currentItem].id)
+                startActivity(intent)
+            }
+
+
             override fun getView(layoutInflater: LayoutInflater, i: Int, slide: SlideListBean, view: View?, viewGroup: ViewGroup): View {
-                var view = view
-                if (view == null) {
-                    view = FrescoImageView(layoutInflater.context)
+                var content = view
+//
+                if (content == null) {
+                    content = layoutInflater.inflate(R.layout.list_item_banner, viewGroup, false)
                 }
-                (view as FrescoImageView).setImageURI(slide.pic)
-                view.setOnClickListener(View.OnClickListener { v ->
-                    val intent = Intent(v.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.ID, slide.id)
-                    startActivity(intent)
-                })
-                return view
+                (content as FrescoImageView).setImageURI(slide.pic)
+                content.setOnClickListener(contentListener)
+                return content
             }
         }
 
+
+
         if (!_Lists.isEmpty(data.slide_list)) {
-            topMessageTv!!.text = data.slide_list[0].name
+            topMessageTv.text = data.slide_list[0].name
         }
 
         bannerViewPager.addOnPageChangeListener(pagerListener)
 
         indicatorView!!._setViewPager(bannerViewPager)
 
-        gridView!!.adapter = object : Lib_BaseAdapter<DataBean>(data.move_list.data) {
+        movieGridView.adapter = object : Lib_BaseAdapter<DataBean>(data.move_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.name)) "" else tv.name)
@@ -113,7 +122,7 @@ class MainHomeFragment : BaseFragment() {
             }
         }
 
-        gridView1!!.adapter = object : Lib_BaseAdapter<DataBean>(data.tv_list.data) {
+        teleplayGridView.adapter = object : Lib_BaseAdapter<DataBean>(data.tv_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.name)) "" else tv.name)
@@ -130,7 +139,7 @@ class MainHomeFragment : BaseFragment() {
             }
         }
 
-        gridView2!!.adapter = object : Lib_BaseAdapter<DataBean>(data.arts_list.data) {
+        varietyGridView.adapter = object : Lib_BaseAdapter<DataBean>(data.arts_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.name)) "" else tv.name)
@@ -146,7 +155,7 @@ class MainHomeFragment : BaseFragment() {
             }
         }
 //
-        gridView3!!.adapter = object : Lib_BaseAdapter<DataBean>(data.comic_list.data) {
+        cartoonGridView.adapter = object : Lib_BaseAdapter<DataBean>(data.comic_list.data) {
             override fun getView(layoutInflater: LayoutInflater, tv: DataBean, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_movie)
                 holder.setText(R.id.tv_message, if (TextUtils.isEmpty(tv.name)) "" else tv.name)
@@ -165,10 +174,12 @@ class MainHomeFragment : BaseFragment() {
 
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         bannerViewPager.removeOnPageChangeListener(pagerListener)
     }
+
 
 }
 

@@ -32,7 +32,6 @@
         </LinearLayout>
 
         <FrameLayout
-            android:id="@+id/app_video_center_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -72,7 +71,6 @@
                 android:visibility="gone">
 
                 <ImageView
-                    android:id="@+id/app_video_brightness_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

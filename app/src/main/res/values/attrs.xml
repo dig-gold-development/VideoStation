@@ -29,7 +29,7 @@
         <attr name="ptr_keep_header_when_refresh" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="PtrClassicHeader">
+    <declare-styleable name="PtrClassicDefaultHeader">
         <attr name="ptr_rotate_ani_time" format="integer" />
     </declare-styleable>
 

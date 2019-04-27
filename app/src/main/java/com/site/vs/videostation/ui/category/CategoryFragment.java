@@ -42,9 +42,8 @@ public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.Vide
     }
 
     @Override protected View createHeader() {
-        View headerView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_category_header, null);
 
-        return headerView;
+        return LayoutInflater.from(getContext()).inflate(R.layout.fragment_category_header, null);
     }
 
     @Override protected CommRecyclerAdapter createAdapter() {

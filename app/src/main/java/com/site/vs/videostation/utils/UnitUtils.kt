@@ -95,7 +95,7 @@ object UnitUtils {
             return ""
         }
         if (format == null || format.isEmpty()) format = "yyyy-MM-dd"
-        val sdf = SimpleDateFormat(format)
+        val sdf = SimpleDateFormat(format, Locale.CHINA)
         return sdf.format(Date(java.lang.Long.valueOf(seconds + "000")))
     }
 

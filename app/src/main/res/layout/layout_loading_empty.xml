@@ -5,14 +5,11 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/order_dzf" />
 
     <TextView
         android:id="@+id/tv_empty_message"
         android:layout_width="wrap_content"
+        android:drawableTop="@drawable/order_dzf"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:drawablePadding="10dp"

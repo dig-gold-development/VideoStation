@@ -31,13 +31,14 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
         this.mContext = context;
         this.mContentView = contentView;
         this.mInflater = LayoutInflater.from(context);
-        {
-            mLoadingView = mInflater.inflate(R.layout.layout_loading_default, null);
-            mEmptyView = mInflater.inflate(R.layout.layout_loading_empty, null);
-            mErrorView = mInflater.inflate(R.layout.layout_loading_error, null);
-            mLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            mLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-        }
+
+        mLoadingView = mInflater.inflate(R.layout.layout_loading_default, null);
+        mEmptyView = mInflater.inflate(R.layout.layout_loading_empty, null);
+        mErrorView = mInflater.inflate(R.layout.layout_loading_error, null);
+        mLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                                                        RelativeLayout.LayoutParams.MATCH_PARENT);
+        mLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+
     }
 
     public void setLoadingDescriptionColor(int color) {
@@ -69,55 +70,48 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
     }
 
     public void replaceLoadingProgress(View view) {
-        if (mLoadingContent == null)
-            mLoadingContent = (LinearLayout) mLoadingView.findViewById(R.id.ll_loading);
+        if (mLoadingContent == null) mLoadingContent = (LinearLayout) mLoadingView.findViewById(R.id.ll_loading);
 
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams
-                (RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                                                                         RelativeLayout.LayoutParams.WRAP_CONTENT);
         lp.addRule(RelativeLayout.CENTER_IN_PARENT);
         ((RelativeLayout) mLoadingView).addView(view, lp);
         ((RelativeLayout) mLoadingView).removeView(mLoadingContent);
     }
 
     public void setEmptyDescriptionColor(int color) {
-        if (tvEmptyDescription == null)
-            tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
+        if (tvEmptyDescription == null) tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
 
         tvEmptyDescription.setTextColor(color);
     }
 
     public void setEmptyDescriptionTextSize(float size) {
-        if (tvEmptyDescription == null)
-            tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
+        if (tvEmptyDescription == null) tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
 
         tvEmptyDescription.setTextSize(size);
     }
 
     public void setEmptyDescription(String emptyDescription) {
-        if (tvEmptyDescription == null)
-            tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
+        if (tvEmptyDescription == null) tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
 
         tvEmptyDescription.setText(emptyDescription);
     }
 
     public void setEmptyDescription(int resID) {
-        if (tvEmptyDescription == null)
-            tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
+        if (tvEmptyDescription == null) tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
 
         tvEmptyDescription.setText(resID);
     }
 
     public void replaceEmptyIcon(Drawable newIcon) {
-        if (tvEmptyDescription == null)
-            tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
+        if (tvEmptyDescription == null) tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
 
         newIcon.setBounds(0, 0, newIcon.getMinimumWidth(), newIcon.getMinimumHeight());
         tvEmptyDescription.setCompoundDrawables(null, newIcon, null, null);
     }
 
     public void replaceEmptyIcon(int resId) {
-        if (tvEmptyDescription == null)
-            tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
+        if (tvEmptyDescription == null) tvEmptyDescription = (TextView) mEmptyView.findViewById(R.id.tv_empty_message);
 
         Drawable newIcon = mContext.getResources().getDrawable(resId);
         newIcon.setBounds(0, 0, newIcon.getMinimumWidth(), newIcon.getMinimumHeight());
@@ -125,44 +119,38 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
     }
 
     public void setErrorDescriptionColor(int color) {
-        if (tvErrorDescription == null)
-            tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
+        if (tvErrorDescription == null) tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
 
         tvErrorDescription.setTextColor(color);
     }
 
     public void setErrorDescriptionTextSize(float size) {
-        if (tvErrorDescription == null)
-            tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
+        if (tvErrorDescription == null) tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
 
         tvErrorDescription.setTextSize(size);
     }
 
     public void setErrorDescription(String errorDescription) {
-        if (tvErrorDescription == null)
-            tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
+        if (tvErrorDescription == null) tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
 
         tvErrorDescription.setText(errorDescription);
     }
 
     public void setErrorDescription(int resID) {
-        if (tvErrorDescription == null)
-            tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
+        if (tvErrorDescription == null) tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
 
         tvErrorDescription.setText(resID);
     }
 
     public void setErrorButtonListener(View.OnClickListener listener) {
-        if (btnErrorHandle == null)
-            btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
+        if (btnErrorHandle == null) btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
 
         btnErrorHandle.setOnClickListener(listener);
     }
 
 
     public void setErrorButtonBackground(Drawable background) {
-        if (btnErrorHandle == null)
-            btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
+        if (btnErrorHandle == null) btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             btnErrorHandle.setBackground(background);
@@ -173,49 +161,43 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
     }
 
     public void setErrorButtonBackground(int resID) {
-        if (btnErrorHandle == null)
-            btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
+        if (btnErrorHandle == null) btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
 
         btnErrorHandle.setBackgroundResource(resID);
 
     }
 
     public void setErrorButtonTextColor(int color) {
-        if (btnErrorHandle == null)
-            btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
+        if (btnErrorHandle == null) btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
 
         btnErrorHandle.setTextColor(color);
     }
 
     public void setErrorButtonText(String text) {
-        if (btnErrorHandle == null)
-            btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
+        if (btnErrorHandle == null) btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
 
         btnErrorHandle.setText(text);
     }
 
     public void setErrorButtonText(int resID) {
-        if (btnErrorHandle == null)
-            btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
+        if (btnErrorHandle == null) btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
 
         btnErrorHandle.setText(resID);
     }
 
     public void hideErrorButton() {
-        if (btnErrorHandle == null)
-            btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
+        if (btnErrorHandle == null) btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
 
         btnErrorHandle.setVisibility(View.GONE);
     }
 
     public void replaceErrorButton(Button newButton) {
-        if (btnErrorHandle == null)
-            btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
+        if (btnErrorHandle == null) btnErrorHandle = (Button) mErrorView.findViewById(R.id.btn_error);
 
         ((RelativeLayout) mErrorView).removeView(btnErrorHandle);
         btnErrorHandle = newButton;
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams
-                (RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                                                                         RelativeLayout.LayoutParams.WRAP_CONTENT);
         lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
         lp.addRule(RelativeLayout.BELOW, R.id.tv_error_message);
         lp.topMargin = 20;
@@ -223,8 +205,7 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
     }
 
     public void replaceErrorIcon(Drawable newIcon) {
-        if (tvErrorDescription == null)
-            tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
+        if (tvErrorDescription == null) tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
 
         newIcon.setBounds(0, 0, newIcon.getMinimumWidth(), newIcon.getMinimumHeight());
         tvErrorDescription.setCompoundDrawables(null, newIcon, null, null);
@@ -232,8 +213,7 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
 
 
     public void replaceErrorIcon(int resId) {
-        if (tvErrorDescription == null)
-            tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
+        if (tvErrorDescription == null) tvErrorDescription = (TextView) mErrorView.findViewById(R.id.tv_error_message);
 
         Drawable newIcon = mContext.getResources().getDrawable(resId);
         newIcon.setBounds(0, 0, newIcon.getMinimumWidth(), newIcon.getMinimumHeight());
@@ -250,8 +230,7 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
         rlAddedView.setBackgroundResource(resID);
     }
 
-    @Override
-    public void onLoading() {
+    @Override public void onLoading() {
         checkContentView();
         if (!mLoadingAdded) {
             initAddedLayout();
@@ -264,14 +243,12 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
         showViewWithStatus(LayoutStatus.Loading);
     }
 
-    @Override
-    public void onDone() {
+    @Override public void onDone() {
         checkContentView();
         showViewWithStatus(LayoutStatus.Done);
     }
 
-    @Override
-    public void onEmpty() {
+    @Override public void onEmpty() {
         checkContentView();
         if (!mEmptyAdded) {
             initAddedLayout();
@@ -284,8 +261,7 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
         showViewWithStatus(LayoutStatus.Empty);
     }
 
-    @Override
-    public void onError() {
+    @Override public void onError() {
         checkContentView();
         if (!mErrorAdded) {
             initAddedLayout();
@@ -300,8 +276,7 @@ public class DefaultLoadingLayout extends SmartLoadingLayout {
 
 
     private void checkContentView() {
-        if (mContentView == null)
-            throw new NullPointerException("The content view not set..");
+        if (mContentView == null) throw new NullPointerException("The content view not set..");
     }
 
     private void initAddedLayout() {

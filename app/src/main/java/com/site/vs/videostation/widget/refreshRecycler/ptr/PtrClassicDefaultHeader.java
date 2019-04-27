@@ -18,11 +18,12 @@ import com.site.vs.videostation.widget.refreshRecycler.indicator.PtrIndicator;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class PtrClassicDefaultHeader extends FrameLayout implements PtrUIHandler {
 
     private final static String KEY_SharedPreferences = "cube_ptr_classic_last_update";
-    private static SimpleDateFormat sDataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static SimpleDateFormat sDataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
     private int mRotateAniTime = 150;
     private RotateAnimation mFlipAnimation;
     private RotateAnimation mReverseFlipAnimation;
@@ -52,9 +53,9 @@ public class PtrClassicDefaultHeader extends FrameLayout implements PtrUIHandler
     }
 
     protected void initViews(AttributeSet attrs) {
-        TypedArray arr = getContext().obtainStyledAttributes(attrs, R.styleable.PtrClassicHeader, 0, 0);
+        TypedArray arr = getContext().obtainStyledAttributes(attrs, R.styleable.PtrClassicDefaultHeader, 0, 0);
         if (arr != null) {
-            mRotateAniTime = arr.getInt(R.styleable.PtrClassicHeader_ptr_rotate_ani_time, mRotateAniTime);
+            mRotateAniTime = arr.getInt(R.styleable.PtrClassicDefaultHeader_ptr_rotate_ani_time, mRotateAniTime);
         }
         arr.recycle();
         buildAnimation();
@@ -98,12 +99,14 @@ public class PtrClassicDefaultHeader extends FrameLayout implements PtrUIHandler
     }
 
     private void buildAnimation() {
-        mFlipAnimation = new RotateAnimation(0, -180, RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+        mFlipAnimation = new RotateAnimation(0, -180, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                                             RotateAnimation.RELATIVE_TO_SELF, 0.5f);
         mFlipAnimation.setInterpolator(new LinearInterpolator());
         mFlipAnimation.setDuration(mRotateAniTime);
         mFlipAnimation.setFillAfter(true);
 
-        mReverseFlipAnimation = new RotateAnimation(-180, 0, RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+        mReverseFlipAnimation = new RotateAnimation(-180, 0, RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                                                    RotateAnimation.RELATIVE_TO_SELF, 0.5f);
         mReverseFlipAnimation.setInterpolator(new LinearInterpolator());
         mReverseFlipAnimation.setDuration(mRotateAniTime);
         mReverseFlipAnimation.setFillAfter(true);
@@ -119,15 +122,13 @@ public class PtrClassicDefaultHeader extends FrameLayout implements PtrUIHandler
         mRotateView.setVisibility(INVISIBLE);
     }
 
-    @Override
-    public void onUIReset(PtrFrameLayout frame) {
+    @Override public void onUIReset(PtrFrameLayout frame) {
         resetView();
         mShouldShowLastUpdate = true;
         tryUpdateLastUpdateTime();
     }
 
-    @Override
-    public void onUIRefreshPrepare(PtrFrameLayout frame) {
+    @Override public void onUIRefreshPrepare(PtrFrameLayout frame) {
 
         mShouldShowLastUpdate = true;
         tryUpdateLastUpdateTime();
@@ -144,8 +145,7 @@ public class PtrClassicDefaultHeader extends FrameLayout implements PtrUIHandler
         }
     }
 
-    @Override
-    public void onUIRefreshBegin(PtrFrameLayout frame) {
+    @Override public void onUIRefreshBegin(PtrFrameLayout frame) {
         mShouldShowLastUpdate = false;
         hideRotateView();
         mProgressBar.setVisibility(VISIBLE);
@@ -156,8 +156,7 @@ public class PtrClassicDefaultHeader extends FrameLayout implements PtrUIHandler
         mLastUpdateTimeUpdater.stop();
     }
 
-    @Override
-    public void onUIRefreshComplete(PtrFrameLayout frame) {
+    @Override public void onUIRefreshComplete(PtrFrameLayout frame) {
 
         hideRotateView();
         mProgressBar.setVisibility(INVISIBLE);
@@ -190,7 +189,8 @@ public class PtrClassicDefaultHeader extends FrameLayout implements PtrUIHandler
     private String getLastUpdateTime() {
 
         if (mLastUpdateTime == -1 && !TextUtils.isEmpty(mLastUpdateTimeKey)) {
-            mLastUpdateTime = getContext().getSharedPreferences(KEY_SharedPreferences, 0).getLong(mLastUpdateTimeKey, -1);
+            mLastUpdateTime = getContext().getSharedPreferences(KEY_SharedPreferences, 0).getLong(mLastUpdateTimeKey,
+                                                                                                  -1);
         }
         if (mLastUpdateTime == -1) {
             return null;
@@ -285,8 +285,7 @@ public class PtrClassicDefaultHeader extends FrameLayout implements PtrUIHandler
             removeCallbacks(this);
         }
 
-        @Override
-        public void run() {
+        @Override public void run() {
             tryUpdateLastUpdateTime();
             if (mRunning) {
                 postDelayed(this, 1000);

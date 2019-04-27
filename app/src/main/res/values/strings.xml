@@ -1,32 +1,17 @@
 <resources>
     <string name="app_name">共享资源站</string>
-    <string name="lable_loading">正在加载...</string>
+    <string name="lable_loading">正在加载&#8230;</string>
     <string name="lable_load_err">加载失败,点击重试</string>
 
-    <string name="xlistview_header_hint_normal">下拉刷新</string>
-    <string name="xlistview_header_hint_ready">松开刷新数据</string>
-    <string name="xlistview_header_hint_loading">正在加载...</string>
-    <string name="xlistview_header_last_time">上次更新时间：</string>
-    <string name="xlistview_footer_hint_normal">查看更多</string>
-    <string name="xlistview_footer_hint_ready">松开载入更多</string>
-
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cube_ptr_pull_down">下拉</string>
     <string name="cube_ptr_pull_down_to_refresh"></string>
     <string name="cube_ptr_release_to_refresh">释放刷新</string>
-    <string name="cube_ptr_refreshing">加载中...</string>
+    <string name="cube_ptr_refreshing">加载中&#8230;</string>
     <string name="cube_ptr_refresh_complete">更新完成.</string>
     <string name="cube_ptr_last_update">上次更新:&#160;</string>
     <string name="cube_ptr_seconds_ago">&#160;秒之前</string>
     <string name="cube_ptr_minutes_ago">&#160;分钟之前</string>
     <string name="cube_ptr_hours_ago">&#160;小时之前</string>
-    <string name="search_none_result">抱歉，没有搜索到\"%1$s\"相关视频\n建议您更换关键词</string>
-
-    <string name="clear_cache">清除图片缓存</string>
-
-    <string name="setting_content">%1$s通过链接的方式提供相关内容。链接内容均为第三方内容提供方提供。%2$s十分重视网络版权及其它知识产权以及用户权益的保护。
-\n%3$s自身不存储、控制、编辑或修改被链接的第三方网页上的信息内容或表现形式，对提供链接的内容不拥有任务权利，也不负任何责任，不提供任何明示或暗示的担保，不承担用户因使用这些内容资源对自己和他人造人任何形式的损失或伤害。
-\n联系我们：%4$s</string>
 
 </resources>

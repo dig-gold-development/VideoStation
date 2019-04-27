@@ -12,12 +12,12 @@ import java.util.List;
  */
 
 public class RankingEntity implements IPageData<Move> {
-    public int count;
+    public int page_total;
     public List<Move> list;
 
     @Override
     public int getTotalPageCount() {
-        return count;
+        return page_total;
     }
 
     @Override

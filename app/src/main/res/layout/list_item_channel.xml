@@ -5,7 +5,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <com.site.vs.videostation.widget.FrescoImageView
+    <ImageView
         android:id="@+id/iv_image"
         android:layout_width="70dp"
         android:layout_height="70dp"

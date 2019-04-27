@@ -36,7 +36,8 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.site.vs.videostation.widget.FrescoImageView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 
 /**
@@ -217,9 +218,16 @@ public class BaseAdapterHelper {
      * 设置图片url
      */
     public BaseAdapterHelper setImageUrl(int viewId, String s) {
-        FrescoImageView view = retrieveView(viewId);
-        if (s != null)
-            view.setImageURI(Uri.parse(s));
+//        FrescoImageView view = retrieveView(viewId);
+//        if (s != null)
+//            view.setImageURI(Uri.parse(s));
+
+        Glide.with(mContext)
+                .load(Uri.parse(s))
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into((ImageView) retrieveView(viewId));
+
+
         return this;
     }
 
@@ -497,7 +505,7 @@ public class BaseAdapterHelper {
     /**
      * Retrieve the overall mPosition of the mData in the list.
      *
-     * @throws IllegalArgumentException If the mPosition hasn't been set at the construction of the this helper.
+     * @throws IllegalStateException If the mPosition hasn't been set at the construction of the this helper.
      */
     public int getPosition() {
         if (mPosition == -1)

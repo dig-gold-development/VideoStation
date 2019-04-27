@@ -10,11 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.site.vs.videostation.widget.FrescoImageView
+        <ImageView
             android:id="@+id/iv_image"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            app:viewAspectRatio="0.714" />
+             />
 
         <ImageView
             android:id="@+id/iv_ranking"

@@ -9,17 +9,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.site.vs.videostation.R;
 import com.site.vs.videostation.adapter.base.BaseAdapterHelper;
 import com.site.vs.videostation.adapter.base.CommRecyclerAdapter;
 import com.site.vs.videostation.base.BaseFragment;
 import com.site.vs.videostation.base.RecyclerViewHelper;
 import com.site.vs.videostation.entity.DetailEntity;
-import com.site.vs.videostation.widget.FrescoImageView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,8 +61,16 @@ public class NearFragment extends BaseFragment implements RecyclerViewHelper.Loa
             @Override
             public void onUpdate(BaseAdapterHelper helper, final DetailEntity.Near item, int position) {
                 helper.setText(R.id.tv_name, item.name);
-                FrescoImageView iv = helper.getView(R.id.iv_img);
-                iv.setImageURI(item.pic);
+
+//                FrescoImageView iv = helper.getView(R.id.iv_img);
+//                iv.setImageURI(item.pic);
+
+
+                Glide.with(Objects.requireNonNull(getActivity()))
+                        .load(item.pic)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into((ImageView)  helper.getView(R.id.iv_img));
+
                 if (detailEntity.type == 1) {
                     helper.setVisible(R.id.tv_score, true);
                     if (item.year == 0)

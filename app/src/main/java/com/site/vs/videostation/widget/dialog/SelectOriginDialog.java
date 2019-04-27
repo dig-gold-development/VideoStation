@@ -11,7 +11,6 @@ import com.site.vs.videostation.R;
 import com.site.vs.videostation.adapter.base.BaseAdapterHelper;
 import com.site.vs.videostation.adapter.base.CommRecyclerAdapter;
 import com.site.vs.videostation.entity.DetailEntity;
-import com.site.vs.videostation.widget.FrescoImageView;
 import com.zhusx.core.app.Lib_BaseDialog;
 
 import butterknife.BindView;

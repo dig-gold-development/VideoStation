@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.site.vs.videostation.widget.FrescoImageView xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bannerImage"
-    style="@style/fresco_loading"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:viewAspectRatio="0.714" />
+    android:scaleType="centerCrop" />

@@ -9,13 +9,12 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content">
 
-        <com.site.vs.videostation.widget.FrescoImageView
+        <ImageView
             android:id="@+id/img_content"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            app:placeholderImage="@color/c_e5"
-            app:placeholderImageScaleType="fitCenter"
-            app:viewAspectRatio="0.75" />
+            android:scaleType="fitCenter"
+             />
 
         <TextView
             android:id="@+id/tv_subTitle"

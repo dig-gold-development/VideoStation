@@ -1,9 +1,10 @@
 package com.site.vs.videostation.base;
 
 import android.view.View;
+import android.widget.ImageView;
 
-
-import com.site.vs.videostation.widget.FrescoImageView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.zhusx.core.app.Lib_BaseFragment;
 
 import rx.Subscription;
@@ -35,6 +36,10 @@ public class BaseFragment extends Lib_BaseFragment {
         }
     }
     public void setImageURI(View view, String path) {
-        ((FrescoImageView) view).setImageURI(path);
+        Glide.with(this)
+                .load(path)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into((ImageView) view);
+
     }
 }

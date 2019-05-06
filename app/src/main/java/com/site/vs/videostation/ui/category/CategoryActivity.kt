@@ -20,6 +20,7 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
     private var tipsLayout: DefaultLoadingLayout? = null
     private var paraMap: MutableMap<String, String>? = null
 
+
     private var id: String? = null
     private var cid: String? = null
 
@@ -50,6 +51,9 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
         paraMap!!["year"] = ""
         paraMap!!["area"] = ""
         mPresenter.initCategoryBy(id, paraMap, 1, true)
+
+
+
     }
 
     override fun createPresenter() {

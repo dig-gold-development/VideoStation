@@ -13,6 +13,7 @@ import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.site.vs.videostation.db.DBManager;
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * Created by yangang on 2018/1/19.
@@ -26,6 +27,7 @@ public class AppApplication extends Application {
         initDatabase(this);
         Stetho.initializeWithDefaults(this);
 
+        CrashReport.initCrashReport(getApplicationContext(), "86f84cfd59", false);
 
 
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()

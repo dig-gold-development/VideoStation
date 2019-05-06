@@ -32,5 +32,8 @@ dependencies {
     } else if ("full" == bType) {
         api "com.github.tcking:ijkplayer-armv7a:${ijkVersion}-full"
     }
+
+
+
 }
 apply from: new File(projectDir, "gradle-on-demand.gradle")

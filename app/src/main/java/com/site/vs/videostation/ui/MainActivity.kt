@@ -47,6 +47,10 @@ class MainActivity : BaseActivity() {
                     }
                 }
 
+                R.id.mine -> {
+//                    CrashReport.testJavaCrash()
+                }
+
 
             }
 

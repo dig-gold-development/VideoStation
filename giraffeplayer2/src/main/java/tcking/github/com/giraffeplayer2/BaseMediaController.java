@@ -25,7 +25,7 @@ public abstract class BaseMediaController extends DefaultPlayerListener implemen
 
     protected final Context context;
     protected final AudioManager audioManager;
-    protected ViewQuery $;
+    protected ViewQuery viewQuery;
 
     protected int defaultTimeout = 3 * 1000;
     protected Handler handler;
@@ -43,7 +43,7 @@ public abstract class BaseMediaController extends DefaultPlayerListener implemen
     public void bind(VideoView videoView) {
         this.videoView = videoView;
         controllerView = makeControllerView();
-        $ = new ViewQuery(controllerView);
+        viewQuery = new ViewQuery(controllerView);
         initView(controllerView);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,

@@ -1,5 +1,5 @@
 syntax = "proto3";
-package com.site.vs.videostation.proto;
+package com.vs.base.net.proto;
 option java_outer_classname = "LoginInfo";
 message Login {
     string account = 1;

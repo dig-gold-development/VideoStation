@@ -1,0 +1,97 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.google.protobuf'
+
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+            proto {
+                srcDir 'src/main/proto'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // TODO 替换 OkHttp
+
+    // Rxjava2
+    implementation "io.reactivex.rxjava2:rxjava:2.2.5"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    implementation 'com.uber.autodispose:autodispose-android:1.1.0'
+    implementation 'com.uber.autodispose:autodispose-ktx:1.1.0'
+    implementation 'com.uber.autodispose:autodispose-android-ktx:1.1.0'
+    implementation 'com.uber.autodispose:autodispose-android-archcomponents-ktx:1.1.0'
+
+
+    implementation 'com.squareup.retrofit2:converter-protobuf:2.5.0'
+
+//    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${RETROFIT_VERSION}"
+
+    // TODO 网络调试库 不知道能不能调试Mars
+    api 'com.facebook.stetho:stetho:1.4.1'
+//    api 'com.facebook.stetho:stetho-okhttp3:1.4.1'
+
+
+
+    api 'com.tencent.mars:mars-core:1.2.2'
+
+
+    implementation 'com.google.protobuf:protobuf-java:3.5.1'
+
+
+}
+
+
+
+protobuf {
+    //配置protoc编译器
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.5.1'
+    }
+    //这里配置生成目录，编译后会在build的目录下生成对应的java文件
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                java {}
+            }
+        }
+    }
+}
+

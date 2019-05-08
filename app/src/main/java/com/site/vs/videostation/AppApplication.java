@@ -7,7 +7,6 @@ import android.support.multidex.MultiDex;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
-import com.facebook.stetho.Stetho;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.PrettyFormatStrategy;
@@ -29,7 +28,7 @@ public class AppApplication extends Application {
 
         initFresco(this);
         initDatabase(this);
-        Stetho.initializeWithDefaults(this);
+//        Stetho.initializeWithDefaults(this);
 
         CrashReport.initCrashReport(getApplicationContext(), "86f84cfd59", false);
 

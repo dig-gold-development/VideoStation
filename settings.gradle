@@ -1,1 +1,1 @@
-include ':app' ,':giraffeplayer2'
+include ':app',  ':giraffeplayer2', ':basenet'

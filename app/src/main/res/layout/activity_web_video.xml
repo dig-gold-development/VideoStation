@@ -49,7 +49,7 @@
         android:layout_height="2dp"
         android:progress="1" />
 
-    <com.vs.videostation.webview.X5WebView
+    <com.site.vs.videostation.webview.X5WebView
         android:id="@+id/web"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

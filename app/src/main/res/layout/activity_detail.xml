@@ -67,11 +67,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="201dp">
 
-                <ImageView
+                <com.site.vs.videostation.widget.FrescoImageView
                     android:id="@+id/backgroundIv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
+                    app:backgroundImage="@color/black"
                      />
 
                 <LinearLayout
@@ -81,7 +81,7 @@
                     android:paddingLeft="14dp"
                     android:paddingRight="14dp">
 
-                    <ImageView
+                    <com.site.vs.videostation.widget.FrescoImageView
                         android:id="@+id/coverIv"
                         android:layout_width="130dp"
                         android:layout_height="173dp"

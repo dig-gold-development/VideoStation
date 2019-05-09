@@ -19,6 +19,7 @@ import com.site.vs.videostation.entity.SlideListBean
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.LoadingHelper
 import com.site.vs.videostation.ui.detail.view.DetailActivity
+import com.site.vs.videostation.widget.FrescoImageView
 import com.zhusx.core.adapter.Lib_BaseAdapter
 import com.zhusx.core.adapter.Lib_BasePagerAdapter
 import com.zhusx.core.network.HttpRequest
@@ -90,12 +91,9 @@ class MainHomeFragment : BaseFragment() {
                 if (content == null) {
                     content = layoutInflater.inflate(R.layout.list_item_banner, viewGroup, false)
                 }
-//                (content as FrescoImageView).setImageURI(slide.pic)
+                (content as FrescoImageView).setImageURI(slide.pic)
 
-                Glide.with(layoutInflater.context)
-                        .load(slide.pic)
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .into(content as ImageView)
+
 
                 content.setOnClickListener(contentListener)
                 return content

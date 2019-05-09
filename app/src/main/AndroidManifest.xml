@@ -28,10 +28,14 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.video.VideoActivity2"
+            android:name=".ui.video.VideoActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="sensor" />
+
+        <activity
+            android:name=".ui.video.WebVideoActivity"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.category.CategoryActivity"

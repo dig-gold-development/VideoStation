@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:keep="@layout/activity_video">
+    android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/app_video_box"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000">
@@ -187,12 +188,14 @@
                     android:padding="8dp"
                     android:src="@drawable/ic_play_arrow_white_24dp" />
 
+
                 <ImageView
+                    android:id="@+id/app_video_next"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:src="@android:drawable/ic_media_next"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/app_video_currentTime"
@@ -239,6 +242,7 @@
 
 
                 <TextView
+                    android:id="@+id/app_video_sel_play"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="8dp"
@@ -289,6 +293,7 @@
     </RelativeLayout>
 
     <FrameLayout
+        android:id="@+id/right_content"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="right" />

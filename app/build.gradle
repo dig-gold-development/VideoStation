@@ -98,7 +98,7 @@ dependencies {
     implementation 'org.jetbrains.anko:anko:0.10.1'
     implementation "com.android.support:design:${COMM_VERSION}"
     implementation 'com.alibaba:fastjson:1.1.54.android'
-    implementation project(':giraffeplayer2')
+    implementation project(':giraffeplayer')
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
     implementation "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"

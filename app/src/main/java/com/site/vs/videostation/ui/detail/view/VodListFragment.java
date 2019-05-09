@@ -66,7 +66,7 @@ public class VodListFragment extends BaseFragment {
         playIndex = getArguments().getInt("play_index", 0);
         catRv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         urlsRv.setLayoutManager(new GridLayoutManager(getContext(), 4));
-        urlsRv.addItemDecoration(new DividerGridItemDecoration(UnitUtils.INSTANCE.dip2px(getContext(), 14.0f), UnitUtils.INSTANCE.dip2px(getContext(), 14.0f)));
+        urlsRv.addItemDecoration(new DividerGridItemDecoration(UnitUtils.dip2px(getContext(), 14.0f), UnitUtils.dip2px(getContext(), 14.0f)));
 
         if (mode != 0)
             getView().setBackgroundColor(getResources().getColor(R.color.pressBg));

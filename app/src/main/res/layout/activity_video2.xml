@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <tcking.github.com.giraffeplayer2.VideoView
-        android:id="@+id/video_view"
+        android:id="@+id/video_view2"
         android:layout_width="match_parent"
         android:layout_height="180dp" />
 </LinearLayout>

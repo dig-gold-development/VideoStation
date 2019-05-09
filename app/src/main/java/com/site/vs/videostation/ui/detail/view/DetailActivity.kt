@@ -19,7 +19,7 @@ import com.site.vs.videostation.entity.DetailEntity
 import com.site.vs.videostation.entity.HistoryEntity
 import com.site.vs.videostation.ui.detail.presentation.DetailContract
 import com.site.vs.videostation.ui.detail.presentation.DetailPresenter
-import com.site.vs.videostation.ui.video.VideoActivity2
+import com.site.vs.videostation.ui.video.VideoActivity
 import com.site.vs.videostation.utils.UnitUtils
 import com.site.vs.videostation.widget.dialog.SelectOriginDialog
 import com.zhusx.core.network.Lib_NetworkStateReceiver
@@ -105,15 +105,11 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
                 if (DBManager.isFavorite(en!!.id)) R.drawable.nav_collection_current else R.drawable.nav_collection)
         updateRecord()
 
-        Glide.with(this)
-                .load(entity.pic)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(coverIv)
 
-        Glide.with(this)
-                .load(entity.pic)
-                .apply(RequestOptions.bitmapTransform(BlurTransformation(25)))
-                .into(backgroundIv)
+        coverIv.setImageURI(entity.pic)
+
+
+        backgroundIv.setImageUrlWithBlur(entity.pic)
 
 //        backgroundIv!!.alpha = 0.5f
 
@@ -211,14 +207,14 @@ class DetailActivity : MVPBaseActivity<DetailPresenter>(), DetailContract.View, 
     private fun startPlayVideo() {
         en?.let {
             Log.e(" 视频的URL ", "" + it.vod_url_list[originSel].list[0].play_url)
-            if (history == null) VideoActivity2.playVideo(this@DetailActivity,
+            if (history == null) VideoActivity.playVideo(this@DetailActivity,
                                                           it.name,
                                                           it.vod_url_list[originSel].list[0].play_url,
                                                           it,
                                                           originSel,
                                                           0,
                                                           0)
-            else VideoActivity2.playVideo(this@DetailActivity,
+            else VideoActivity.playVideo(this@DetailActivity,
                                           it.name,
                                           it.vod_url_list[history!!.originIndex].list[history!!.playIndex].play_url,
                                           it,

@@ -1,6 +1,5 @@
 package com.site.vs.videostation.http;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.site.vs.videostation.BuildConfig;
 
 import okhttp3.OkHttpClient;
@@ -32,7 +31,7 @@ public class Retrofits {
             }
 
             client.addInterceptor(logging);
-            client.addNetworkInterceptor(new StethoInterceptor());
+//            client.addNetworkInterceptor(new StethoInterceptor());
             retrofit = new Retrofit.Builder()
                     .client(client.build())
                     .addConverterFactory(GsonConverterFactory.create())

@@ -3,6 +3,7 @@ package com.site.vs.videostation.ui
 import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import com.orhanobut.logger.Logger
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseActivity
 import com.site.vs.videostation.ui.homepage.MainChannelFragment
@@ -47,6 +48,10 @@ class MainActivity : BaseActivity() {
                     }
                 }
 
+                R.id.mine -> {
+//                    CrashReport.testJavaCrash()
+                }
+
 
             }
 
@@ -63,6 +68,7 @@ class MainActivity : BaseActivity() {
 
 
     fun showFragment(fragment: Fragment) {
+        Logger.e("showFragment $fragment")
         if (currentFragment != null) {
             if (currentFragment === fragment) {
                 return

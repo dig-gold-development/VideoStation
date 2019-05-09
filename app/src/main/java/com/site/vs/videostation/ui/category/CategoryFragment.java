@@ -33,6 +33,7 @@ public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.Vide
     protected int pageIndex = 1;
     protected int totalPage;
 
+
     @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);

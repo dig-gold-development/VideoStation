@@ -11,7 +11,6 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.site.vs.videostation.db.DBManager;
-import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.lang.reflect.Constructor;
@@ -41,7 +40,7 @@ public class AppApplication extends Application {
         com.orhanobut.logger.Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
 
 
-        LeakCanary.install(this);
+//        LeakCanary.install(this);
 //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
 
         closeAndroidPDialog();

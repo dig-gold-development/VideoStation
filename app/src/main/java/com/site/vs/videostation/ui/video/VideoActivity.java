@@ -212,10 +212,8 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
         realUrl = entity.vod_url_list.get(originIndex).list.get(playIndex).is_real_url;
         if (realUrl == 0) {
 
-            finish();
-            Intent intent = new Intent(this, WebVideoActivity.class);
-            intent.putExtra(WebVideoActivity.URL, url);
-            startActivity(intent);
+            player.setTitle(title + " " + entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
+            mPresenter.playMove(url, "2", entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
 
         } else if (realUrl == 1) {
             url = url.replace("\r\n", "").replace("\t", "").replace(" ", "");

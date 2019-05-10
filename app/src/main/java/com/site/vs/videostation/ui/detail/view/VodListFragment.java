@@ -18,6 +18,7 @@ import com.site.vs.videostation.adapter.base.BaseAdapterHelper;
 import com.site.vs.videostation.adapter.base.CommRecyclerAdapter;
 import com.site.vs.videostation.base.BaseFragment;
 import com.site.vs.videostation.entity.DetailEntity;
+import com.site.vs.videostation.ui.video.VideoActivity;
 import com.site.vs.videostation.utils.UnitUtils;
 import com.site.vs.videostation.widget.refreshRecycler.DividerGridItemDecoration;
 import com.zhusx.core.network.Lib_NetworkStateReceiver;
@@ -177,10 +178,10 @@ public class VodListFragment extends BaseFragment {
         urlAdapter.notifyDataSetChanged();
     }
     private void playVideo(DetailEntity.Origin.Play item, int index, int position) {
-//        VideoActivity2.playVideo(getActivity(), entity.name,
-//                item.play_url, entity, index,
-//                selStart + position, 0);
-//        setPlayIndex(selStart + position);
+        VideoActivity.playVideo(getActivity(), entity.name,
+                item.play_url, entity, index,
+                selStart + position, 0);
+        setPlayIndex(selStart + position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

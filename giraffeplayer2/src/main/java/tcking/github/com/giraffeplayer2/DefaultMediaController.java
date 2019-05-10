@@ -72,7 +72,7 @@ public class DefaultMediaController extends BaseMediaController {
             if (!videoView.isCurrentActivePlayer()) {
                 return;
             }
-            viewQuery.id(R.id.app_video_status).gone();//移动时隐藏掉状态image
+            $.id(R.id.app_video_status).gone();//移动时隐藏掉状态image
             GiraffePlayer player = videoView.getPlayer();
             int newPosition = (int) (player.getDuration() * (progress * 1.0 / 1000));
             String time = generateTime(newPosition);
@@ -80,7 +80,7 @@ public class DefaultMediaController extends BaseMediaController {
                 player.seekTo(newPosition);
 
             }
-            viewQuery.id(R.id.app_video_currentTime).text(time);
+            $.id(R.id.app_video_currentTime).text(time);
         }
 
         @Override
@@ -114,14 +114,14 @@ public class DefaultMediaController extends BaseMediaController {
         if (videoView.isCurrentActivePlayer()) {
             boolean playing = videoView.getPlayer().isPlaying();
             if (playing) {
-                viewQuery.id(R.id.app_video_play).image(R.drawable.ic_stop_white_24dp);
+                $.id(R.id.app_video_play).image(R.drawable.ic_stop_white_24dp);
             } else {
-                viewQuery.id(R.id.app_video_play).image(R.drawable.ic_play_arrow_white_24dp);
+                $.id(R.id.app_video_play).image(R.drawable.ic_play_arrow_white_24dp);
             }
         } else {
-            viewQuery.id(R.id.app_video_play).image(R.drawable.ic_play_arrow_white_24dp);
-            viewQuery.id(R.id.app_video_currentTime).text("");
-            viewQuery.id(R.id.app_video_endTime).text("");
+            $.id(R.id.app_video_play).image(R.drawable.ic_play_arrow_white_24dp);
+            $.id(R.id.app_video_currentTime).text("");
+            $.id(R.id.app_video_endTime).text("");
         }
     }
 
@@ -158,11 +158,11 @@ public class DefaultMediaController extends BaseMediaController {
             seekBar.setSecondaryProgress(percent * 10);
         }
 
-        viewQuery.id(R.id.app_video_currentTime).text(generateTime(position));
+        $.id(R.id.app_video_currentTime).text(generateTime(position));
         if (duration == 0) {//live stream
-            viewQuery.id(R.id.app_video_endTime).text(R.string.giraffe_player_live);
+            $.id(R.id.app_video_endTime).text(R.string.giraffe_player_live);
         } else {
-            viewQuery.id(R.id.app_video_endTime).text(generateTime(duration));
+            $.id(R.id.app_video_endTime).text(generateTime(duration));
         }
         return position;
     }
@@ -171,10 +171,10 @@ public class DefaultMediaController extends BaseMediaController {
     protected void show(int timeout) {
         if (!isShowing) {
             if (videoView.getVideoInfo().isShowTopBar() || displayModel == GiraffePlayer.DISPLAY_FULL_WINDOW) {
-                viewQuery.id(R.id.app_video_top_box).visible();
-                viewQuery.id(R.id.app_video_title).text(videoView.getVideoInfo().getTitle());
+                $.id(R.id.app_video_top_box).visible();
+                $.id(R.id.app_video_title).text(videoView.getVideoInfo().getTitle());
             } else {
-                viewQuery.id(R.id.app_video_top_box).gone();
+                $.id(R.id.app_video_top_box).gone();
             }
             showBottomControl(true);
             isShowing = true;
@@ -198,7 +198,7 @@ public class DefaultMediaController extends BaseMediaController {
 //        $.id(R.id.app_video_endTime).visibility(show ? View.VISIBLE : View.GONE);
 //        $.id(R.id.app_video_seekBar).visibility(show ? View.VISIBLE : View.GONE);
 //        $.id(R.id.app_video_fullscreen).visibility(show ? View.VISIBLE : View.GONE);
-        viewQuery.id(R.id.app_video_bottom_box).visibility(show ? View.VISIBLE : View.GONE);
+        $.id(R.id.app_video_bottom_box).visibility(show ? View.VISIBLE : View.GONE);
 
     }
 
@@ -206,7 +206,7 @@ public class DefaultMediaController extends BaseMediaController {
         if (force || isShowing) {
             handler.removeMessages(MESSAGE_SHOW_PROGRESS);
             showBottomControl(false);
-            viewQuery.id(R.id.app_video_top_box).gone();
+            $.id(R.id.app_video_top_box).gone();
 //            $.id(R.id.app_video_fullscreen).invisible();
             isShowing = false;
         }
@@ -267,16 +267,16 @@ public class DefaultMediaController extends BaseMediaController {
 
     @Override
     protected void initView(View view) {
-        seekBar = viewQuery.id(R.id.app_video_seekBar).view();
+        seekBar = $.id(R.id.app_video_seekBar).view();
         seekBar.setMax(1000);
         seekBar.setOnSeekBarChangeListener(seekListener);
-        viewQuery.id(R.id.app_video_play).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
-        viewQuery.id(R.id.app_video_fullscreen).clicked(onClickListener);
-        viewQuery.id(R.id.app_video_finish).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
-        viewQuery.id(R.id.app_video_replay_icon).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
-        viewQuery.id(R.id.app_video_clarity).clicked(onClickListener);
-        viewQuery.id(R.id.app_video_float_close).clicked(onClickListener);
-        viewQuery.id(R.id.app_video_float_full).clicked(onClickListener);
+        $.id(R.id.app_video_play).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
+        $.id(R.id.app_video_fullscreen).clicked(onClickListener);
+        $.id(R.id.app_video_finish).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
+        $.id(R.id.app_video_replay_icon).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
+        $.id(R.id.app_video_clarity).clicked(onClickListener);
+        $.id(R.id.app_video_float_close).clicked(onClickListener);
+        $.id(R.id.app_video_float_full).clicked(onClickListener);
 
 
         final GestureDetector gestureDetector = new GestureDetector(context, createGestureListener());
@@ -334,9 +334,9 @@ public class DefaultMediaController extends BaseMediaController {
                 hide(false);
                 break;
             case MESSAGE_HIDE_CENTER_BOX:
-                viewQuery.id(R.id.app_video_volume_box).gone();
-                viewQuery.id(R.id.app_video_brightness_box).gone();
-                viewQuery.id(R.id.app_video_fastForward_box).gone();
+                $.id(R.id.app_video_volume_box).gone();
+                $.id(R.id.app_video_brightness_box).gone();
+                $.id(R.id.app_video_fastForward_box).gone();
                 break;
             case MESSAGE_SEEK_NEW_POSITION:
                 if (newPosition >= 0) {
@@ -368,19 +368,19 @@ public class DefaultMediaController extends BaseMediaController {
     public void onRelease(GiraffePlayer giraffePlayer) {
         handler.removeCallbacksAndMessages(null);
 
-        viewQuery.id(R.id.app_video_play).image(R.drawable.ic_play_arrow_white_24dp);
-        viewQuery.id(R.id.app_video_currentTime).text("");
-        viewQuery.id(R.id.app_video_endTime).text("");
+        $.id(R.id.app_video_play).image(R.drawable.ic_play_arrow_white_24dp);
+        $.id(R.id.app_video_currentTime).text("");
+        $.id(R.id.app_video_endTime).text("");
 
         //1.set the cover view visible
-        viewQuery.id(R.id.app_video_cover).visible();
+        $.id(R.id.app_video_cover).visible();
         //2.set current view as cover
         VideoInfo videoInfo = videoView.getVideoInfo();
         if (videoInfo.isCurrentVideoAsCover()) {
             if (giraffePlayer.getCurrentState() != GiraffePlayer.STATE_ERROR) {
                 ScalableTextureView currentDisplay = giraffePlayer.getCurrentDisplay();
                 if (currentDisplay != null) {
-                    ImageView imageView = viewQuery.id(R.id.app_video_cover).imageView();
+                    ImageView imageView = $.id(R.id.app_video_cover).imageView();
                     if (imageView != null) {
                         int aspectRatio = videoInfo.getAspectRatio();
                         if (aspectRatio == VideoInfo.AR_ASPECT_FILL_PARENT) {
@@ -402,7 +402,7 @@ public class DefaultMediaController extends BaseMediaController {
 
     @Override
     public void onStart(GiraffePlayer giraffePlayer) {
-        viewQuery.id(R.id.app_video_replay).gone();
+        $.id(R.id.app_video_replay).gone();
         show(defaultTimeout);
         statusChange(STATUS_PLAYING);
     }
@@ -520,11 +520,11 @@ public class DefaultMediaController extends BaseMediaController {
             s = "off";
         }
         // 显示
-        viewQuery.id(R.id.app_video_volume_icon).image(i == 0 ? R.drawable.ic_volume_off_white_36dp : R.drawable.ic_volume_up_white_36dp);
-        viewQuery.id(R.id.app_video_brightness_box).gone();
-        viewQuery.id(R.id.app_video_volume_box).visible();
-        viewQuery.id(R.id.app_video_volume_box).visible();
-        viewQuery.id(R.id.app_video_volume).text(s).visible();
+        $.id(R.id.app_video_volume_icon).image(i == 0 ? R.drawable.ic_volume_off_white_36dp : R.drawable.ic_volume_up_white_36dp);
+        $.id(R.id.app_video_brightness_box).gone();
+        $.id(R.id.app_video_volume_box).visible();
+        $.id(R.id.app_video_volume_box).visible();
+        $.id(R.id.app_video_volume).text(s).visible();
     }
 
     private void onProgressSlide(float percent) {
@@ -546,11 +546,11 @@ public class DefaultMediaController extends BaseMediaController {
         }
         int showDelta = (int) delta / 1000;
         if (showDelta != 0) {
-            viewQuery.id(R.id.app_video_fastForward_box).visible();
+            $.id(R.id.app_video_fastForward_box).visible();
             String text = showDelta > 0 ? ("+" + showDelta) : "" + showDelta;
-            viewQuery.id(R.id.app_video_fastForward).text(text + "s");
-            viewQuery.id(R.id.app_video_fastForward_target).text(generateTime(newPosition) + "/");
-            viewQuery.id(R.id.app_video_fastForward_all).text(generateTime(duration));
+            $.id(R.id.app_video_fastForward).text(text + "s");
+            $.id(R.id.app_video_fastForward_target).text(generateTime(newPosition) + "/");
+            $.id(R.id.app_video_fastForward_all).text(generateTime(duration));
         }
 //        handler.sendEmptyMessage(MESSAGE_SEEK_NEW_POSITION);
     }
@@ -571,7 +571,7 @@ public class DefaultMediaController extends BaseMediaController {
             }
         }
         Log.d(this.getClass().getSimpleName(), "brightness:" + brightness + ",percent:" + percent);
-        viewQuery.id(R.id.app_video_brightness_box).visible();
+        $.id(R.id.app_video_brightness_box).visible();
         WindowManager.LayoutParams lpa = window.getAttributes();
         lpa.screenBrightness = brightness + percent;
         if (lpa.screenBrightness > 1.0f) {
@@ -579,7 +579,7 @@ public class DefaultMediaController extends BaseMediaController {
         } else if (lpa.screenBrightness < 0.01f) {
             lpa.screenBrightness = 0.01f;
         }
-        viewQuery.id(R.id.app_video_brightness).text(((int) (lpa.screenBrightness * 100)) + "%");
+        $.id(R.id.app_video_brightness).text(((int) (lpa.screenBrightness * 100)) + "%");
         window.setAttributes(lpa);
 
     }
@@ -611,8 +611,8 @@ public class DefaultMediaController extends BaseMediaController {
     public void onCurrentStateChange(int oldState, int newState) {
         if (context instanceof Activity) {
             if (newState == GiraffePlayer.STATE_LAZYLOADING) {
-                viewQuery.id(R.id.app_video_loading).gone();
-                viewQuery.id(R.id.app_video_status).visible()
+                $.id(R.id.app_video_loading).gone();
+                $.id(R.id.app_video_status).visible()
                         .id(R.id.app_video_status_text)
                         .text(context.getString(R.string.giraffe_player_lazy_loading, 0));
             }
@@ -630,24 +630,24 @@ public class DefaultMediaController extends BaseMediaController {
 
         switch (status) {
             case STATUS_LOADING:
-                viewQuery.id(R.id.app_video_loading).visible();
-                viewQuery.id(R.id.app_video_status).gone();
+                $.id(R.id.app_video_loading).visible();
+                $.id(R.id.app_video_status).gone();
                 break;
             case STATUS_PLAYING:
-                viewQuery.id(R.id.app_video_loading).gone();
-                viewQuery.id(R.id.app_video_status).gone();
+                $.id(R.id.app_video_loading).gone();
+                $.id(R.id.app_video_status).gone();
                 break;
             case STATUS_COMPLETED:
                 handler.removeMessages(MESSAGE_SHOW_PROGRESS);
                 showBottomControl(false);
-                viewQuery.id(R.id.app_video_replay).visible();
-                viewQuery.id(R.id.app_video_loading).gone();
-                viewQuery.id(R.id.app_video_status).gone();
+                $.id(R.id.app_video_replay).visible();
+                $.id(R.id.app_video_loading).gone();
+                $.id(R.id.app_video_status).gone();
                 break;
             case STATUS_ERROR:
-                viewQuery.id(R.id.app_video_status).visible().id(R.id.app_video_status_text).text(R.string.small_problem);
+                $.id(R.id.app_video_status).visible().id(R.id.app_video_status_text).text(R.string.small_problem);
                 handler.removeMessages(MESSAGE_SHOW_PROGRESS);
-                viewQuery.id(R.id.app_video_loading).gone();
+                $.id(R.id.app_video_loading).gone();
                 break;
             default:
         }
@@ -662,11 +662,11 @@ public class DefaultMediaController extends BaseMediaController {
     @Override
     public void onPrepared(GiraffePlayer giraffePlayer) {
         boolean live = giraffePlayer.getDuration() == 0;
-        viewQuery.id(R.id.app_video_seekBar).enabled(!live);
+        $.id(R.id.app_video_seekBar).enabled(!live);
         if (giraffePlayer.getTrackInfo().length > 0) {
-            viewQuery.id(R.id.app_video_clarity).visible();
+            $.id(R.id.app_video_clarity).visible();
         } else {
-            viewQuery.id(R.id.app_video_clarity).gone();
+            $.id(R.id.app_video_clarity).gone();
         }
     }
 
@@ -679,14 +679,14 @@ public class DefaultMediaController extends BaseMediaController {
     public void onDisplayModelChange(int oldModel, int newModel) {
         this.displayModel = newModel;
         if (displayModel == GiraffePlayer.DISPLAY_FLOAT) {
-            viewQuery.id(R.id.app_video_float_close).visible();
-            viewQuery.id(R.id.app_video_float_full).visible();
-            viewQuery.id(R.id.app_video_bottom_box).gone();
+            $.id(R.id.app_video_float_close).visible();
+            $.id(R.id.app_video_float_full).visible();
+            $.id(R.id.app_video_bottom_box).gone();
 
         } else {
-            viewQuery.id(R.id.app_video_float_close).gone();
-            viewQuery.id(R.id.app_video_float_full).gone();
-            viewQuery.id(R.id.app_video_bottom_box).visible();
+            $.id(R.id.app_video_float_close).gone();
+            $.id(R.id.app_video_float_full).gone();
+            $.id(R.id.app_video_bottom_box).visible();
 
         }
 //        ((ViewGroup) controllerView.getParent()).removeView(controllerView);
@@ -701,7 +701,7 @@ public class DefaultMediaController extends BaseMediaController {
     @Override
     public void onTargetStateChange(int oldState, int newState) {
         if (newState != GiraffePlayer.STATE_IDLE) {
-            viewQuery.id(R.id.app_video_cover).gone();
+            $.id(R.id.app_video_cover).gone();
         }
     }
 
@@ -709,25 +709,25 @@ public class DefaultMediaController extends BaseMediaController {
     @Override
     public void onTimedText(GiraffePlayer giraffePlayer, IjkTimedText text) {
         if (text == null) {
-            viewQuery.id(R.id.app_video_subtitle).gone();
+            $.id(R.id.app_video_subtitle).gone();
         } else {
-            viewQuery.id(R.id.app_video_subtitle).visible().text(text.getText());
+            $.id(R.id.app_video_subtitle).visible().text(text.getText());
         }
     }
 
     @Override
     public void onLazyLoadProgress(GiraffePlayer giraffePlayer, int progress) {
-        viewQuery.id(R.id.app_video_loading).gone();
-        viewQuery.id(R.id.app_video_status).visible();
-        viewQuery.id(R.id.app_video_status_text)
+        $.id(R.id.app_video_loading).gone();
+        $.id(R.id.app_video_status).visible();
+        $.id(R.id.app_video_status_text)
                 .text(context.getString(R.string.giraffe_player_lazy_loading, progress));
     }
 
     @Override
     public void onLazyLoadError(GiraffePlayer giraffePlayer, String message) {
-        viewQuery.id(R.id.app_video_loading).gone();
-        viewQuery.id(R.id.app_video_status).visible();
-        viewQuery.id(R.id.app_video_status_text)
+        $.id(R.id.app_video_loading).gone();
+        $.id(R.id.app_video_status).visible();
+        $.id(R.id.app_video_status_text)
                 .text(context.getString(R.string.giraffe_player_lazy_loading_error, message));
     }
 

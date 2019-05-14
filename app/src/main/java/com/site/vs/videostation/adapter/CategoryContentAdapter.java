@@ -6,13 +6,14 @@ import com.site.vs.videostation.R;
 import com.site.vs.videostation.adapter.base.BaseAdapterHelper;
 import com.site.vs.videostation.adapter.base.CommRecyclerAdapter;
 import com.site.vs.videostation.entity.CategoryDetailEntity;
+import com.site.vs.videostation.entity.Move;
 
 
 /**
  * @author zhangbb
  * @date 2016/12/19
  */
-public class CategoryContentAdapter extends CommRecyclerAdapter<CategoryDetailEntity.VideoEntity> {
+public class CategoryContentAdapter extends CommRecyclerAdapter<Move> {
 
 
     public CategoryContentAdapter(Context context, int id) {
@@ -20,8 +21,8 @@ public class CategoryContentAdapter extends CommRecyclerAdapter<CategoryDetailEn
     }
 
     @Override
-    public void onUpdate(BaseAdapterHelper helper, CategoryDetailEntity.VideoEntity item, int position) {
-        helper.setImageUrl(R.id.img_content, item.litpic);
+    public void onUpdate(BaseAdapterHelper helper, Move item, int position) {
+        helper.setImageUrl(R.id.img_content, item.pic);
         helper.setText(R.id.tv_name, item.title);
     }
 }

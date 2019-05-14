@@ -10,14 +10,19 @@ import android.view.View;
 
 import com.site.vs.videostation.R;
 import com.site.vs.videostation.adapter.CategoryContentAdapter;
+import com.site.vs.videostation.adapter.CategoryHeaderAdapter;
 import com.site.vs.videostation.adapter.base.CommRecyclerAdapter;
 import com.site.vs.videostation.base.RecyclerFragment;
 import com.site.vs.videostation.entity.CategoryDetailEntity;
 import com.site.vs.videostation.entity.CategoryFilterEntity;
+import com.site.vs.videostation.entity.Move;
 import com.site.vs.videostation.ui.detail.view.DetailActivity;
 import com.site.vs.videostation.widget.refreshRecycler.GridMarginDecoration;
 import com.site.vs.videostation.widget.refreshRecycler.RecyclerAdapterWithHF;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.ButterKnife;
@@ -26,12 +31,20 @@ import butterknife.ButterKnife;
  * @author zhangbb
  * @date 2016/12/19
  */
-public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.VideoEntity> implements RecyclerAdapterWithHF.OnItemClickListener {
+public class CategoryFragment extends RecyclerFragment<Move> implements RecyclerAdapterWithHF.OnItemClickListener {
 
+    private RecyclerView categoryListView;
+    private RecyclerView areaListView;
+    private RecyclerView yearListView;
+
+    private CategoryHeaderAdapter headerTopAdapter;
+    private CategoryHeaderAdapter headerMidAdapter;
+    private CategoryHeaderAdapter headerBtmAdapter;
 
     private static final int SIZE = 20;
     protected int pageIndex = 1;
     protected int totalPage;
+
 
 
     @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -43,8 +56,11 @@ public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.Vide
     }
 
     @Override protected View createHeader() {
-
-        return LayoutInflater.from(getContext()).inflate(R.layout.fragment_category_header, null);
+        View headerView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_category_header, null);
+        categoryListView = (RecyclerView) headerView.findViewById(R.id.list_category);
+        areaListView = (RecyclerView) headerView.findViewById(R.id.list_area);
+        yearListView = (RecyclerView) headerView.findViewById(R.id.list_time);
+        return headerView;
     }
 
     @Override protected CommRecyclerAdapter createAdapter() {
@@ -55,11 +71,118 @@ public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.Vide
      * 初始化筛选条件
      *
      * @param entity
-     * @param cid
+     * @param tid
      */
-    public void setHeaderData(CategoryDetailEntity entity, String cid) {
+    public void setHeaderData(CategoryDetailEntity entity, String tid) {
         if (entity == null) return;
+        if (entity.category_list != null && entity.category_list.size() > 0) {
+            categoryListView.setVisibility(View.VISIBLE);
+            headerTopAdapter = new CategoryHeaderAdapter(getContext(), R.layout.category_list_item, "全部类别");
+            final LinearLayoutManager headerLayout = new LinearLayoutManager(getContext());
+            headerLayout.setOrientation(LinearLayoutManager.HORIZONTAL);
+            categoryListView.setLayoutManager(headerLayout);
+            categoryListView.addItemDecoration(new GridMarginDecoration(10));
+            categoryListView.setAdapter(headerTopAdapter);
+            headerTopAdapter.addAll(entity.category_list);
+            int selectPosition = 0;
+            for (CategoryFilterEntity en : entity.category_list) {
+                selectPosition++;
+                if (en.tid.equals(tid)) {
+                    headerTopAdapter.setDefaultSelect(selectPosition);
+                    smoothMoveToPosition(categoryListView, headerLayout, selectPosition);
+                    break;
+                }
+            }
+            headerTopAdapter.setChangeListener(new CategoryHeaderAdapter.OnFilterChangeListener() {
+                @Override
+                public void OnFilterChangeClick(int i) {
+                    updateFilter();
+                    smoothMoveToPosition(categoryListView, headerLayout, i);
+                }
+            });
+        }
 
+        //地区筛选
+        if (entity.area_list != null && entity.area_list.size() > 0) {
+            areaListView.setVisibility(View.VISIBLE);
+            List<CategoryFilterEntity> areaList = new ArrayList<>();
+            CategoryFilterEntity filterEntity;
+            for (String area : entity.area_list) {
+                filterEntity = new CategoryFilterEntity();
+                filterEntity.tname = area;
+                areaList.add(filterEntity);
+            }
+            headerMidAdapter = new CategoryHeaderAdapter(getContext(), R.layout.category_list_item, "全部地区");
+            final LinearLayoutManager areLayout = new LinearLayoutManager(getContext());
+            areLayout.setOrientation(LinearLayoutManager.HORIZONTAL);
+            areaListView.setLayoutManager(areLayout);
+            areaListView.addItemDecoration(new GridMarginDecoration(10));
+            areaListView.setAdapter(headerMidAdapter);
+            headerMidAdapter.addAll(areaList);
+            headerMidAdapter.setChangeListener(new CategoryHeaderAdapter.OnFilterChangeListener() {
+                @Override
+                public void OnFilterChangeClick(int i) {
+                    updateFilter();
+                    smoothMoveToPosition(areaListView, areLayout, i);
+                }
+            });
+        }
+        //时间筛选
+        if (entity.year_list != null && entity.year_list.size() > 0) {
+            yearListView.setVisibility(View.VISIBLE);
+            List<CategoryFilterEntity> yearList = new ArrayList<>();
+            CategoryFilterEntity filterEntity;
+            for (String year : entity.year_list) {
+                filterEntity = new CategoryFilterEntity();
+                filterEntity.tname = year;
+                yearList.add(filterEntity);
+            }
+            headerBtmAdapter = new CategoryHeaderAdapter(getContext(), R.layout.category_list_item, "全部年份");
+            final LinearLayoutManager yearLayout = new LinearLayoutManager(getContext());
+            yearLayout.setOrientation(LinearLayoutManager.HORIZONTAL);
+            yearListView.setLayoutManager(yearLayout);
+            yearListView.addItemDecoration(new GridMarginDecoration(10));
+            yearListView.setAdapter(headerBtmAdapter);
+            headerBtmAdapter.addAll(yearList);
+            headerBtmAdapter.setChangeListener(new CategoryHeaderAdapter.OnFilterChangeListener() {
+                @Override
+                public void OnFilterChangeClick(int i) {
+                    updateFilter();
+                    smoothMoveToPosition(yearListView, yearLayout, i);
+                }
+            });
+        }
+
+    }
+
+    /**
+     * 条件筛选
+     */
+    private void updateFilter() {
+        Map<String, String> map = new HashMap<>();
+
+        if (headerTopAdapter != null) {
+            CategoryFilterEntity categoryItem = headerTopAdapter.getSelectItem();
+            if (categoryItem != null) {
+                map.put("tid", categoryItem.tid);
+            }
+        }
+        if (headerMidAdapter != null) {
+            CategoryFilterEntity areaItem = headerMidAdapter.getSelectItem();
+            if (areaItem != null) {
+                map.put("area", areaItem.tname);
+            }
+        }
+        if (headerBtmAdapter != null) {
+            CategoryFilterEntity yearItem = headerBtmAdapter.getSelectItem();
+            if (yearItem != null) {
+                map.put("year", yearItem.tname);
+            }
+        }
+        if (changeListener != null) {
+            pageIndex = 1;
+            changeListener.filterChange(map);
+        }
     }
 
     private void smoothMoveToPosition(RecyclerView list, LinearLayoutManager layoutManager, int position) {
@@ -76,12 +199,12 @@ public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.Vide
 
     public void updateList(CategoryDetailEntity entity) {
         initPages(entity);
-        initDataSuccess(entity.list, pageIndex < totalPage);
+        initDataSuccess(entity.vod_list, pageIndex < totalPage);
     }
 
     public void appendList(CategoryDetailEntity entity) {
         initPages(entity);
-        loadMoreDataSuccess(entity.list, pageIndex <= totalPage);
+        loadMoreDataSuccess(entity.vod_list, pageIndex <= totalPage);
     }
 
     private void initPages(CategoryDetailEntity entity) {
@@ -108,7 +231,7 @@ public class CategoryFragment extends RecyclerFragment<CategoryDetailEntity.Vide
     @Override public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
         CategoryFilterEntity item = (CategoryFilterEntity) commRecyclerAdapter.getItem(position);
         Bundle bundle = new Bundle();
-        bundle.putString("id", item.id);
+        bundle.putString("id", item.tid);
         Intent intent = new Intent(getContext(), DetailActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);

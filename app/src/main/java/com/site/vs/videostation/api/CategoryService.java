@@ -23,8 +23,8 @@ public interface CategoryService {
      * search
      */
     @FormUrlEncoded
-    @POST("ysapi/v1/rank/getrank")
-    Observable<JSONResult<CategoryDetailEntity>> getCategoryBy(@Field("typeid") String id,
+    @POST("category/list")
+    Observable<JSONResult<CategoryDetailEntity>> getCategoryBy(@Field("tid") String id,
                                                                @FieldMap Map<String, String> options,
                                                                @Field("page") int pages);
 }

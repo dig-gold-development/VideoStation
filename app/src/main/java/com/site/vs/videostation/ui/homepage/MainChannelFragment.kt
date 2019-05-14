@@ -49,15 +49,54 @@ class MainChannelFragment : BaseFragment() {
 
     private fun initData(data: ChannelEntity) {
         this.en = data
+        if (data.hot.count() == 4) {
+            var movieTotal = data.hot[0].total;
+            var tvTotal = data.hot[1].total
+            var artsTotal = data.hot[2].total
+            var comicTotal = data.hot[3].total
+            tvMovieTotal.text = "$movieTotal"
+            tvTvTotal.text ="$tvTotal"
+            tvArtsTotal.text = "$artsTotal"
+            tvComicTotal.text = "$comicTotal"
 
-        movieGridView!!.adapter = object : Lib_BaseAdapter<ChannelEntity.Channel>(data.list) {
+            layoutMovie.setOnClickListener {
+                val intent = Intent(it.getContext(), CategoryActivity::class.java)
+                var tid = data.hot[0].tid
+                intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "$tid")
+                startActivity(intent)
+            }
+
+            layoutTv.setOnClickListener {
+                val intent = Intent(it.getContext(), CategoryActivity::class.java)
+                var tid = data.hot[1].tid
+                intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "$tid")
+                startActivity(intent)
+            }
+
+            layoutArts.setOnClickListener {
+                val intent = Intent(it.getContext(), CategoryActivity::class.java)
+                var tid = data.hot[2].tid
+                intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "$tid")
+                startActivity(intent)
+            }
+
+            layoutComic.setOnClickListener {
+                val intent = Intent(it.getContext(), CategoryActivity::class.java)
+                var tid = data.hot[3].tid
+                intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "$tid")
+                startActivity(intent)
+            }
+
+        }
+
+        movieGridView!!.adapter = object : Lib_BaseAdapter<ChannelEntity.Channel>(data.channels) {
             override fun getView(layoutInflater: LayoutInflater, hot: ChannelEntity.Channel, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_channel)
-                holder.setText(R.id.tv_name, hot.typename)
+                holder.setText(R.id.tv_name, hot.tname)
                 setImageURI(holder.getView(R.id.iv_image), "")
                 holder.rootView.setOnClickListener { v ->
                     val intent = Intent(v.context, CategoryActivity::class.java)
-                    intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "${hot.typeid}")
+                    intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "${hot.tid}")
                     startActivity(intent)
                 }
                 return holder.rootView

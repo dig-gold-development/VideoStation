@@ -6,9 +6,8 @@ package com.site.vs.videostation.entity;
  */
 public class CategoryFilterEntity {
 
-    public String id;
-    public String name;
-    public String pid;
-    public String litpic;
+    public String tid;
+    public String tname;
+    public String pic;
 
 }

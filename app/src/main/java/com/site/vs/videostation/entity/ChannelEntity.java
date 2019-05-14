@@ -11,11 +11,12 @@ import java.util.List;
 
 public class ChannelEntity {
 
-    public List<Channel> list;
+    public List<Channel> hot;
+    public List<Channel> channels;
 
     public static class Channel {
-        public String typeid;
-        public String typename;
+        public String tid;
+        public String tname;
         public String total;
 
     }

@@ -21,8 +21,7 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
     private var paraMap: MutableMap<String, String>? = null
 
 
-    private var id: String? = null
-    private var cid: String? = null
+    private var tid: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,20 +36,19 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
 
     private fun initData() {
         showLoading()
-        id = intent.getStringExtra(EXTRA_STRING_ID)
-        cid = intent.getStringExtra(EXTRA_STRING_CID)
+        tid = intent.getStringExtra(EXTRA_STRING_ID)
 
-        when (Integer.parseInt(id!!)) {
-            2 -> tv_title!!.text = "电视剧"
-            3 -> tv_title!!.text = "动漫"
-            4 -> tv_title!!.text = "综艺"
+        when (Integer.parseInt(tid!!)) {
+            29 -> tv_title!!.text = "电视剧"
+            31 -> tv_title!!.text = "动漫"
+            30 -> tv_title!!.text = "综艺"
         }
 
         paraMap = HashMap()
-        paraMap!!["cid"] = if (cid == null) "" else cid!!
+        paraMap!!["tid"] = "$tid"
         paraMap!!["year"] = ""
         paraMap!!["area"] = ""
-        mPresenter.initCategoryBy(id, paraMap, 1, true)
+        mPresenter.initCategoryBy(tid, paraMap, 1, true)
 
 
 
@@ -63,12 +61,12 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
 
     override fun initCategorySuccess(entity: CategoryDetailEntity) {
         tipsLayout!!.onDone()
-        categoryFragment!!.setHeaderData(entity, cid)
+        categoryFragment!!.setHeaderData(entity, tid)
         initCategoryContentSuccess(entity)
     }
 
     override fun initCategoryContentSuccess(entity: CategoryDetailEntity?) {
-        if (entity != null && entity.list != null) {
+        if (entity != null && entity.category_list != null) {
             categoryFragment!!.updateList(entity)
         }
     }
@@ -83,7 +81,7 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
 
     override fun initCategoryFail() {
         tipsLayout!!.onError()
-        tipsLayout!!.setErrorButtonListener { mPresenter.initCategoryBy(id, paraMap, 1, true) }
+        tipsLayout!!.setErrorButtonListener { mPresenter.initCategoryBy(tid, paraMap, 1, true) }
     }
 
     override fun showLoading() {
@@ -96,12 +94,12 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
 
     override fun filterChange(map: MutableMap<String, String>) {
         this.paraMap = map
-        mPresenter.initCategoryBy(id, map, 1, false)
+        mPresenter.initCategoryBy(tid, map, 1, false)
     }
 
     override fun loadMore(pageIndex: Int) {
         if (paraMap != null)
-            mPresenter.loadMoreVideo(id, paraMap, pageIndex)
+            mPresenter.loadMoreVideo(tid, paraMap, pageIndex)
     }
 
     fun searchMovies() {

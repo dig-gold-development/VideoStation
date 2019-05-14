@@ -34,7 +34,7 @@ public interface ApiService {
     /**
      * 频道
      */
-    @GET("ysapi/v1/channel/all")
+    @GET("channel/getChannels")
     Observable<JSONResult<ChannelEntity>> channel();
 
     /**

@@ -59,6 +59,11 @@ class MainChannelFragment : BaseFragment() {
             tvArtsTotal.text = "$artsTotal"
             tvComicTotal.text = "$comicTotal"
 
+//            setImageURI(ivMovie, data.hot[0].pic)
+//            setImageURI(ivTv, data.hot[1].pic)
+//            setImageURI(ivComic, data.hot[2].pic)
+//            setImageURI(ivArts, data.hot[3].pic)
+
             layoutMovie.setOnClickListener {
                 val intent = Intent(it.getContext(), CategoryActivity::class.java)
                 var tid = data.hot[0].tid
@@ -93,7 +98,7 @@ class MainChannelFragment : BaseFragment() {
             override fun getView(layoutInflater: LayoutInflater, hot: ChannelEntity.Channel, i: Int, view: View?, viewGroup: ViewGroup): View {
                 val holder = _getViewHolder(view, viewGroup, R.layout.list_item_channel)
                 holder.setText(R.id.tv_name, hot.tname)
-                setImageURI(holder.getView(R.id.iv_image), "")
+                setImageURI(holder.getView(R.id.iv_image), hot.pic)
                 holder.rootView.setOnClickListener { v ->
                     val intent = Intent(v.context, CategoryActivity::class.java)
                     intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "${hot.tid}")

@@ -229,9 +229,9 @@ public class CategoryFragment extends RecyclerFragment<Move> implements Recycler
     }
 
     @Override public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
-        CategoryFilterEntity item = (CategoryFilterEntity) commRecyclerAdapter.getItem(position);
+        Move item = (Move) commRecyclerAdapter.getItem(position);
         Bundle bundle = new Bundle();
-        bundle.putString("id", item.tid);
+        bundle.putString("id", item.id);
         Intent intent = new Intent(getContext(), DetailActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);

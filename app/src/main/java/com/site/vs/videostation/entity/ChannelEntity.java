@@ -18,6 +18,7 @@ public class ChannelEntity {
         public String tid;
         public String tname;
         public String total;
+        public String pic;
 
     }
 

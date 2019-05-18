@@ -139,7 +139,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
                 drawerLayout.openDrawer(Gravity.RIGHT);
                 break;
             case R.id.app_video_sel_definition:
-                if (definitionPopupWindow == null) {
+//                if (definitionPopupWindow == null) {
                     LayoutInflater inflater = LayoutInflater.from(this);
                     View contentView = inflater.inflate(R.layout.popupwindow_definition, null);
                     definitionLv = contentView.findViewById(R.id.listview);
@@ -174,7 +174,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
                     definitionPopupWindow.setTouchable(true);
                     definitionPopupWindow.setFocusable(true);
 
-                }
+//                }
                 int[] location = new int[2];
                 view.getLocationOnScreen(location);
                 definitionPopupWindow.showAtLocation(drawerLayout, Gravity.NO_GRAVITY, location[0],

@@ -24,10 +24,10 @@ android {
         //X86_64设备兼容X86_64、X86、armeabi；
         //mips64设备兼容mips64、mips；
         //mips只兼容mips；
-        ndk {
-            // 设置支持的SO库架构
-            abiFilters /*'x86', */'arm64-v8a' /*,'armeabi-v7a'*/// 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
-        }
+//        ndk {
+//            // 设置支持的SO库架构
+//            abiFilters /*'x86', */'arm64-v8a' /*,'armeabi-v7a'*/// 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//        }
 
 
     }

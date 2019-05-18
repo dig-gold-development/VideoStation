@@ -48,7 +48,7 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
         paraMap!!["tid"] = "$tid"
         paraMap!!["year"] = ""
         paraMap!!["area"] = ""
-        mPresenter.initCategoryBy(tid, paraMap, 1, true)
+        mPresenter.initCategoryBy(paraMap, 1, true)
 
 
 
@@ -81,7 +81,7 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
 
     override fun initCategoryFail() {
         tipsLayout!!.onError()
-        tipsLayout!!.setErrorButtonListener { mPresenter.initCategoryBy(tid, paraMap, 1, true) }
+        tipsLayout!!.setErrorButtonListener { mPresenter.initCategoryBy( paraMap, 1, true) }
     }
 
     override fun showLoading() {
@@ -94,7 +94,7 @@ class CategoryActivity : MVPBaseActivity<CategoryPresenter>(), CategoryDetailCon
 
     override fun filterChange(map: MutableMap<String, String>) {
         this.paraMap = map
-        mPresenter.initCategoryBy(tid, map, 1, false)
+        mPresenter.initCategoryBy(map, 1, false)
     }
 
     override fun loadMore(pageIndex: Int) {

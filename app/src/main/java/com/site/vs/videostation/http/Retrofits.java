@@ -22,7 +22,6 @@ public class Retrofits {
         synchronized (Retrofits.class) {
             OkHttpClient.Builder client = new OkHttpClient().newBuilder();
 
-
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             if (BuildConfig.BUILD_TYPE.equals("debug")) {
                 logging.setLevel(HttpLoggingInterceptor.Level.BODY);

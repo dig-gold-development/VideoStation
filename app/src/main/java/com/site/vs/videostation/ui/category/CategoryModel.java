@@ -17,8 +17,8 @@ import rx.Observable;
 public class CategoryModel implements CategoryDetailContract.Model {
 
     @Override
-    public Observable<JSONResult<CategoryDetailEntity>> getCategoryBy(String id, Map<String, String> map, int page) {
-        return Retrofits.createApi(CategoryService.class).getCategoryBy(id, map, page);
+    public Observable<JSONResult<CategoryDetailEntity>> getCategoryBy( Map<String, String> map, int page) {
+        return Retrofits.createApi(CategoryService.class).getCategoryBy( map, page);
     }
 
 }

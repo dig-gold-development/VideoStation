@@ -24,7 +24,6 @@ public interface CategoryService {
      */
     @FormUrlEncoded
     @POST("category/list")
-    Observable<JSONResult<CategoryDetailEntity>> getCategoryBy(@Field("tid") String id,
-                                                               @FieldMap Map<String, String> options,
+    Observable<JSONResult<CategoryDetailEntity>> getCategoryBy(@FieldMap Map<String, String> options,
                                                                @Field("page") int pages);
 }

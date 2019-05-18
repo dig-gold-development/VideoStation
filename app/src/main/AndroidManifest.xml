@@ -46,6 +46,10 @@
             android:name=".ui.category.CategoryActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ui.SettingActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

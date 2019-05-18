@@ -8,6 +8,7 @@ import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseActivity
 import com.site.vs.videostation.ui.homepage.MainChannelFragment
 import com.site.vs.videostation.ui.homepage.MainHomeFragment
+import com.site.vs.videostation.ui.homepage.MainMineFragment
 import com.site.vs.videostation.ui.homepage.MainRankingFragment
 import com.zhusx.core.utils._Activitys._addFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -49,7 +50,11 @@ class MainActivity : BaseActivity() {
                 }
 
                 R.id.mine -> {
-//                    CrashReport.testJavaCrash()
+                    i = 3
+                    if (fragments[i] == null) {
+                        fragments[i] = MainMineFragment()
+                    }
+
                 }
 
 

@@ -19,7 +19,7 @@ import rx.Observable;
 public interface CategoryDetailContract {
 
     interface Model extends BaseModel {
-        Observable<JSONResult<CategoryDetailEntity>> getCategoryBy(String id, Map<String, String> map, int page);
+        Observable<JSONResult<CategoryDetailEntity>> getCategoryBy( Map<String, String> map, int page);
     }
 
 
@@ -37,7 +37,7 @@ public interface CategoryDetailContract {
     }
 
     abstract class Presenter extends BasePresenter<View, CategoryModel> {
-        public abstract void initCategoryBy(String id, Map<String, String> map, int page, boolean b);
+        public abstract void initCategoryBy( Map<String, String> map, int page, boolean b);
 
         public abstract void loadMoreVideo(String id, Map<String, String> paraMap, int pageIndex);
     }

@@ -41,6 +41,8 @@ public class CategoryFragment extends RecyclerFragment<Move> implements Recycler
     private CategoryHeaderAdapter headerMidAdapter;
     private CategoryHeaderAdapter headerBtmAdapter;
 
+    private  String tid;
+
     private static final int SIZE = 20;
     protected int pageIndex = 1;
     protected int totalPage;
@@ -74,6 +76,7 @@ public class CategoryFragment extends RecyclerFragment<Move> implements Recycler
      * @param tid
      */
     public void setHeaderData(CategoryDetailEntity entity, String tid) {
+        this.tid = tid;
         if (entity == null) return;
         if (entity.category_list != null && entity.category_list.size() > 0) {
             categoryListView.setVisibility(View.VISIBLE);
@@ -161,6 +164,7 @@ public class CategoryFragment extends RecyclerFragment<Move> implements Recycler
     private void updateFilter() {
         Map<String, String> map = new HashMap<>();
 
+        map.put("tid", this.tid);
         if (headerTopAdapter != null) {
             CategoryFilterEntity categoryItem = headerTopAdapter.getSelectItem();
             if (categoryItem != null) {
@@ -171,6 +175,7 @@ public class CategoryFragment extends RecyclerFragment<Move> implements Recycler
             CategoryFilterEntity areaItem = headerMidAdapter.getSelectItem();
             if (areaItem != null) {
                 map.put("area", areaItem.tname);
+
             }
         }
         if (headerBtmAdapter != null) {

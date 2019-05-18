@@ -21,8 +21,8 @@ public class CategoryPresenter extends CategoryDetailContract.Presenter {
     }
 
     @Override
-    public void initCategoryBy(String id, Map<String, String> map, int page, final boolean b) {
-        toSubscribe(mModel.getCategoryBy(id, map, page),
+    public void initCategoryBy(Map<String, String> map, int page, final boolean b) {
+        toSubscribe(mModel.getCategoryBy(map, page),
                 new Subscriber<JSONResult<CategoryDetailEntity>>() {
                     @Override
                     public void onCompleted() {
@@ -47,7 +47,7 @@ public class CategoryPresenter extends CategoryDetailContract.Presenter {
 
     @Override
     public void loadMoreVideo(String id, Map<String, String> map, int page) {
-        toSubscribe(mModel.getCategoryBy(id, map, page),
+        toSubscribe(mModel.getCategoryBy( map, page),
                 new Subscriber<JSONResult<CategoryDetailEntity>>() {
                     @Override
                     public void onCompleted() {

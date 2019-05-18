@@ -13,7 +13,9 @@
             android:id="@+id/img_content"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            style="@style/fresco_loading"
             app:placeholderImage="@color/c_e5"
+            android:scaleType="fitXY"
             app:viewAspectRatio="0.75" />
 
         <TextView

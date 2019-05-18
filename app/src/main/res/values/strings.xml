@@ -13,5 +13,9 @@
     <string name="cube_ptr_seconds_ago">&#160;秒之前</string>
     <string name="cube_ptr_minutes_ago">&#160;分钟之前</string>
     <string name="cube_ptr_hours_ago">&#160;小时之前</string>
+    <string name="clear_cache">清除图片缓存</string>
+    <string name="setting_content">%1$s通过链接的方式提供相关内容。链接内容均为第三方内容提供方提供。%2$s十分重视网络版权及其它知识产权以及用户权益的保护。
+\n%3$s自身不存储、控制、编辑或修改被链接的第三方网页上的信息内容或表现形式，对提供链接的内容不拥有任务权利，也不负任何责任，不提供任何明示或暗示的担保，不承担用户因使用这些内容资源对自己和他人造人任何形式的损失或伤害。
+\n联系我们：%4$s</string>
 
 </resources>

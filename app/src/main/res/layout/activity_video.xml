@@ -237,6 +237,7 @@
                     android:layout_marginLeft="8dp"
                     android:gravity="center"
                     android:text="高清"
+                    android:padding="10dp"
                     android:textColor="@android:color/white"
                     android:textSize="12dp" />
 
@@ -247,6 +248,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="8dp"
                     android:gravity="center"
+                    android:padding="10dp"
                     android:text="选集"
                     android:textColor="@android:color/white"
                     android:textSize="12dp"

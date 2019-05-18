@@ -1,2 +1,3 @@
+include ':app',  ':giraffeplayer'/*, ':basenet'*/
 
-include ':app' ,':giraffeplayer'
+

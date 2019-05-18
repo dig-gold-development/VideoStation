@@ -52,7 +52,8 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     private int realUrl;
 
 
-    public static void playVideo(Activity activity, String title, String url, DetailEntity entity, int originIndex, int playIndex, int time) {
+    public static void playVideo(Activity activity, String title, String url, DetailEntity entity, int originIndex,
+                                 int playIndex, int time) {
         Intent intent = new Intent(activity, VideoActivity.class);
         intent.putExtra(TITLE, title);
         intent.putExtra(URL, url);
@@ -91,8 +92,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     private boolean isInPlay = false;
     private String definition = "2";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
         ButterKnife.bind(this);
@@ -101,8 +101,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
         initPlayer();
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
+    @Override protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         initData(intent);
         initViews();
@@ -111,8 +110,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
 
     private void initViews() {
         if (entity.type != 1) {
-            if (canPlayNext())
-                nextIv.setVisibility(View.VISIBLE);
+            if (canPlayNext()) nextIv.setVisibility(View.VISIBLE);
 
             if (vodListFragment == null) {
                 vodListFragment = new VodListFragment();
@@ -124,16 +122,15 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
                 vodListFragment.setArguments(bundle);
             }
             selPlayTv.setVisibility(View.VISIBLE);
-            if (!vodListFragment.isAdded())
-                getSupportFragmentManager().beginTransaction().replace(R.id.right_content, vodListFragment).commitAllowingStateLoss();
+            if (!vodListFragment.isAdded()) getSupportFragmentManager().beginTransaction().replace(R.id.right_content,
+                                                                                                   vodListFragment).commitAllowingStateLoss();
         }
 
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         fullscreenTv.setVisibility(View.GONE);
     }
 
-    @OnClick({R.id.app_video_next, R.id.app_video_sel_play, R.id.app_video_sel_definition})
-    void onClick(View view) {
+    @OnClick({R.id.app_video_next, R.id.app_video_sel_play, R.id.app_video_sel_definition}) void onClick(View view) {
         switch (view.getId()) {
             case R.id.app_video_next:
                 playNext();
@@ -142,30 +139,34 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
                 drawerLayout.openDrawer(Gravity.RIGHT);
                 break;
             case R.id.app_video_sel_definition:
-                if (definitionPopupWindow == null) {
+//                if (definitionPopupWindow == null) {
                     LayoutInflater inflater = LayoutInflater.from(this);
-                    View root = inflater.inflate(R.layout.popupwindow_definition, null);
-                    definitionLv = (LinearLayout) root.findViewById(R.id.listview);
-                    for (int i = 0; i < type_list.size(); i++) {
-                        TextView tvName = (TextView) LayoutInflater.from(this).inflate(R.layout.list_item_definition, definitionLv, false);
-                        tvName.setText(type_list.get(i).type);
-                        final int temp = i;
-                        tvName.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                definitionTv.setText(type_list.get(temp).type);
-                                definitionPopupWindow.dismiss();
-                                player.pause();
-                                definition = type_list.get(temp).hd + "";
-                                mPresenter.playMove(url, definition,
-                                        entity.type == 1 ? "" : entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
-                                currentPos = player.getCurrentPosition();
-                            }
-                        });
-                        definitionLv.addView(tvName);
-                    }
-                    definitionPopupWindow = new PopupWindow(root, ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                    View contentView = inflater.inflate(R.layout.popupwindow_definition, null);
+                    definitionLv = contentView.findViewById(R.id.listview);
+                    if (type_list != null) {
+                        for (int i = 0; i < type_list.size(); i++) {
+                            TextView tvName = (TextView) LayoutInflater.from(this).inflate(
+                                    R.layout.list_item_definition, definitionLv, false);
+                            tvName.setText(type_list.get(i).type);
+                            final int temp = i;
+                            tvName.setOnClickListener(new View.OnClickListener() {
+                                @Override public void onClick(View v) {
+                                    definitionTv.setText(type_list.get(temp).type);
+                                    definitionPopupWindow.dismiss();
+                                    player.pause();
+                                    definition = type_list.get(temp).hd + "";
+                                    mPresenter.playMove(url, definition,
+                                                        entity.type == 1 ? "" : entity.vod_url_list.get(
+                                                                originIndex).list.get(playIndex).play_name);
+                                    currentPos = player.getCurrentPosition();
+                                }
+                            });
+                            definitionLv.addView(tvName);
+                        }
+                    } else Toast.makeText(this, "对不起，当前只有一种清晰度", Toast.LENGTH_SHORT).show();
+
+                    definitionPopupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT,
+                                                            ViewGroup.LayoutParams.WRAP_CONTENT);
                     definitionPopupWindow.setBackgroundDrawable(new BitmapDrawable());
                     definitionPopupWindow.setOutsideTouchable(true);
                     definitionPopupWindow.setAnimationStyle(android.R.style.Animation_Dialog);
@@ -173,10 +174,11 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
                     definitionPopupWindow.setTouchable(true);
                     definitionPopupWindow.setFocusable(true);
 
-                }
+//                }
                 int[] location = new int[2];
                 view.getLocationOnScreen(location);
-                definitionPopupWindow.showAtLocation(drawerLayout, Gravity.NO_GRAVITY, location[0], location[1] - UnitUtils.dip2px(this, 150f));
+                definitionPopupWindow.showAtLocation(drawerLayout, Gravity.NO_GRAVITY, location[0],
+                                                     location[1] - UnitUtils.dip2px(this, 150f));
                 break;
         }
     }
@@ -200,8 +202,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
             player.setFullScreenOnly(true);
             player.setScaleType(GiraffePlayer.SCALETYPE_FITPARENT);
             player.onComplete(new Runnable() {
-                @Override
-                public void run() {
+                @Override public void run() {
                     if (entity.type != 1) {
                         playNext();
                     }
@@ -218,8 +219,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
         } else if (realUrl == 1) {
             url = url.replace("\r\n", "").replace("\t", "").replace(" ", "");
             player.play(url);
-            if (currentPos != 0)
-                player.seekTo(currentPos, false);
+            if (currentPos != 0) player.seekTo(currentPos, false);
             isInPlay = true;
         }
 
@@ -231,66 +231,56 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     private void playNext() {
         if (canPlayNext()) {
             player.pause();
-            mPresenter.playMove(entity.vod_url_list.get(originIndex).list.get(playIndex + 1).play_url,
-                    definition, entity.vod_url_list.get(originIndex).list.get(playIndex + 1).play_name);
+            mPresenter.playMove(entity.vod_url_list.get(originIndex).list.get(playIndex + 1).play_url, definition,
+                                entity.vod_url_list.get(originIndex).list.get(playIndex + 1).play_name);
             player.setTitle(entity.vod_url_list.get(originIndex).list.get(playIndex + 1).play_name);
             playIndex++;
         }
     }
 
-    @Override
-    protected void createPresenter() {
+    @Override protected void createPresenter() {
         mPresenter = new PlayPresenter();
     }
 
 
-    @Override
-    public void playMoveSuccess(MoveAddressEntity entity, String title) {
+    @Override public void playMoveSuccess(MoveAddressEntity entity, String title) {
         Logger.e(new Gson().toJson(entity) + " \n " + title);
 
         player.play(entity.file);
-        if (currentPos != 0)
-            player.seekTo(currentPos, false);
+        if (currentPos != 0) player.seekTo(currentPos, false);
         player.setTitle(this.entity.name + " " + (this.entity.type == 1 ? "" : title));
 
         type_list = entity.type_list;
         isInPlay = true;
     }
 
-    @Override
-    public void playWebMoveSuccess(String msg) {
+    @Override public void playWebMoveSuccess(String msg) {
         finish();
         Intent intent = new Intent(this, WebVideoActivity.class);
         intent.putExtra(WebVideoActivity.URL, msg);
         startActivity(intent);
     }
 
-    @Override
-    public void playMoveFailed(String msg) {
+    @Override public void playMoveFailed(String msg) {
         finish();
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         isInPlay = false;
     }
 
-    @Override
-    protected void onPause() {
+    @Override protected void onPause() {
         super.onPause();
-        if (isInPlay)
-            saveHistory();
-        if (player != null)
-            player.onPause();
+        if (isInPlay) saveHistory();
+        if (player != null) player.onPause();
     }
 
-    @Override
-    protected void onResume() {
+    @Override protected void onResume() {
         super.onResume();
         if (player != null) {
             player.onResume();
         }
     }
 
-    @Override
-    protected void onDestroy() {
+    @Override protected void onDestroy() {
         super.onDestroy();
         if (player != null) {
             player.onDestroy();
@@ -298,11 +288,11 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     }
 
     private void saveHistory() {
-        if (currentPos != 0 && player.getCurrentPosition() == 0)
-            return;
+        if (currentPos != 0 && player.getCurrentPosition() == 0) return;
         currentPos = player.getCurrentPosition();
         HistoryEntity historyEntity = new HistoryEntity();
-        historyEntity.playName = entity.type == 1 ? "" : entity.vod_url_list.get(originIndex).list.get(playIndex).play_name;
+        historyEntity.playName = entity.type == 1 ? "" : entity.vod_url_list.get(originIndex).list.get(
+                playIndex).play_name;
         historyEntity.playTime = currentPos;
         historyEntity.originIndex = originIndex;
         historyEntity.playIndex = playIndex;
@@ -312,24 +302,21 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
         DBManager.putHistory(historyEntity);
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    @Override public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         if (player != null) {
             player.onConfigurationChanged(newConfig);
         }
     }
 
-    @Override
-    public void onBackPressed() {
+    @Override public void onBackPressed() {
         if (player != null && player.onBackPressed()) {
             return;
         }
         super.onBackPressed();
     }
 
-    @Override
-    public void showLoading() {
+    @Override public void showLoading() {
         super.showLoading();
         player.showLoading();
         isInPlay = false;

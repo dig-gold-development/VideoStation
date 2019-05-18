@@ -30,6 +30,7 @@ loseWeightApk(){
      -unusedAssets --ignoreAssets *.so \
      -unstrippedSo --toolnm $ANDROID_NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-nm \
      -checkMultiSTL --toolnm $ANDROID_NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-nm \
+
      #把这方法工程中间去
     #  -unusedResource --rTxt /Users/williamjin/SampleApplication/app/build/intermediates/symbols/release/R.txt --ignoreResources R.raw.*,R.style.*,R.attr.*,R.id.*,R.string.ignore_*
         #  --mappingTxt:/Users/williamjin/SampleApplication/app/build/outputs/mapping/release/mapping.txt \

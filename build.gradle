@@ -48,3 +48,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+//task sayHello {
+//    println "hello from task 'sayHello'"
+//}

@@ -12,7 +12,7 @@ import android.util.AttributeSet;
  * @author ccheng
  * @Date 3/18/14
  */
-public class JustifyTextView extends android.support.v7.widget.AppCompatTextView {
+public class JustifyTextView extends androidx.appcompat.widget.AppCompatTextView {
 
     private int mLineY;
     private int mViewWidth;

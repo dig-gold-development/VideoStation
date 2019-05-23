@@ -1,8 +1,8 @@
 package com.site.vs.videostation.widget.refreshRecycler.ptr;
 
 import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -75,7 +75,7 @@ public class RecyclerViewHandler implements LoadMoreHandler {
         }
 
         @Override
-        public void onScrollStateChanged(android.support.v7.widget.RecyclerView recyclerView, int newState) {
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             if (newState == RecyclerView.SCROLL_STATE_IDLE && isScollBottom(recyclerView)) {
                 if (onScrollBottomListener != null) {
                     onScrollBottomListener.onScorllBootom();
@@ -96,7 +96,7 @@ public class RecyclerViewHandler implements LoadMoreHandler {
         }
 
         @Override
-        public void onScrolled(android.support.v7.widget.RecyclerView recyclerView, int dx, int dy) {
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
         }
 

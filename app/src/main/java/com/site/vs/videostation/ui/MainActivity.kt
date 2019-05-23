@@ -2,7 +2,7 @@ package com.site.vs.videostation.ui
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.orhanobut.logger.Logger
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseActivity
@@ -94,6 +94,10 @@ class MainActivity : BaseActivity() {
 
         }
         exitDialog!!.show()
+    }
+
+    fun hideUnreadFriendRequestBadgeView() {
+
     }
 }
 

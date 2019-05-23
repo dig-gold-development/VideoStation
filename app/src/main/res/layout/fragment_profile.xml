@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white" >
@@ -97,4 +97,4 @@
             android:text="出色的神经外科医生斯蒂芬·斯特兰奇（本尼迪克特·康伯巴奇 Benedict Cumberbatch 饰）在遭遇了一次车祸悲剧之后，必须将自负抛在一边，学习一个不为人知的玄学、多维空间世界的秘密。在纽约的格林威治村，奇异博士将充当起现实世界和世外的中间人，利用浩瀚的超自然的能力和神器来保护漫威电影宇宙。"/>
     </LinearLayout>
 
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

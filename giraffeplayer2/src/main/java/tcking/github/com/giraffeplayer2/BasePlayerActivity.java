@@ -1,7 +1,7 @@
 package tcking.github.com.giraffeplayer2;
 
 import android.content.res.Configuration;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by tcking on 2017

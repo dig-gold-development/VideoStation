@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 
 import java.util.Collection;
 import java.util.HashSet;

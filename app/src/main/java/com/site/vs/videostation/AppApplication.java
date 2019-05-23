@@ -1,8 +1,8 @@
 package com.site.vs.videostation;
 
-import android.app.Application;
+import android.app.ActivityManager;
 import android.content.Context;
-import android.support.multidex.MultiDex;
+import androidx.multidex.MultiDex;
 
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -10,7 +10,11 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.PrettyFormatStrategy;
+import com.site.vs.videostation.base.BaseApp;
 import com.site.vs.videostation.db.DBManager;
+import com.site.vs.videostation.kit.WfcUIKit;
+import com.site.vs.videostation.kit.conversation.message.viewholder.MessageViewHolderManager;
+import com.site.vs.videostation.third.location.viewholder.LocationMessageContentViewHolder;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.lang.reflect.Constructor;
@@ -21,7 +25,10 @@ import java.lang.reflect.Method;
  * Created by yangang on 2018/1/19.
  */
 
-public class AppApplication extends Application {
+public class AppApplication extends BaseApp {
+
+    private WfcUIKit wfcUIKit;
+
     public void onCreate() {
         super.onCreate();
 
@@ -44,6 +51,30 @@ public class AppApplication extends Application {
 //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
 
         closeAndroidPDialog();
+
+        // 只在主进程初始化
+        if (getCurProcessName(this).equals("com.site.vs.videostation")) {
+            wfcUIKit = new WfcUIKit();
+            wfcUIKit.init(this);
+            MessageViewHolderManager.getInstance().registerMessageViewHolder(LocationMessageContentViewHolder.class);
+        }
+    }
+
+    public static String getCurProcessName(Context context) {
+
+        int pid = android.os.Process.myPid();
+
+        ActivityManager activityManager = (ActivityManager) context
+                .getSystemService(Context.ACTIVITY_SERVICE);
+
+        for (ActivityManager.RunningAppProcessInfo appProcess : activityManager
+                .getRunningAppProcesses()) {
+
+            if (appProcess.pid == pid) {
+                return appProcess.processName;
+            }
+        }
+        return null;
     }
 
     private void initFresco(Context base) {

@@ -1,3 +1,12 @@
-include ':app',  ':giraffeplayer'/*, ':basenet'*/
+include ':app',
+        ':giraffeplayer',
+        ':client',
+        ':mars-core-release',
+        ':avenginekit',
+        ':emojilibrary',
+        ':imagepicker',
+        ':push'
+
+
 
 

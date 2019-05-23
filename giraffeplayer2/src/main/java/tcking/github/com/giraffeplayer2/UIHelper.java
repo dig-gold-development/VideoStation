@@ -2,8 +2,8 @@ package tcking.github.com.giraffeplayer2;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Surface;
 import android.view.WindowManager;

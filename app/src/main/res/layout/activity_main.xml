@@ -58,6 +58,34 @@
             android:textColor="@color/tab_text_color" />
 
         <RadioButton
+            android:id="@+id/conversation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bottom_conversation_menu_selector"
+            android:gravity="center"
+            android:text="会话"
+            android:textColor="@color/tab_text_color"
+
+            />
+
+
+        <RadioButton
+            android:id="@+id/contact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bottom_contact_menu_selector"
+            android:gravity="center"
+            android:text="联系人"
+            android:textColor="@color/tab_text_color"
+
+            />
+
+
+        <RadioButton
             android:id="@+id/mine"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

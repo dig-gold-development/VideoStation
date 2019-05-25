@@ -3,22 +3,38 @@ package com.site.vs.videostation.ui
 import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import cn.wildfirechat.model.Conversation
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.orhanobut.logger.Logger
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseActivity
+import com.site.vs.videostation.kit.contact.ContactFragment
+import com.site.vs.videostation.kit.contact.ContactViewModel
+import com.site.vs.videostation.kit.conversationlist.ConversationListFragment
+import com.site.vs.videostation.kit.conversationlist.ConversationListViewModel
+import com.site.vs.videostation.kit.conversationlist.ConversationListViewModelFactory
 import com.site.vs.videostation.ui.homepage.MainChannelFragment
 import com.site.vs.videostation.ui.homepage.MainHomeFragment
 import com.site.vs.videostation.ui.homepage.MainMineFragment
 import com.site.vs.videostation.ui.homepage.MainRankingFragment
+import com.site.vs.videostation.ui.login.DiscoveryFragment
+import com.site.vs.videostation.ui.login.MeFragment
 import com.zhusx.core.utils._Activitys._addFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_activity.*
+import q.rorbin.badgeview.QBadgeView
+import java.util.*
 
 class MainActivity : BaseActivity() {
 
-    var fragments = arrayOfNulls<Fragment>(4)
+    var fragments = arrayOfNulls<Fragment>(6)
     private var currentFragment: Fragment? = null
 
     var exitDialog: AlertDialog? = null
+
+    private var unreadMessageUnreadBadgeView: QBadgeView? = null
+    private var unreadFriendRequestBadgeView: QBadgeView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,10 +65,27 @@ class MainActivity : BaseActivity() {
                     }
                 }
 
-                R.id.mine -> {
+                R.id.conversation -> {
                     i = 3
                     if (fragments[i] == null) {
-                        fragments[i] = MainMineFragment()
+                        fragments[i] = ConversationListFragment()
+                    }
+
+                }
+
+                R.id.contact -> {
+                    i = 4
+                    if (fragments[i] == null) {
+                        fragments[i] = ContactFragment()
+                    }
+
+                }
+
+
+                R.id.mine -> {
+                    i = 5
+                    if (fragments[i] == null) {
+                        fragments[i] = MeFragment()
                     }
 
                 }
@@ -65,10 +98,47 @@ class MainActivity : BaseActivity() {
             }
             showFragment(fragments[i]!!)
         }
-
-
-
         radioGroup.check(R.id.radio_home)
+
+
+        initUnread()
+    }
+
+    fun initUnread() {
+        val conversationListViewModel = ViewModelProviders
+                .of(this, ConversationListViewModelFactory(Arrays.asList<T>(Conversation.ConversationType.Single, Conversation.ConversationType.Group, Conversation.ConversationType.Channel), Arrays.asList<T>(0)))
+                .get(ConversationListViewModel::class.java!!)
+        conversationListViewModel.unreadCountLiveData().observe(this, { unreadCount ->
+
+            if (unreadCount != null && unreadCount!!.unread > 0) {
+                if (unreadMessageUnreadBadgeView == null) {
+
+                    val view = radioGroup.getChildAt(3)
+                    unreadMessageUnreadBadgeView = QBadgeView(this@MainActivity)
+                    unreadMessageUnreadBadgeView.bindTarget(view)
+                }
+                unreadMessageUnreadBadgeView.setBadgeNumber(unreadCount!!.unread)
+            } else if (unreadMessageUnreadBadgeView != null) {
+                unreadMessageUnreadBadgeView.hide(true)
+            }
+        })
+
+        val contactViewModel = ViewModelProviders.of(this).get(ContactViewModel::class.java!!)
+        contactViewModel.friendRequestUpdatedLiveData().observe(this, { count ->
+            if (count == null || count === 0) {
+                if (unreadFriendRequestBadgeView != null) {
+                    unreadFriendRequestBadgeView.hide(true)
+                }
+            } else {
+                if (unreadFriendRequestBadgeView == null) {
+
+                    val view = radioGroup.getChildAt(4)
+                    unreadFriendRequestBadgeView = QBadgeView(this@MainActivity)
+                    unreadFriendRequestBadgeView.bindTarget(view)
+                }
+                unreadFriendRequestBadgeView.setBadgeNumber(count)
+            }
+        })
     }
 
 

@@ -8,11 +8,11 @@ import android.os.Environment;
 
 public interface Config {
 
-    String IM_SERVER_HOST = "192.168.0.100";
+    String IM_SERVER_HOST = "129.204.245.80";
     int IM_SERVER_PORT = 80;
 
-    String APP_SERVER_HOST = "192.168.0.100";
-    int APP_SERVER_PORT = 8888;
+    String APP_SERVER_HOST = "188.131.252.174";
+    int APP_SERVER_PORT = 8080;
 
     String ICE_ADDRESS = "turn:turn.liyufan.win:3478";
     String ICE_USERNAME = "wfchat";

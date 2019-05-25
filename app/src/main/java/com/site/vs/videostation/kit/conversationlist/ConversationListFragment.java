@@ -1,9 +1,11 @@
 package com.site.vs.videostation.kit.conversationlist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +23,8 @@ import java.util.List;
 
 import com.site.vs.videostation.kit.IMServiceStatusViewModel;
 import com.site.vs.videostation.kit.WfcUIKit;
+import com.site.vs.videostation.kit.contact.newfriend.SearchUserActivity;
+import com.site.vs.videostation.kit.conversation.CreateConversationActivity;
 import com.site.vs.videostation.kit.conversationlist.notification.ConnectionStatusNotification;
 import com.site.vs.videostation.kit.conversationlist.notification.StatusNotificationViewModel;
 import com.site.vs.videostation.kit.user.UserViewModel;
@@ -32,6 +36,8 @@ import cn.wildfirechat.model.UserInfo;
 
 public class ConversationListFragment extends Fragment {
     private RecyclerView recyclerView;
+    private ImageView addView;
+    private ImageView createConversationView;
     private ConversationListAdapter adapter;
     private static final List<Conversation.ConversationType> types = Arrays.asList(Conversation.ConversationType.Single,
             Conversation.ConversationType.Group,
@@ -85,6 +91,24 @@ public class ConversationListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.conversationlist_frament, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
+        addView = view.findViewById(R.id.ic_add);
+        createConversationView = view.findViewById(R.id.ic_create);
+        addView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(),SearchUserActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        createConversationView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), CreateConversationActivity.class);
+                startActivity(intent);
+            }
+        });
+
         init();
         return view;
     }

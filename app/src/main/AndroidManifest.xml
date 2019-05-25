@@ -61,13 +61,46 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory"
         android:appComponentFactory="hh">
-        <activity android:name=".ui.MainActivity">
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <meta-data
+            android:name="design_width"
+            android:value="720" />
+        <meta-data
+            android:name="design_height"
+            android:value="1280" />
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="true" />
+
+        <!--地图-->
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="TOEBZ-67IR4-ZDHUV-DSDXX-TJZU7-UYFE7" />
+
+        <activity
+            android:name="com.site.vs.videostation.ui.login.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.site.vs.videostation.ui.login.SMSLoginActivity"
+            android:label="登录" />
+
+        <activity android:name=".ui.MainActivity"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ui.detail.view.DetailActivity"

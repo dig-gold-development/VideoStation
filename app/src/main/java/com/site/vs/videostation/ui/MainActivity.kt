@@ -99,47 +99,72 @@ class MainActivity : BaseActivity() {
             showFragment(fragments[i]!!)
         }
         radioGroup.check(R.id.radio_home)
-
-
         initUnread()
+
     }
 
     fun initUnread() {
         val conversationListViewModel = ViewModelProviders
-                .of(this, ConversationListViewModelFactory(Arrays.asList<T>(Conversation.ConversationType.Single, Conversation.ConversationType.Group, Conversation.ConversationType.Channel), Arrays.asList<T>(0)))
-                .get(ConversationListViewModel::class.java!!)
-        conversationListViewModel.unreadCountLiveData().observe(this, { unreadCount ->
+                .of(this, ConversationListViewModelFactory(Arrays.asList<Conversation.ConversationType>(Conversation.ConversationType.Single, Conversation.ConversationType.Group, Conversation.ConversationType.Channel), Arrays.asList<Int>(0)))
+                .get(ConversationListViewModel::class.java)
+        conversationListViewModel.unreadCountLiveData().observe(this,androidx.lifecycle.Observer {
+            unreadCount ->
 
             if (unreadCount != null && unreadCount!!.unread > 0) {
+
                 if (unreadMessageUnreadBadgeView == null) {
 
-                    val view = radioGroup.getChildAt(3)
+                    val view = radioLine.getChildAt(3)
                     unreadMessageUnreadBadgeView = QBadgeView(this@MainActivity)
-                    unreadMessageUnreadBadgeView.bindTarget(view)
+                    unreadMessageUnreadBadgeView?.let {
+                        it.bindTarget(view)
+                    }
                 }
-                unreadMessageUnreadBadgeView.setBadgeNumber(unreadCount!!.unread)
-            } else if (unreadMessageUnreadBadgeView != null) {
-                unreadMessageUnreadBadgeView.hide(true)
-            }
-        })
 
-        val contactViewModel = ViewModelProviders.of(this).get(ContactViewModel::class.java!!)
-        contactViewModel.friendRequestUpdatedLiveData().observe(this, { count ->
+                unreadMessageUnreadBadgeView?.let {
+                    it.setBadgeNumber(unreadCount!!.unread)
+                }
+
+
+
+            } else if (unreadMessageUnreadBadgeView != null) {
+                unreadMessageUnreadBadgeView.let {
+                    it?.hide(true)
+                }
+
+            }
+
+        } )
+
+        val contactViewModel = ViewModelProviders.of(this).get(ContactViewModel::class.java)
+        contactViewModel.friendRequestUpdatedLiveData().observe(this,androidx.lifecycle.Observer {
+            count ->
             if (count == null || count === 0) {
                 if (unreadFriendRequestBadgeView != null) {
-                    unreadFriendRequestBadgeView.hide(true)
+                    unreadFriendRequestBadgeView?.let {
+                        it.hide(true)
+                    }
+
                 }
             } else {
                 if (unreadFriendRequestBadgeView == null) {
 
-                    val view = radioGroup.getChildAt(4)
+                    val view = radioLine.getChildAt(4)
                     unreadFriendRequestBadgeView = QBadgeView(this@MainActivity)
-                    unreadFriendRequestBadgeView.bindTarget(view)
+                    unreadFriendRequestBadgeView?.let {
+                        it.bindTarget(view)
+                    }
                 }
-                unreadFriendRequestBadgeView.setBadgeNumber(count)
+
+                unreadFriendRequestBadgeView?.let {
+                    it.setBadgeNumber(count!!.toInt())
+                }
+
+
             }
         })
     }
+
 
 
     fun showFragment(fragment: Fragment) {

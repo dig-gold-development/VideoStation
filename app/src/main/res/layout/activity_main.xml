@@ -12,92 +12,171 @@
 
     </FrameLayout>
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp">
+        android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radio_home"
-            android:layout_width="0dp"
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/tab_home_selector"
-            android:gravity="center"
-            android:text="首页"
-            android:textColor="@color/tab_text_color"
+            android:orientation="horizontal"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp">
 
-            />
+            <RadioButton
+                android:id="@+id/radio_home"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/tab_home_selector"
+                android:gravity="center"
+                android:text="首页"
+                android:background="#00000000"
+                android:textColor="@color/tab_text_color"
 
-        <RadioButton
-            android:id="@+id/radio_channel"
-            android:layout_width="0dp"
+                />
+
+            <RadioButton
+                android:id="@+id/radio_channel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/tab_channel_selector"
+                android:gravity="center"
+                android:text="频道"
+                android:background="#00000000"
+                android:textColor="@color/tab_text_color"
+
+                />
+
+            <RadioButton
+                android:id="@+id/radio_rank"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/tab_rank_selector"
+                android:gravity="center"
+                android:text="排行榜"
+                android:background="#00000000"
+                android:textColor="@color/tab_text_color" />
+
+            <RadioButton
+                android:id="@+id/conversation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/bottom_conversation_menu_selector"
+                android:gravity="center"
+                android:text="会话"
+                android:background="#00000000"
+                android:textColor="@color/tab_text_color"
+
+                />
+
+
+            <RadioButton
+                android:id="@+id/contact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/bottom_contact_menu_selector"
+                android:gravity="center"
+                android:text="联系人"
+                android:background="#00000000"
+                android:textColor="@color/tab_text_color"
+
+                />
+
+
+            <RadioButton
+                android:id="@+id/mine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/tab_me_selector"
+                android:gravity="center"
+                android:text="我的"
+                android:background="#00000000"
+                android:textColor="@color/tab_text_color"
+
+                />
+
+        </RadioGroup>
+
+
+        <LinearLayout
+            android:id="@+id/radioLine"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/tab_channel_selector"
-            android:gravity="center"
-            android:text="频道"
-            android:textColor="@color/tab_text_color"
+            android:orientation="horizontal"
+            android:background="#00000000"
 
-            />
+            >
+            <!-- 显示提醒信息的button android:layout_weight=1  是3个butto，平分手机界面的宽度-->
+            <Button
+                android:visibility="invisible"
+                android:id="@+id/home"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                />
+            <!-- 占位置的button，以便适应不同分辨率手机 -->
+            <Button
+                android:visibility="invisible"
+                android:id="@+id/channel"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                />
+            <!-- 占位置的button，以便适应不同分辨率手机 -->
+            <Button
+                android:visibility="invisible"
+                android:id="@+id/rank"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                />
 
-        <RadioButton
-            android:id="@+id/radio_rank"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/tab_rank_selector"
-            android:gravity="center"
-            android:text="排行榜"
-            android:textColor="@color/tab_text_color" />
+            <!-- 占位置的button，以便适应不同分辨率手机 -->
+            <Button
+                android:id="@+id/conversation_btn"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="#00000000"
+                />
 
-        <RadioButton
-            android:id="@+id/conversation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/bottom_conversation_menu_selector"
-            android:gravity="center"
-            android:text="会话"
-            android:textColor="@color/tab_text_color"
+            <!-- 占位置的button，以便适应不同分辨率手机 -->
+            <Button
+                android:id="@+id/contact_btn"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="#00000000"
+                />
 
-            />
+            <Button
+                android:visibility="invisible"
+                android:id="@+id/mine_btn"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
 
-
-        <RadioButton
-            android:id="@+id/contact"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/bottom_contact_menu_selector"
-            android:gravity="center"
-            android:text="联系人"
-            android:textColor="@color/tab_text_color"
-
-            />
+    </RelativeLayout>
 
 
-        <RadioButton
-            android:id="@+id/mine"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/tab_me_selector"
-            android:gravity="center"
-            android:text="我的"
-            android:textColor="@color/tab_text_color"
 
-            />
 
-    </RadioGroup>
 
 </LinearLayout>

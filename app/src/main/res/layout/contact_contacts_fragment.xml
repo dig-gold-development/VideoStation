@@ -4,11 +4,10 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/topContact"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
         android:background="@color/black">
-
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,11 +22,13 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/topContact"
         android:id="@+id/contactRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <com.site.vs.videostation.kit.widget.QuickIndexBar
+        android:layout_below="@+id/topContact"
         android:id="@+id/quickIndexBar"
         android:layout_width="20dp"
         android:layout_height="match_parent"

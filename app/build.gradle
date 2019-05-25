@@ -14,7 +14,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 2
-        versionName "1.0.5"
+        versionName "1.0.6"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -119,18 +119,18 @@ android {
 
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.zhusx:core:0.1.0'
-    implementation 'org.jetbrains.anko:anko:0.10.1'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'com.alibaba:fastjson:1.1.54.android'
-    implementation project(':giraffeplayer')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.zhusx:core:0.1.0'
+    api 'org.jetbrains.anko:anko:0.10.1'
+    api 'com.google.android.material:material:1.0.0'
+    api 'com.alibaba:fastjson:1.1.54.android'
+    api project(':giraffeplayer')
 
     //retrofit
-    implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
-    implementation "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
-    implementation "com.facebook.fresco:fresco:${FRESCO_VERSION}"
-    implementation 'com.jakewharton:butterknife:10.0.0'
+    api "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+    api "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
+    api "com.facebook.fresco:fresco:${FRESCO_VERSION}"
+    api 'com.jakewharton:butterknife:10.0.0'
     kapt 'com.jakewharton:butterknife-compiler:10.0.0'
 
     // https://www.jianshu.com/p/38d8324b126a
@@ -138,9 +138,9 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation files('libs/tbs_sdk_thirdapp_v2.4.0.1073_36840_sharewithdownload_withoutGame_obfs_20161011_194834.jar')
-    implementation 'com.orhanobut:logger:2.2.0'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
+    api files('libs/tbs_sdk_thirdapp_v2.4.0.1073_36840_sharewithdownload_withoutGame_obfs_20161011_194834.jar')
+    api 'com.orhanobut:logger:2.2.0'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
 
     //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
 
@@ -151,25 +151,25 @@ dependencies {
     //    releaseImplementation 'com.github.markzhai:blockcanary-no-op:1.5.0'
 
     // 权限
-    implementation 'pub.devrel:easypermissions:1.3.0'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    api 'pub.devrel:easypermissions:1.3.0'
+    api 'com.github.bumptech.glide:glide:4.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
-    implementation 'jp.wasabeef:glide-transformations:4.0.1'
-    implementation 'com.github.bumptech.glide:okhttp3-integration:4.8.0'
-    implementation 'com.tencent.bugly:crashreport:latest.release'
+    api 'jp.wasabeef:glide-transformations:4.0.1'
+    api 'com.github.bumptech.glide:okhttp3-integration:4.8.0'
+    api 'com.tencent.bugly:crashreport:latest.release'
 
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
-    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    api 'com.tencent.bugly:nativecrashreport:latest.release'
 
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
 
     //retrofit
-    implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
-    implementation "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
+    api "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+    api "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
 
     //    implementation "com.squareup.retrofit2:adapter-rxjava2:${RETROFIT_VERSION}"
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 
     //    implementation 'com.google.protobuf:protobuf-java:3.5.1'
 
@@ -178,39 +178,39 @@ dependencies {
     //    implementation 'com.squareup.retrofit2:converter-protobuf:2.5.0'
 
     //Rxjava
-    implementation 'io.reactivex:rxjava:1.3.0'
-    implementation 'io.reactivex:rxandroid:1.2.1'
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.annotation:annotation:1.0.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.0.0-beta01'
-    implementation 'androidx.multidex:multidex:2.0.1'
-    implementation project(':client')
-    implementation project(':avenginekit')
-    implementation project(':emojilibrary')
-    implementation project(':imagepicker')
-    implementation project(':push')
-    implementation files('libs/TencentLocationSDK_v4.9.7.12_r247861_161205_1104.jar')
-    implementation files('libs/TencentMapSDK_Raster_v_1.2.7_51ae0e7.jar')
-    implementation files('libs/TencentSearch1.1.3.jar')
-    implementation 'com.jakewharton:butterknife:7.0.1'
-    implementation 'com.lqr.adapter:library:1.0.2'
+    api 'io.reactivex:rxjava:1.3.0'
+    api 'io.reactivex:rxandroid:1.2.1'
+    api 'androidx.appcompat:appcompat:1.0.0-beta01'
+    api 'androidx.annotation:annotation:1.0.0'
+    api 'androidx.cardview:cardview:1.0.0'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'com.google.android.material:material:1.0.0-beta01'
+    api 'androidx.multidex:multidex:2.0.1'
+    api project(':client')
+    api project(':avenginekit')
+    api project(':emojilibrary')
+    api project(':imagepicker')
+    api project(':push')
+    api files('libs/TencentLocationSDK_v4.9.7.12_r247861_161205_1104.jar')
+    api files('libs/TencentMapSDK_Raster_v_1.2.7_51ae0e7.jar')
+    api files('libs/TencentSearch1.1.3.jar')
+    api 'com.jakewharton:butterknife:7.0.1'
+    api 'com.lqr.adapter:library:1.0.2'
     def lifecycle_version = '2.0.0-beta01'
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    implementation 'com.lqr.optionitemview:library:1.0.7'
-    implementation 'cjt.library.wheel:camera:1.1.9'
-    implementation 'com.kyleduo.switchbutton:library:1.4.4'
-    implementation 'org.webrtc:google-webrtc:1.0.21929'
-    implementation files('libs/joda-time-2.5.jar')
+    api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    api 'com.lqr.optionitemview:library:1.0.7'
+    api 'cjt.library.wheel:camera:1.1.9'
+    api 'com.kyleduo.switchbutton:library:1.4.4'
+    api 'org.webrtc:google-webrtc:1.0.21929'
+    api files('libs/joda-time-2.5.jar')
     api 'com.google.zxing:core:3.3.3'
-    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
-    implementation 'com.jaeger.statusbaruitl:library:1.3.5'
+    api 'com.afollestad.material-dialogs:core:0.9.6.0'
+    api 'com.jaeger.statusbaruitl:library:1.3.5'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-    implementation 'com.king.zxing:zxing-lite:1.0.6'
-    implementation files('libs/pinyin4j-2.5.0.jar')
-    implementation 'q.rorbin:badgeview:1.1.3'
-    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    api 'com.king.zxing:zxing-lite:1.0.6'
+    api files('libs/pinyin4j-2.5.0.jar')
+    api 'q.rorbin:badgeview:1.1.3'
+    api 'com.github.chrisbanes:PhotoView:2.3.0'
 }
 
 

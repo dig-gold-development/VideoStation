@@ -9,6 +9,32 @@ android {
 
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
+
+    signingConfigs {
+        // 一种是先读取local.properties中签名配置的路径再配置
+        release {
+            def Properties localProps = new Properties()
+            localProps.load(new FileInputStream(file('../local.properties'))) //读取本地配置文件
+            assert localProps['keystore.release.file']
+
+            def Properties keyProps = new Properties()
+            // 一种是直接读取签名配置
+            keyProps.load(new FileInputStream(file(localProps['keystore.release.file'])))
+
+            storeFile file(keyProps["storeFile"])
+            keyAlias keyProps["keyAlias"]
+            storePassword keyProps["storePssword"]
+            keyPassword keyProps["keyPassword"]
+
+            //      keyAlias 'Gohome'
+            //      keyPassword 'hjlapp123'
+            //      storeFile file('../GoHome/Gohome_release.jks')
+            //      storePassword 'hjlapp123'
+        }
+
+        //    debug {}
+    }
+
     defaultConfig {
         applicationId "com.site.vs.videostation"
         minSdkVersion 21
@@ -17,6 +43,19 @@ android {
         versionName "1.0.6"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                APP_ID       : "com.site.vs.videostation",
+
+                MI_APP_ID    : "2882303761517722456",
+                MI_APP_KEY   : "5731772292456",
+
+                HMS_APP_ID   : "100221325",
+
+                MEIZU_APP_ID : "113616",
+                MEIZU_APP_KEY: "fcd886f51c144b45b87a67a28e2934d1"
+        ]
+        signingConfig signingConfigs.release
 
         // armeabi设备只兼容armeabi；
         //armeabi-v7a设备兼容armeabi-v7a、armeabi；
@@ -58,30 +97,6 @@ android {
     }
 
 
-    signingConfigs {
-        // 一种是先读取local.properties中签名配置的路径再配置
-        release {
-            def Properties localProps = new Properties()
-            localProps.load(new FileInputStream(file('../local.properties'))) //读取本地配置文件
-            assert localProps['keystore.release.file']
-
-            def Properties keyProps = new Properties()
-            // 一种是直接读取签名配置
-            keyProps.load(new FileInputStream(file(localProps['keystore.release.file'])))
-
-            storeFile file(keyProps["storeFile"])
-            keyAlias keyProps["keyAlias"]
-            storePassword keyProps["storePssword"]
-            keyPassword keyProps["keyPassword"]
-
-            //      keyAlias 'Gohome'
-            //      keyPassword 'hjlapp123'
-            //      storeFile file('../GoHome/Gohome_release.jks')
-            //      storePassword 'hjlapp123'
-        }
-
-        //    debug {}
-    }
     buildTypes {
         // 给没发布的版本使用不同包名
         debug {
@@ -98,6 +113,7 @@ android {
             zipAlignEnabled false
             //是否zip优化
             minifyEnabled false //是否混淆
+
 
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

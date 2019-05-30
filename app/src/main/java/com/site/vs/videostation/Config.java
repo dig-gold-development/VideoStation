@@ -14,9 +14,9 @@ public interface Config {
     String APP_SERVER_HOST = "188.131.252.174";
     int APP_SERVER_PORT = 8080;
 
-    String ICE_ADDRESS = "turn:turn.liyufan.win:3478";
-    String ICE_USERNAME = "wfchat";
-    String ICE_PASSWORD = "wfchat";
+    String ICE_ADDRESS = "turn:129.204.245.80:3478";
+    String ICE_USERNAME = "hu";
+    String ICE_PASSWORD = "123456";
 
     int DEFAULT_MAX_AUDIO_RECORD_TIME_SECOND = 120;
 

@@ -99,7 +99,12 @@
             android:label="登录" />
 
         <activity android:name=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            >
+            <intent-filter>
+                <action android:name="cn.wildfirechat.chat.main" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".ui.detail.view.DetailActivity"

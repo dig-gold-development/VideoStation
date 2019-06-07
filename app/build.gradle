@@ -127,6 +127,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/beans.xml'
+    }
+
 
 
 
@@ -196,11 +201,11 @@ dependencies {
     //Rxjava
     api 'io.reactivex:rxjava:1.3.0'
     api 'io.reactivex:rxandroid:1.2.1'
-    api 'androidx.appcompat:appcompat:1.0.0-beta01'
+    api 'androidx.appcompat:appcompat:1.0.0'
     api 'androidx.annotation:annotation:1.0.0'
     api 'androidx.cardview:cardview:1.0.0'
     api 'androidx.constraintlayout:constraintlayout:1.1.3'
-    api 'com.google.android.material:material:1.0.0-beta01'
+    api 'com.google.android.material:material:1.0.0'
     api 'androidx.multidex:multidex:2.0.1'
     api project(':client')
     api project(':avenginekit')
@@ -227,6 +232,17 @@ dependencies {
     api files('libs/pinyin4j-2.5.0.jar')
     api 'q.rorbin:badgeview:1.1.3'
     api 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    // Cling library
+    api 'org.fourthline.cling:cling-core:2.1.1'
+    api 'org.fourthline.cling:cling-support:2.1.1'
+
+    // Jetty library
+    api 'org.eclipse.jetty:jetty-server:8.1.12.v20130726'
+    api 'org.eclipse.jetty:jetty-servlet:8.1.12.v20130726'
+    api 'org.eclipse.jetty:jetty-client:8.1.12.v20130726'
+    api 'org.slf4j:slf4j-simple:1.7.21'
+    api 'com.koushikdutta.urlimageviewhelper:urlimageviewhelper:1.0.4'
 }
 
 

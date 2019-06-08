@@ -15,7 +15,7 @@ import rx.Observable;
  */
 public class PlayModel implements PlayContract.Model {
     @Override
-    public Observable<HttpResult<MoveAddressEntity>> playMove(String url, String type) {
+    public Observable<MoveAddressEntity> playMove(String url, String type) {
         return Retrofits.createApi(ApiService.class).setAddress(url, type);
     }
 }

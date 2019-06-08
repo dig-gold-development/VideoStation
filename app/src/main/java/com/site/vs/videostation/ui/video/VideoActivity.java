@@ -29,6 +29,7 @@ import com.site.vs.videostation.entity.MoveAddressEntity;
 import com.site.vs.videostation.ui.detail.presentation.PlayContract;
 import com.site.vs.videostation.ui.detail.presentation.PlayPresenter;
 import com.site.vs.videostation.ui.detail.view.VodListFragment;
+import com.site.vs.videostation.ui.screen.ScreenActivity;
 import com.site.vs.videostation.utils.UnitUtils;
 
 import java.util.List;
@@ -83,7 +84,6 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     @BindView(R.id.app_video_fullscreen)
     ImageView fullscreenTv;
     VodListFragment vodListFragment;
-    List<MoveAddressEntity.Definition> type_list;
     PopupWindow definitionPopupWindow;
     LinearLayout definitionLv;
     String url;
@@ -130,7 +130,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
         fullscreenTv.setVisibility(View.GONE);
     }
 
-    @OnClick({R.id.app_video_next, R.id.app_video_sel_play, R.id.app_video_sel_definition}) void onClick(View view) {
+    @OnClick({R.id.app_video_next, R.id.app_video_sel_play, R.id.app_video_sel_definition,R.id.app_video_screen}) void onClick(View view) {
         switch (view.getId()) {
             case R.id.app_video_next:
                 playNext();
@@ -138,32 +138,17 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
             case R.id.app_video_sel_play:
                 drawerLayout.openDrawer(Gravity.RIGHT);
                 break;
+            case R.id.app_video_screen:
+                Intent intent = new Intent(view.getContext(), ScreenActivity.class);
+                intent.putExtra(URL,url);
+                startActivity(intent);
+                break;
             case R.id.app_video_sel_definition:
 //                if (definitionPopupWindow == null) {
                     LayoutInflater inflater = LayoutInflater.from(this);
                     View contentView = inflater.inflate(R.layout.popupwindow_definition, null);
                     definitionLv = contentView.findViewById(R.id.listview);
-                    if (type_list != null) {
-                        for (int i = 0; i < type_list.size(); i++) {
-                            TextView tvName = (TextView) LayoutInflater.from(this).inflate(
-                                    R.layout.list_item_definition, definitionLv, false);
-                            tvName.setText(type_list.get(i).type);
-                            final int temp = i;
-                            tvName.setOnClickListener(new View.OnClickListener() {
-                                @Override public void onClick(View v) {
-                                    definitionTv.setText(type_list.get(temp).type);
-                                    definitionPopupWindow.dismiss();
-                                    player.pause();
-                                    definition = type_list.get(temp).hd + "";
-                                    mPresenter.playMove(url, definition,
-                                                        entity.type == 1 ? "" : entity.vod_url_list.get(
-                                                                originIndex).list.get(playIndex).play_name);
-                                    currentPos = player.getCurrentPosition();
-                                }
-                            });
-                            definitionLv.addView(tvName);
-                        }
-                    } else Toast.makeText(this, "对不起，当前只有一种清晰度", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(this, "对不起，当前只有一种清晰度", Toast.LENGTH_SHORT).show();
 
                     definitionPopupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT,
                                                             ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -213,10 +198,13 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
         realUrl = entity.vod_url_list.get(originIndex).list.get(playIndex).is_real_url;
         if (realUrl == 0) {
 
+            //请求真实地址
             player.setTitle(title + " " + entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
-            mPresenter.playMove(url, "2", entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
+            mPresenter.playMove(url, "0", entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
 
         } else if (realUrl == 1) {
+            //真实播放地址
+            player.setTitle(title + " " + entity.vod_url_list.get(originIndex).list.get(playIndex).play_name);
             url = url.replace("\r\n", "").replace("\t", "").replace(" ", "");
             player.play(url);
             if (currentPos != 0) player.seekTo(currentPos, false);
@@ -246,11 +234,10 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     @Override public void playMoveSuccess(MoveAddressEntity entity, String title) {
         Logger.e(new Gson().toJson(entity) + " \n " + title);
 
-        player.play(entity.file);
+        player.play(entity.url);
         if (currentPos != 0) player.seekTo(currentPos, false);
         player.setTitle(this.entity.name + " " + (this.entity.type == 1 ? "" : title));
 
-        type_list = entity.type_list;
         isInPlay = true;
     }
 

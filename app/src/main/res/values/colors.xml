@@ -19,6 +19,7 @@
     <color name="c_e5">#E5E5E5</color>
     <color name="c_00ae04">#00ae04</color>
     <color name="line">#D2D2D2</color>
+    <color name="textNormalColor">#666</color>
 
     <color name="gray0">#464646</color>
     <color name="gray1">#7e7e7e</color>

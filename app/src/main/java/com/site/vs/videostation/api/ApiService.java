@@ -55,6 +55,6 @@ public interface ApiService {
      */
     @POST("/play/setAddress/")
     @FormUrlEncoded
-    Observable<HttpResult<MoveAddressEntity>> setAddress(@Field("url") String url, @Field("type") String type);
+    Observable<MoveAddressEntity> setAddress(@Field("url") String url, @Field("type") String type);
 
 }

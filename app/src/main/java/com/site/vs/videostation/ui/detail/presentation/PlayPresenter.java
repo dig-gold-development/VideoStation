@@ -14,7 +14,7 @@ import rx.Subscriber;
 public class PlayPresenter extends PlayContract.Presenter {
     @Override
     public void playMove(final String url, String type, final String title) {
-        toSubscribe(mModel.playMove(url, type), new Subscriber<HttpResult<MoveAddressEntity>>() {
+        toSubscribe(mModel.playMove(url, type), new Subscriber<MoveAddressEntity>() {
 
             @Override
             public void onStart() {
@@ -34,12 +34,10 @@ public class PlayPresenter extends PlayContract.Presenter {
             }
 
             @Override
-            public void onNext(HttpResult<MoveAddressEntity> moveAddressEntityHttpResult) {
+            public void onNext(MoveAddressEntity moveAddressEntityHttpResult) {
                 if (getView() != null){
-                    if (moveAddressEntityHttpResult.getData().play_type == 0)
-                        getView().playWebMoveSuccess(url);
-                    else
-                        getView().playMoveSuccess(moveAddressEntityHttpResult.getData(), title);
+
+                    getView().playMoveSuccess(moveAddressEntityHttpResult, title);
                 }
 
             }

@@ -22,7 +22,7 @@ public interface PlayContract {
     }
 
     interface Model extends BaseModel {
-        Observable<HttpResult<MoveAddressEntity>> playMove(String url, String type);
+        Observable<MoveAddressEntity> playMove(String url, String type);
     }
 
     abstract class Presenter extends BasePresenter<View, Model> {

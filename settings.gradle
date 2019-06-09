@@ -5,8 +5,7 @@ include ':app',
         ':avenginekit',
         ':emojilibrary',
         ':imagepicker',
-        ':push',
-         ':clinglibrary'
+        ':push'
 
 
 

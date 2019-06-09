@@ -53,7 +53,7 @@ public interface ApiService {
     /**
      * 解析视频地址
      */
-    @POST("/play/setAddress/")
+    @GET("/api.php")
     @FormUrlEncoded
     Observable<MoveAddressEntity> setAddress(@Field("url") String url, @Field("type") String type);
 

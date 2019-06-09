@@ -296,7 +296,8 @@
             <ImageView
                 android:id="@+id/app_video_screen"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="17dp"
+                android:paddingRight="10dp"
                 android:src="@drawable/screen_tv" />
         </LinearLayout>
     </RelativeLayout>

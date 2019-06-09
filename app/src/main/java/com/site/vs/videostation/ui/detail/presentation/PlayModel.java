@@ -7,6 +7,10 @@ import com.site.vs.videostation.entity.MoveAddressEntity;
 import com.site.vs.videostation.http.Retrofits;
 import com.zhusx.core.network.HttpResult;
 
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 
 /**
@@ -16,6 +20,14 @@ import rx.Observable;
 public class PlayModel implements PlayContract.Model {
     @Override
     public Observable<MoveAddressEntity> playMove(String url, String type) {
-        return Retrofits.createApi(ApiService.class).setAddress(url, type);
+
+        OkHttpClient.Builder client = new OkHttpClient().newBuilder();
+
+        return new Retrofit.Builder()
+                .client(client.build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .baseUrl("http://188.131.252.174/xyplay")
+                .build().create(ApiService.class).setAddress(url, type);
     }
 }

@@ -1,4 +1,4 @@
-package com.site.vs.videostation.ui.homepage;
+package com.site.vs.videostation.ui.browse;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="search_top_menus">
+        <item>全部</item>
+        <item>电影</item>
+        <item>电视剧</item>
+        <item>动漫</item>
+        <item>综艺</item>
+    </string-array>
+
+</resources>

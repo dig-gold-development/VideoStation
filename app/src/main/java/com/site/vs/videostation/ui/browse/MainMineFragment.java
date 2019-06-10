@@ -1,6 +1,5 @@
-package com.site.vs.videostation.ui.homepage;
+package com.site.vs.videostation.ui.browse;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import com.google.android.material.tabs.TabLayout;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.site.vs.videostation.R;
 import com.site.vs.videostation.base.BaseFragment;
-import com.site.vs.videostation.ui.SettingActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -74,12 +72,12 @@ public class MainMineFragment extends BaseFragment {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    @OnClick({R.id.iv_setting, R.id.iv_delete})
+    @OnClick({R.id.iv_goback, R.id.iv_delete})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_setting:
+            case R.id.iv_goback:
                 //TODO 设置
-                startActivity(new Intent(getContext(), SettingActivity.class));
+                finish();
                 break;
             case R.id.iv_delete:
                 switch (viewPager.getCurrentItem()) {

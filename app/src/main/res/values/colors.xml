@@ -10,6 +10,7 @@
     <color name="c_f1">#f1f1f1</color>
     <color name="c_f9">#f9f9f9</color>
     <color name="c_38">#383838</color>
+    <color name="c_44">#444444</color>
     <color name="c_a5">#a5a5a5</color>
     <color name="c_a1">#a1a1a1</color>
     <color name="driver">#e5e5e5</color>
@@ -20,6 +21,7 @@
     <color name="c_00ae04">#00ae04</color>
     <color name="line">#D2D2D2</color>
     <color name="textNormalColor">#666</color>
+
 
     <color name="gray0">#464646</color>
     <color name="gray1">#7e7e7e</color>
@@ -42,6 +44,12 @@
     <color name="blue0">#576B95</color>
 
     <color name="black0">#000000</color>
+
+    <color name="c_cc">#cccccc</color>
+
+    <color name="c_e1">#E11A1A</color>
+    <color name="c_fa">#FA8B1D</color>
+    <color name="c_fb">#FFB70B</color>
 
 
     <!--遮盖层颜色-->

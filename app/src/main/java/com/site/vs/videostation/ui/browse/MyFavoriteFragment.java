@@ -1,4 +1,4 @@
-package com.site.vs.videostation.ui.homepage;
+package com.site.vs.videostation.ui.browse;
 
 import android.graphics.Rect;
 import android.os.Bundle;

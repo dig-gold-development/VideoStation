@@ -22,6 +22,8 @@ import com.site.vs.videostation.kit.WfcUIKit;
 import com.site.vs.videostation.kit.setting.SettingActivity;
 import com.site.vs.videostation.kit.user.UserInfoActivity;
 import com.site.vs.videostation.kit.user.UserViewModel;
+import com.site.vs.videostation.ui.about.AboutActivity;
+import com.site.vs.videostation.ui.browse.BrowseActvity;
 
 import java.util.List;
 
@@ -111,4 +113,18 @@ public class MeFragment extends Fragment {
         Intent intent = new Intent(getActivity(), SettingActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.browseOptionItemView)
+    void borwse() {
+        Intent intent = new Intent(getActivity(), BrowseActvity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.aboutOptionItemView)
+    void about() {
+        Intent intent = new Intent(getActivity(), AboutActivity.class);
+        startActivity(intent);
+    }
+
+
 }

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import cn.wildfirechat.model.Conversation
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.orhanobut.logger.Logger
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseActivity
@@ -16,13 +15,10 @@ import com.site.vs.videostation.kit.conversationlist.ConversationListViewModel
 import com.site.vs.videostation.kit.conversationlist.ConversationListViewModelFactory
 import com.site.vs.videostation.ui.homepage.MainChannelFragment
 import com.site.vs.videostation.ui.homepage.MainHomeFragment
-import com.site.vs.videostation.ui.homepage.MainMineFragment
 import com.site.vs.videostation.ui.homepage.MainRankingFragment
-import com.site.vs.videostation.ui.login.DiscoveryFragment
 import com.site.vs.videostation.ui.login.MeFragment
 import com.zhusx.core.utils._Activitys._addFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.main_activity.*
 import q.rorbin.badgeview.QBadgeView
 import java.util.*
 

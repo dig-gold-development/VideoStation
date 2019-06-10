@@ -11,14 +11,14 @@
         android:background="@color/lib_black">
 
         <ImageView
-            android:id="@+id/iv_setting"
+            android:id="@+id/iv_goback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:src="@drawable/nav_settings" />
+            android:src="@drawable/nav_goback" />
 
         <TextView
             android:layout_width="wrap_content"

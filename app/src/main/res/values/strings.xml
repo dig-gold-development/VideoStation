@@ -32,6 +32,8 @@
     <!--我-->
     <string name="my_chat_account">账号:%1$s</string>
     <string name="setting">设置</string>
+    <string name="browse">浏览足迹</string>
+    <string name="about">关于我们</string>
 
     <!--我的个人信息-->
 

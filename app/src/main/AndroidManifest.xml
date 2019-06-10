@@ -135,11 +135,15 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.SettingActivity"
+            android:name=".ui.about.AboutActivity"
             android:screenOrientation="portrait" />
 
         <activity android:name=".ui.screen.ScreenActivity"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.browse.BrowseActvity"
+            android:screenOrientation="portrait"/>
+
 
         <activity
             android:name="com.site.vs.videostation.kit.conversation.ConversationActivity"

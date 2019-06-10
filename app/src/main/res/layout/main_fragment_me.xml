@@ -113,4 +113,28 @@
         app:left_text_color="@color/black0"
         app:left_text_size="16sp" />
 
+    <com.lqr.optionitemview.OptionItemView
+        android:id="@+id/browseOptionItemView"
+        style="@style/OptionItem"
+        android:layout_marginTop="@dimen/option_item_margin_top"
+        android:background="@drawable/selector_common_item"
+        android:clickable="true"
+        app:left_image_margin_left="@dimen/option_item_margin_left"
+        app:left_image_margin_right="@dimen/option_item_margin_right"
+        app:left_text="@string/browse"
+        app:left_text_color="@color/black0"
+        app:left_text_size="16sp" />
+
+    <com.lqr.optionitemview.OptionItemView
+        android:id="@+id/aboutOptionItemView"
+        style="@style/OptionItem"
+        android:layout_marginTop="@dimen/option_item_margin_top"
+        android:background="@drawable/selector_common_item"
+        android:clickable="true"
+        app:left_image_margin_left="@dimen/option_item_margin_left"
+        app:left_image_margin_right="@dimen/option_item_margin_right"
+        app:left_text="@string/about"
+        app:left_text_color="@color/black0"
+        app:left_text_size="16sp" />
+
 </LinearLayout>

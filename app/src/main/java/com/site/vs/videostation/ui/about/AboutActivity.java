@@ -1,4 +1,4 @@
-package com.site.vs.videostation.ui;
+package com.site.vs.videostation.ui.about;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * @author zhangbb
  * @date 2016/12/28
  */
-public class SettingActivity extends MVPBaseActivity {
+public class AboutActivity extends MVPBaseActivity {
 
     @BindView(R.id.tv_content)
     public TextView contentTv;

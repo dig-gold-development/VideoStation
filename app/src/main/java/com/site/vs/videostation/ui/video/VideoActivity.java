@@ -140,6 +140,7 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
                 break;
             case R.id.app_video_screen:
                 Intent intent = new Intent(view.getContext(), ScreenActivity.class);
+
                 intent.putExtra(URL,url);
                 startActivity(intent);
                 break;
@@ -234,8 +235,8 @@ public class VideoActivity extends MVPBaseActivity<PlayPresenter> implements Pla
     @Override public void playMoveSuccess(MoveAddressEntity entity, String title) {
         Logger.e(new Gson().toJson(entity) + " \n " + title);
 
-
-        player.play(entity.url.replace("https", "http"));
+        url = entity.url.replace("https", "http");
+        player.play(url);
         if (currentPos != 0) player.seekTo(currentPos, false);
         player.setTitle(this.entity.name + " " + (this.entity.type == 1 ? "" : title));
 

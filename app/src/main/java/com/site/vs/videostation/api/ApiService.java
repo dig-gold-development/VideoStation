@@ -53,8 +53,7 @@ public interface ApiService {
     /**
      * 解析视频地址
      */
-    @GET("/api.php")
-    @FormUrlEncoded
-    Observable<MoveAddressEntity> setAddress(@Field("url") String url, @Field("type") String type);
+    @GET("video/")
+    Observable<MoveAddressEntity> setAddress(@Query("url") String url, @Query("type") String type);
 
 }

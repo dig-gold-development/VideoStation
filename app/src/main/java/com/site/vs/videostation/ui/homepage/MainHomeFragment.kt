@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import butterknife.ButterKnife
+import butterknife.OnClick
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.site.vs.videostation.R
@@ -19,6 +21,7 @@ import com.site.vs.videostation.entity.SlideListBean
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.LoadingHelper
 import com.site.vs.videostation.ui.detail.view.DetailActivity
+import com.site.vs.videostation.ui.search.SearchActivity
 import com.site.vs.videostation.widget.FrescoImageView
 import com.zhusx.core.adapter.Lib_BaseAdapter
 import com.zhusx.core.adapter.Lib_BasePagerAdapter
@@ -56,6 +59,7 @@ class MainHomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        ButterKnife.bind(this, view)
         println("content = $content")
         loadData = LoadData(LoadData.Api.Home, this)
         loadData!!._setOnLoadingListener(object : LoadingHelper<HomePageEntity>(content, loadData) {
@@ -184,6 +188,14 @@ class MainHomeFragment : BaseFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         bannerViewPager.removeOnPageChangeListener(pagerListener)
+    }
+
+    @OnClick(R.id.iv_search, R.id.iv_history)
+    fun onClick(v: View) {
+        when (v.id) {
+            R.id.iv_search -> startActivity(Intent(activity, SearchActivity::class.java))
+
+        }
     }
 
 

@@ -144,6 +144,9 @@
         <activity android:name=".ui.browse.BrowseActvity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.site.vs.videostation.kit.conversation.ConversationActivity"

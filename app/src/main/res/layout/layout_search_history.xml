@@ -36,7 +36,7 @@
 
     <View style="@style/horizontal_line_e5" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -78,7 +78,7 @@ public class SearchResultFragment extends MVPBaseFragment<SearchPresenter> imple
     }
 
     private void initPages(SearchResultEntity entity) {
-        int count = entity.search_count;
+        int count = entity.count;
         if (count > SIZE) {
             totalPage = count % SIZE == 0 ? count / SIZE : count / SIZE + 1;
         } else {
@@ -94,14 +94,14 @@ public class SearchResultFragment extends MVPBaseFragment<SearchPresenter> imple
     public void initSearchSuccess(SearchResultEntity entity, int type) {
         initPages(entity);
         getFragment(type).pageIndex++;
-        getFragment(type).initDataSuccess(entity.search_list, pageIndex <= totalPage);
+        getFragment(type).initDataSuccess(entity.list, pageIndex <= totalPage);
     }
 
     @Override
     public void moreSearchSuccess(int type, SearchResultEntity entity) {
         initPages(entity);
         getFragment(type).pageIndex++;
-        getFragment(type).loadMoreDataSuccess(entity.search_list, pageIndex <= totalPage);
+        getFragment(type).loadMoreDataSuccess(entity.list, pageIndex <= totalPage);
     }
 
     @Override

@@ -9,8 +9,8 @@ import java.util.List;
  */
 public class SearchResultEntity implements Serializable {
 
-    public List<SearchResult> search_list;
-    public int search_count;
+    public List<SearchResult> list;
+    public int count;
 
     public static class SearchResult implements Serializable {
         public String id;

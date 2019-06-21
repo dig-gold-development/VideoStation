@@ -26,7 +26,7 @@ public class SearchHotAdapter extends CommRecyclerAdapter<String> {
     public void onUpdate(BaseAdapterHelper helper, String item, int position) {
         helper.setText(R.id.tv_history, item);
         TextView numTv = helper.getView(R.id.tv_num);
-        numTv.setTextColor(context.getResources().getColor(tvColor[position]));
+        numTv.setTextColor(context.getResources().getColor(tvColor[position % 3]));
         numTv.setText(String.valueOf(position + 1));
     }
 }

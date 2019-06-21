@@ -24,15 +24,15 @@ public interface SearchService {
      * @return
      */
     @FormUrlEncoded
-    @POST("/search")
+    @POST("search")
     Observable<HttpResult<SearchResultEntity>> getSearchResult(@Field("keywords") String key,
                                                                @Field("type") int type,
-                                                               @Field("pages") int pages);
+                                                               @Field("page") int pages);
 
 
     /**
      * search
      */
-    @GET("/search/hot")
+    @GET("search/hot")
     Observable<HttpResult<HotSearchEntity>> getHotSearch();
 }

@@ -27,7 +27,7 @@ public class PlayModel implements PlayContract.Model {
                 .client(client.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl("http://www.biggold.net.cn/xyplay/")
+                .baseUrl("http://vip.biggold.net.cn/")
                 .build().create(ApiService.class).setAddress(url, type);
     }
 }

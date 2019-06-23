@@ -95,6 +95,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tv_movie"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -108,6 +109,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/tv_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -122,6 +124,7 @@
 
 
                 <TextView
+                    android:id="@+id/tv_comic"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -135,6 +138,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/tv_arts"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -168,6 +172,7 @@
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/tv_more_movie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -205,6 +210,7 @@
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/tv_more_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -242,6 +248,7 @@
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/tv_more_arts"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -279,6 +286,7 @@
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/tv_more_comic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"

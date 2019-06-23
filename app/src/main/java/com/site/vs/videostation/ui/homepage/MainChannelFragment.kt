@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import butterknife.ButterKnife
 import butterknife.OnClick
 import com.site.vs.videostation.R
 import com.site.vs.videostation.base.BaseFragment
@@ -13,6 +14,7 @@ import com.site.vs.videostation.entity.ChannelEntity
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.LoadingHelper
 import com.site.vs.videostation.ui.category.CategoryActivity
+import com.site.vs.videostation.ui.search.SearchActivity
 import com.zhusx.core.adapter.Lib_BaseAdapter
 import com.zhusx.core.network.HttpRequest
 import com.zhusx.core.network.HttpResult
@@ -37,6 +39,7 @@ class MainChannelFragment : BaseFragment() {
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ButterKnife.bind(this, view)
 
         val loadData:LoadData<ChannelEntity> = LoadData(LoadData.Api.Channel, this)
         loadData._setOnLoadingListener(object : LoadingHelper<ChannelEntity>(contentView, loadData) {
@@ -45,6 +48,14 @@ class MainChannelFragment : BaseFragment() {
             }
         })
         loadData._loadData()
+    }
+
+    @OnClick(R.id.iv_search, R.id.iv_history)
+    fun onClick(v: View) {
+        when (v.id) {
+            R.id.iv_search -> startActivity(Intent(activity, SearchActivity::class.java))
+
+        }
     }
 
     private fun initData(data: ChannelEntity) {
@@ -109,13 +120,7 @@ class MainChannelFragment : BaseFragment() {
         }
     }
 
-    @OnClick(R.id.iv_search, R.id.iv_history)
-    fun onClick(v: View) {
-        when (v.id) {
-//            R.id.iv_search -> startActivity(Intent(getActivity(), SearchActivity::class.java))
-//            R.id.iv_history -> startActivity(Intent(v.context, HistoryActivity::class.java))
-        }
-    }
+
 
 
 }

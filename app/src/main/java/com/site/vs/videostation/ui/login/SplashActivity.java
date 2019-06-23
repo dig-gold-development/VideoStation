@@ -1,5 +1,6 @@
 package com.site.vs.videostation.ui.login;
 
+
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -13,8 +14,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,14 +21,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.site.vs.videostation.R;
+import com.site.vs.videostation.base.BaseActivity;
 import com.site.vs.videostation.ui.MainActivity;
+import com.site.vs.videostation.ui.MainVisitorActivity;
+
 
 import java.util.List;
 
-import butterknife.ButterKnife;
-
 public class SplashActivity extends AppCompatActivity {
-
+    Handler mHandle = new Handler();
+    Runnable runnable;
+    private SharedPreferences sharedPreferences;
+    private String id;
+    private String token;
+    private Boolean login;
+    private static final int REQUEST_CODE_DRAW_OVERLAY = 101;
     private static String[] permissions = {Manifest.permission.READ_PHONE_STATE,
             // 位置
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -42,52 +48,36 @@ public class SplashActivity extends AppCompatActivity {
             //存储空间
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
     };
-    private static final int REQUEST_CODE_DRAW_OVERLAY = 101;
-
-    private SharedPreferences sharedPreferences;
-    private String id;
-    private String token;
-
-    private void hideStatusBar() {
-        View decorView = getWindow().getDecorView();
-        // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-    }
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_splash);
-        ButterKnife.bind(this);
-        hideStatusBar();
 
         sharedPreferences = getSharedPreferences("config", Context.MODE_PRIVATE);
         id = sharedPreferences.getString("id", null);
         token = sharedPreferences.getString("token", null);
-
-        if (checkPermission()) {
-            if (checkOverlayPermission()) {
-                new Handler().postDelayed(this::showNextScreen, 1000);
-            }
-        } else {
-            requestPermissions(permissions, 100);
-        }
-    }
-
-    private boolean checkPermission() {
-        boolean granted = true;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            for (String permission : permissions) {
-                granted = checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
-                if (!granted) {
-                    break;
+        login = getIntent().getBooleanExtra("login",false);
+        if (token == null && login == false) {
+            runnable = new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(new Intent(SplashActivity.this, MainVisitorActivity.class));
+                    SplashActivity.this.finish();
                 }
+            };
+            mHandle.postDelayed(runnable, 3000);
+        }else {
+            if (checkPermission()) {
+                if (checkOverlayPermission()) {
+                    new Handler().postDelayed(this::showNextScreen, 1000);
+                }
+            } else {
+                requestPermissions(permissions, 100);
             }
         }
-        return granted;
+
     }
 
     @Override
@@ -102,6 +92,19 @@ public class SplashActivity extends AppCompatActivity {
         if (checkOverlayPermission()) {
             showNextScreen();
         }
+    }
+
+    private boolean checkPermission() {
+        boolean granted = true;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            for (String permission : permissions) {
+                granted = checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+                if (!granted) {
+                    break;
+                }
+            }
+        }
+        return granted;
     }
 
     private boolean checkOverlayPermission() {
@@ -119,20 +122,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         }
         return true;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_DRAW_OVERLAY) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (!Settings.canDrawOverlays(this)) {
-                    Toast.makeText(this, "授权失败", Toast.LENGTH_LONG).show();
-                    finish();
-                } else {
-                    showNextScreen();
-                }
-            }
-        }
     }
 
     private void showNextScreen() {
@@ -155,5 +144,11 @@ public class SplashActivity extends AppCompatActivity {
         intent = new Intent(this, SMSLoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mHandle.removeCallbacks(runnable);
     }
 }

@@ -20,6 +20,7 @@ import com.site.vs.videostation.entity.HomePageEntity
 import com.site.vs.videostation.entity.SlideListBean
 import com.site.vs.videostation.http.LoadData
 import com.site.vs.videostation.http.LoadingHelper
+import com.site.vs.videostation.ui.category.CategoryActivity
 import com.site.vs.videostation.ui.detail.view.DetailActivity
 import com.site.vs.videostation.ui.search.SearchActivity
 import com.site.vs.videostation.widget.FrescoImageView
@@ -196,6 +197,45 @@ class MainHomeFragment : BaseFragment() {
             R.id.iv_search -> startActivity(Intent(activity, SearchActivity::class.java))
 
         }
+    }
+
+    @OnClick(R.id.tv_movie, R.id.tv_arts, R.id.tv_tv, R.id.tv_comic, R.id.tv_more_movie, R.id.tv_more_tv, R.id.tv_more_comic, R.id.tv_more_arts)
+    fun onTopTabClick(v: View) {
+        if (data == null) {
+            return
+        }
+
+
+        val intent = Intent(v.context, CategoryActivity::class.java)
+        when (v.id) {
+
+
+            R.id.tv_movie, R.id.tv_more_movie ->
+                data?.let {
+                    val moveId = it.category.move_id
+                    intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "$moveId")
+                }
+
+            R.id.tv_tv, R.id.tv_more_tv ->
+                data?.let{
+                    val tvId = it.category.tv_id
+                    intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "$tvId");
+                }
+
+            R.id.tv_comic, R.id.tv_more_comic ->
+                data?.let {
+                    val comicId =  it.category.comic_id
+                    intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "$comicId")
+                }
+
+            R.id.tv_arts, R.id.tv_more_arts ->
+                data?.let {
+                    val artsId = it.category.arts_id
+                    intent.putExtra(CategoryActivity.EXTRA_STRING_ID, "$artsId")
+                }
+
+        }
+        startActivity(intent)
     }
 
 

@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Retrofits {
 
     private volatile static Retrofit retrofit;
-    private static final String URL = "http://www.biggold.net.cn:8080/videostation/";
+    private static final String URL = "http://api.biggold.net.cn/";
 
     static {
         synchronized (Retrofits.class) {
